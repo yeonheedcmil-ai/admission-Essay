@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essay Evaluation Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .section-title {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            font-weight: 700;
+            color: #1e3a8a; /* Deep Blue */
+        }
+        .feedback-icon {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        .correction-box {
+            border-left: 4px solid #dbeafe; /* Light Blue */
+            transition: all 0.3s ease;
+        }
+        .correction-box:hover {
+            border-left-color: #3b82f6; /* Medium Blue */
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl report-card overflow-hidden">
+        <!-- Header -->
+        <header class="bg-blue-800 text-white p-6 sm:p-8">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">Essay Evaluation Report</h1>
+            <p class="text-lg text-blue-200 mt-2">A detailed look at your amazing writing progress!</p>
+        </header>
+
+        <main class="p-6 sm:p-8 space-y-8">
+            <!-- Part A: Original Essay -->
+            <section>
+                <h2 class="text-2xl section-title mb-4">Part A: Your Original Essay</h2>
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-700 italic">
+                    <p>My best place I visited was Everland. Everyland had many things to play. Things the best place because it has pandas. It was the best part. Also, I catchd a batterfly landing on my nose. I took a picture. it tickled. very… Mmm. This was very interesting. I also tasted Everland's popcorn. My family and I said it was very sweet. The animal was very cute. It made me happy. The monckey stared at me again and again. When I went left there were cute snacks. My favorite animal was snakes so it was cute. This thing made Everland the best place I ever visited.</p>
+                    <p class="mt-4">The second best place I went was a big library. I liked the second because it was in an apartment's last floor. I saw many books. but there were no books of snacks. I was worried there isn't any books for me. I kept looking and trying to see books for me.</p>
+                    <p class="mt-4">Finally I found a cat book! The second animal I like was cat because its fur is very soft and smooth. My brother choose a book about fishes. I was happy I found that I want so I think this libray is the second best place for me.</p>
+                    <p class="mt-4">These two places, Everland and the library are the</p>
+                </div>
+            </section>
+
+            <!-- Part B: Comprehensive Evaluation -->
+            <section>
+                <h2 class="text-2xl section-title mb-6">Part B: Your Evaluation</h2>
+                
+                <!-- Overall Score -->
+                <div class="text-center bg-blue-50 p-6 rounded-xl border-2 border-blue-200 mb-8">
+                    <p class="text-xl font-semibold text-blue-800">Total Score</p>
+                    <p class="text-7xl font-bold text-blue-600 my-2">53<span class="text-3xl text-gray-500">/100</span></p>
+                    <p class="text-gray-600">A great start on a wonderful story!</p>
+                </div>
+
+                <!-- Strengths Section -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-green-700 mb-4">🌟 What You Did Great!</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="feedback-icon bg-green-100 text-green-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Organization & Structure</h4>
+                                <p class="text-gray-600">It's great that you organized your essay into two main parts: your best place (Everland) and your second best place (the library). This shows you are thinking like a real writer!</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="feedback-icon bg-green-100 text-green-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536l12.232-12.232z" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Word Choice & Fluency</h4>
+                                <p class="text-gray-600">You did a wonderful job using words to share your happy memories! Words like `interesting`, `sweet`, and `smooth` help the reader imagine what you experienced.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Growth Section -->
+                <div>
+                    <h3 class="text-xl font-bold text-purple-700 mb-4">🚀 Let's Power Up! (Next Steps)</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="feedback-icon bg-purple-100 text-purple-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Vocabulary Power-Up</h4>
+                                <p class="text-gray-600">To make your writing more colorful, try a fun challenge: next time you write, see if you can replace a common word with a new one. For example, instead of "cute," you could try exciting words like `charming` or `delightful`. This will make your story even more fun to read!</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="feedback-icon bg-purple-100 text-purple-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Grammar Power-Up</h4>
+                                <p class="text-gray-600">Let's learn two secret tricks! First, make sure every sentence is a "complete thought" with a subject and a verb (a "who" and a "did what"). Second, when telling a story about the past, use "storytelling verbs" like changing `catchd` to `caught` and `choose` to `chose`. This will make your writing sound like a real storybook!</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="feedback-icon bg-purple-100 text-purple-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Structure Power-Up</h4>
+                                <p class="text-gray-600">To make your essay into a strong "house," it needs a clear "front door" (an Introduction) and a "back door" (a Conclusion). Try starting with one sentence that introduces both places, and end with one sentence that summarizes your feelings about them.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Part C: Sentence Corrections -->
+            <section>
+                <h2 class="text-2xl section-title mb-4">Part C: Sentence-by-Sentence Tune-Up</h2>
+                <div class="space-y-6">
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: My best place I visited was Everland.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> The best place I have visited is Everland.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> My favorite place I have ever visited is the <strong>fantastic</strong> amusement park, Everland.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: Everyland had many things to play.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> Everland had many things to do.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> The park offered many <strong>active</strong> things to see and do.</p>
+                    </div>
+                     <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: Things the best place because it has pandas.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> It was the best place because it has pandas.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> The most <strong>amazing feature</strong> of the park was the panda exhibit.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: It was the best part.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> Seeing the pandas was the best part.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> <strong>Observing</strong> the pandas was the highlight of my <strong>journey</strong>.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: Also, I catchd a batterfly landing on my nose.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> Also, I caught a butterfly landing on my nose.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> Later, I had a <strong>delightful experience</strong> when a butterfly landed right on my nose!</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: I took a picture. it tickled. very… Mmm. This was very interesting.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> I took a picture. It tickled, which was very interesting.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> We quickly took a picture, and it was a <strong>curious</strong> and ticklish feeling.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: I also tasted Everland's popcorn. My family and I said it was very sweet.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> I also tasted Everland's popcorn. My family and I said it was very sweet.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> My family and I also <strong>shared</strong> some delicious popcorn, and we all <strong>agreed</strong> it was very sweet.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: The animal was very cute. It made me happy. The monckey stared at me again and again.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> The animals were very cute and made me happy. A monkey stared at me again and again.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> I thought the animals were very <strong>charming</strong>. For instance, I <strong>observed</strong> a <strong>curious</strong> monkey that kept staring at me.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: When I went left there were cute snacks.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> When I left, there were cute snacks.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> Before we left, I noticed many <strong>delightful</strong>-looking snacks for sale.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: My favorite animal was snakes so it was cute.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> My favorite animals were the snakes, and they were cute, too.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> Surprisingly, my favorite animals were the snakes, which I found to be quite <strong>fascinating</strong>.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: This thing made Everland the best place I ever visited.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> These things made Everland the best place I have ever visited.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> All of these wonderful <strong>experiences</strong> made Everland the most memorable place I have ever visited.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: The second best place I went was a big library.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> The second-best place I went to was a big library.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> My second favorite place was a large, quiet library.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: I liked the second because it was in an apartment's last floor.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> I liked it because it was on the top floor of an apartment building.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> I particularly liked this library because of its <strong>remote</strong> location on the top floor of an apartment building.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: I saw many books. but there were no books of snacks.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> I saw many books, but I was worried because I didn't see any books about snacks.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> I saw rows and rows of books, but I did not see any about my favorite topic: snacks.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: I was worried there isn't any books for me.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> I was worried there weren't any books for me.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> At first, I was worried that there wouldn't be a <strong>suitable</strong> book for me.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: I kept looking and trying to see books for me.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> I kept looking and trying to find books for me.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> I continued my <strong>search</strong>, hoping to find a book that I would <strong>prefer</strong>.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: Finally I found a cat book!</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> Finally, I found a cat book!</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> <strong>Finally</strong>, after a long search, I discovered a book all about cats!</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: The second animal I like was cat because its fur is very soft and smooth.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> The second animal I like is the cat, because its fur is very soft and smooth.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> This was the perfect book for me because cats are my second favorite animal; I think their fur is incredibly soft and smooth.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: My brother choose a book about fishes.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> My brother chose a book about fish.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> Meanwhile, my brother <strong>selected</strong> a book about fish.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: I was happy I found that I want so I think this libray is the second best place for me.</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> I was happy I found what I wanted, so I think this library is the second-best place for me.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> I was so happy to find a book I wanted, which is why I <strong>consider</strong> the library the second-best place for me.</p>
+                    </div>
+                    <div class="correction-box p-4 rounded-md">
+                        <p class="text-sm text-gray-500 font-mono">Original: These two places, Everland and the library are the</p>
+                        <p class="mt-2"><span class="font-semibold text-blue-600">Correction:</span> These two places, Everland and the library, are the best.</p>
+                        <p class="mt-2"><span class="font-semibold text-indigo-600">Suggestion:</span> Both of these places, Everland and the library, are truly special to me.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Part D: Final Revised Essay -->
+            <section>
+                <h2 class="text-2xl section-title mb-4">Part D: Your Polished Essay</h2>
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-200 text-gray-800">
+                    <h3 class="text-xl font-bold text-blue-800 mb-2">My Two Favorite Places</h3>
+                    <div class="prose max-w-none text-gray-700">
+                        <p>Everyone has special places that hold happy memories. For me, the two best places I have ever visited are Everland amusement park and a cozy library, each offering a different kind of adventure. While one is full of exciting sounds and the other is calm and quiet, both are my favorite places to be.</p>
+                        <p>My first favorite place is Everland, which is full of <strong>fantastic</strong> attractions. The most amazing <strong>feature</strong> of the park is its collection of animals. I loved <strong>observing</strong> the pandas, and I was happy to see curious monkeys and interesting snakes. The most memorable moment was a personal one; a beautiful butterfly landed right on my nose and tickled me! Besides the animals, the food was a wonderful part of the <strong>experience</strong>. My family and I shared some delicious popcorn that tasted very sweet. The combination of amazing animals and tasty treats makes Everland a truly joyful place.</p>
+                        <p>My second favorite place is a large library on the top floor of an apartment building. At first, I was worried I wouldn't be able to find a book just for me among so many choices. I kept searching the shelves, hoping to <strong>locate</strong> the perfect story. <strong>Finally</strong>, I found a wonderful book about cats! I love cats because their fur is very soft and smooth. While I chose my cat book, my brother chose one about fish. The feeling of finding the exact book I wanted was a quiet and happy adventure, making the library my second best place.</p>
+                        <p>In conclusion, both the thrilling excitement of Everland and the quiet discovery of the library are special to me. They show that a great place can be loud and busy or calm and peaceful. I <strong>cherish</strong> the different memories I made at both locations and hope to visit them again soon.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-100 p-6 text-center text-gray-600">
+            <p>Great work on this essay! Keep writing and sharing your wonderful stories.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
