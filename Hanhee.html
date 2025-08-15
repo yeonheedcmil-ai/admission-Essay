@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #5b21b6;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #5b21b6;
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #5b21b6;
+        }
+        .total-score-row {
+            background-color: #f5f3ff;
+            font-weight: 700;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-proficient { background-color: #e9d5ff; color: #5b21b6; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #5b21b6;
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #5b21b6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>정한희 학생</p>
+        </header>
+
+        <!-- Part 1: 학생 원본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0_0_24_24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+I think the lightbulb is the best invention in the world. If the lightbulb wasn't invented, it wouldn't been like the world we know.
+
+First, If the lightbulb wasn't invented, we couldn't see anything. For example, it was a cloudy dark night, you can't see anything. There is no fire. What would you do? You will keep bumping into trees, get lost, or even be attacked to someone, or something. If there is a lightbulb, you could see anything in the world!
+
+Next, it has heat. The first lightbulb that was invented had a lot of heat. Eventhough fire also has heat, it could be dangerous because of the smell and the smoke. However, lightbulbs are very safe.
+
+Finally, a lightbulb could help you learn science. You could wonder why the lightbulb is so hot or how it makes lights. It makes you want to learn about it. You could also be an inventor! An inventor that make safely light bulbs.
+
+As a conclusion, I think that the lightbulb is the most important invention in the world.
+            </div>
+        </section>
+
+        <!-- Part 2: 평가 점수 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0_0_24_24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                평가 점수 (Rubric Score)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>엄격한 에세이 형식 기준에 따르면, 글의 구조가 매우 미흡합니다. 서론에 주제문(Thesis Statement)이 누락되었고, 본론 문단들은 주제 문장(Topic Sentence)과 맺음 문장(Closing Sentence) 없이 아이디어 나열에 그쳤습니다. 결론 또한 본론 내용을 요약하는 기능 없이 주제를 재진술하는 데 그쳐 에세이의 완결성이 크게 부족합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td>전구가 세상에 미치는 영향에 대해 세 가지 이유(빛, 열, 과학적 호기심)를 제시한 점은 좋으나, 각 아이디어에 대한 설명이 충분하지 않습니다. 특히 '열'과 '과학'에 대한 내용은 예시가 부족하여 주장을 효과적으로 뒷받침하지 못하고 있습니다. 아이디어를 더 구체화하는 연습이 필요합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>문법 오류가 빈번하게 발견됩니다. 특히 가정법(conditionals) 시제 불일치("If the lightbulb wasn't invented, it wouldn't been...")와 문장 부호(쉼표, 대문자) 사용 오류가 많습니다. 문장 중간에 질문을 넣는 등 문장 구조가 불안정하여 글의 흐름을 방해하는 요소가 많습니다.</td>
+                    </tr>
+                    <tr class="total-score-row">
+                        <td>총점 (Total Score)</td>
+                        <td><span class="score">4 / 12 (33%)</span></td>
+                        <td>창의적인 아이디어를 가지고 있으나, 이를 에세이라는 형식에 맞춰 논리적으로 구성하고 문법적으로 정확하게 표현하는 능력이 전반적으로 부족합니다. 에세이의 기본 구조와 문법 규칙에 대한 집중적인 학습이 시급합니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Part 3: 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0_0_24_24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                학생 역량 분석 (Skill Level Analysis)
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary</h4>
+                    <span class="level level-beginner">Beginner (G2-G3)</span>
+                    <p><strong>오류:</strong> 사용된 어휘가 'bumping', 'attacked', 'dangerous', 'inventor' 등 G3 수준에 머물러 있습니다. 글의 주제를 깊이 있게 다루기에는 어휘의 폭과 수준이 다소 제한적입니다.</p>
+                    <p><strong>제안:</strong> G4-G5 수준의 단어를 학습하고 글쓰기에 적극적으로 활용하는 연습이 필요합니다. 예를 들어, 'see anything' 대신 '<strong>illuminate</strong> the darkness'(어둠을 밝히다), 'has heat' 대신 '<strong>generates</strong> heat'(열을 발생시키다)와 같은 표현을 사용하면 글이 훨씬 풍부해집니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar & Punctuation</h4>
+                    <span class="level level-beginner">Beginner (G2-G3)</span>
+                    <p><strong>오류:</strong> 가정법 문장에서 시제를 일치시키지 못하는 오류("wasn't invented, it wouldn't been")가 반복적으로 나타납니다. 문장 시작 시 대문자를 사용하지 않거나("it was a cloudy..."), 쉼표를 부적절하게 사용하는 등 기본적인 문장 부호 규칙에 대한 이해가 부족합니다.</p>
+                    <p><strong>제안:</strong> 가정법 과거(If + 주어 + 과거동사, 주어 + would + 동사원형)와 같은 핵심 문법 규칙을 집중적으로 학습하고, 문장의 시작은 항상 대문자로, 문장의 끝은 마침표나 물음표로 마무리하는 기본 규칙을 철저히 지키는 연습이 필요합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure</h4>
+                    <span class="level level-beginner">Beginner (G3)</span>
+                    <p><strong>오류:</strong> CCSS G3 표준은 복문을 사용하여 아이디어를 연결하는 능력을 요구하지만, 이 에세이는 대부분 단순한 문장의 나열로 이루어져 있습니다. "For example, it was a cloudy dark night, you can't see anything."과 같이 두 개의 완전한 문장을 쉼표만으로 연결하는 오류(comma splice)도 발견됩니다.</p>
+                    <p><strong>제안:</strong> 'because', 'and', 'but', 'so'와 같은 접속사를 사용하여 짧은 문장들을 연결하는 연습부터 시작해야 합니다. 이를 통해 문장 간의 논리적인 관계를 명확하게 표현하는 능력을 기를 수 있습니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Essay Structure</h4>
+                    <span class="level level-beginner">Beginner (G2-G3)</span>
+                    <p><strong>오류:</strong> 에세이의 가장 기본적인 형식인 '서론-본론-결론'의 개념은 인지하고 있으나, 각 부분을 구성하는 핵심 요소(주제문, 뒷받침 문장, 맺음 문장 등)에 대한 이해가 전무합니다. 글 전체를 이끌어가는 중심 생각이 없어 아이디어가 흩어져 있습니다.</p>
+                    <p><strong>제안:</strong> 가장 시급한 과제는 'Thesis Statement'(주제문)의 개념을 배우는 것입니다. '나는 A가 B라고 생각한다, 왜냐하면 C와 D라는 이유 때문이다.' 와 같은 명확한 주제문을 서론에 제시하는 연습부터 시작해야 합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0_0_24_24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                상세 교정 (Essay Corrections)
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 문법 및 철자 교정</h4>
+                <p class="text-gray-600 mb-4">각 문장의 오류를 분석하고 올바른 표현과 친절한 설명을 제공합니다.</p>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>Original Sentence (원본 문장)</th><th>Corrected Sentence (교정 문장)</th><th>Friendly Explanation (설명)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">I think the lightbulb is the best invention in the world.</td><td class="corrected-sentence">Good sentence.</td><td>수정할 필요 없음. 좋은 주제 소개 문장입니다.</td></tr>
+                            <tr><td class="original-sentence">If the lightbulb wasn't invented, it wouldn't been like the world we know.</td><td class="corrected-sentence">If the lightbulb <strong>hadn't been</strong> invented, <strong>life</strong> wouldn't <strong>be</strong> like the world we know.</td><td>'만약 ~하지 않았더라면, ~하지 않았을 것이다'라는 과거의 상상을 이야기할 때는 가정법 과거완료(If + had p.p., would have p.p.) 또는 혼합가정법을 사용해요. 여기서는 'hadn't been'과 'wouldn't be'로 고쳐서 의미를 명확하게 했어요.</td></tr>
+                            <tr><td class="original-sentence">First, If the lightbulb wasn't invented, we couldn't see anything.</td><td class="corrected-sentence">First, if the lightbulb <strong>hadn't been</strong> invented, we <strong>wouldn't be able to</strong> see anything.</td><td>'If'는 문장 중간에 올 때는 대문자로 쓰지 않아요. 여기도 마찬가지로 가정법 시제를 'hadn't been'으로 고쳐주고, '~할 수 없었을 것이다'라는 의미로 'couldn't' 보다 'wouldn't be able to'가 더 정확한 표현이에요.</td></tr>
+                            <tr><td class="original-sentence">For example, it was a cloudy dark night, you can't see anything.</td><td class="corrected-sentence">For example, <strong>on</strong> a cloudy, dark night, you <strong>cannot</strong> see anything.</td><td>두 개의 문장을 쉼표만으로 연결할 수 없어요. 여기서는 전치사 'on'을 사용해서 자연스럽게 연결했어요. 'can't'는 'cannot'으로 쓰는 것이 더 공식적인 글쓰기에 어울려요.</td></tr>
+                            <tr><td class="original-sentence">There is no fire.</td><td class="corrected-sentence"><strong>Imagine there is</strong> no fire.</td><td>문맥상 '불이 없다고 상상해보세요'라는 의미가 더 자연스러워서 'Imagine'을 추가했어요.</td></tr>
+                            <tr><td class="original-sentence">What would you do?</td><td class="corrected-sentence">Good sentence.</td><td>수정할 필요 없음.</td></tr>
+                            <tr><td class="original-sentence">You will keep bumping into trees, get lost, or even be attacked to someone, or something.</td><td class="corrected-sentence">You <strong>would</strong> keep bumping into trees, <strong>getting</strong> lost, or even <strong>being</strong> attacked <strong>by</strong> someone or something.</td><td>상상하는 상황이므로 'will' 대신 'would'를 써요. 그리고 'bumping', 'getting', 'being'처럼 동사의 형태(병렬 구조)를 맞춰줘야 문장이 자연스러워요. '~에게' 공격받는 것이니 'by'를 써야 해요.</td></tr>
+                            <tr><td class="original-sentence">If there is a lightbulb, you could see anything in the world!</td><td class="corrected-sentence">If there <strong>were</strong> a lightbulb, you could see anything in the world!</td><td>현재 사실과 반대되는 상상을 할 때는 be동사 'is' 대신 'were'를 사용하는 것이 가정법 규칙에 맞아요.</td></tr>
+                            <tr><td class="original-sentence">Next, it has heat.</td><td class="corrected-sentence">Next, <strong>a lightbulb produces</strong> heat.</td><td>'it'이 무엇을 가리키는지 명확하게 'a lightbulb'로 바꿔주고, 'has'보다 'produces'(생산하다)가 더 정확한 표현이에요.</td></tr>
+                            <tr><td class="original-sentence">The first lightbulb that was invented had a lot of heat.</td><td class="corrected-sentence">The first lightbulb that was invented <strong>produced</strong> a lot of heat.</td><td>'had' 대신 'produced'를 사용하면 더 동적인 느낌을 줄 수 있어요.</td></tr>
+                            <tr><td class="original-sentence">Eventhough fire also has heat, it could be dangerous because of the smell and the smoke.</td><td class="corrected-sentence"><strong>Even though</strong> fire also <strong>produces</strong> heat, it could be dangerous because of the smell and the smoke.</td><td>'Eventhough'는 'Even though'로 띄어 써야 해요.</td></tr>
+                            <tr><td class="original-sentence">However, lightbulbs are very safe.</td><td class="corrected-sentence">Good sentence.</td><td>수정할 필요 없음.</td></tr>
+                            <tr><td class="original-sentence">Finally, a lightbulb could help you learn science.</td><td class="corrected-sentence">Good sentence.</td><td>수정할 필요 없음.</td></tr>
+                            <tr><td class="original-sentence">You could wonder why the lightbulb is so hot or how it makes lights.</td><td class="corrected-sentence">You could wonder why the lightbulb is so hot or how it makes <strong>light</strong>.</td><td>'light'는 셀 수 없는 명사로 쓰일 때가 많아서 여기서는 단수형 'light'가 더 자연스러워요.</td></tr>
+                            <tr><td class="original-sentence">It makes you want to learn about it.</td><td class="corrected-sentence">Good sentence.</td><td>수정할 필요 없음.</td></tr>
+                            <tr><td class="original-sentence">You could also be an inventor!</td><td class="corrected-sentence">Good sentence.</td><td>수정할 필요 없음.</td></tr>
+                            <tr><td class="original-sentence">An inventor that make safely light bulbs.</td><td class="corrected-sentence"><strong>You could become</strong> an inventor that <strong>makes safe</strong> light bulbs.</td><td>이 문장은 동사가 없어서 불완전해요. 'You could become'을 추가해서 완전한 문장으로 만들었어요. 'safely'는 부사이고, 명사 'light bulbs'를 꾸며주려면 형용사 'safe'를 써야 해요.</td></tr>
+                            <tr><td class="original-sentence">As a conclusion, I think that the lightbulb is the most important invention in the world.</td><td class="corrected-sentence"><strong>In</strong> conclusion, I think that the lightbulb is the most important invention in the world.</td><td>'결론적으로'라고 말할 때는 'As a conclusion'이 아니라 'In conclusion'이라고 써요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Part 5: 최종 교정 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0_0_24_24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                최종 교정 에세이 (Final Corrected Essay)
+            </h3>
+            <p class="text-gray-600 mb-4">학생의 아이디어를 바탕으로 요구된 에세이 형식에 맞춰 재구성한 모델 에세이입니다. 변경된 부분은 <strong>굵은 글씨</strong>로 표시했습니다.</p>
+            <div class="final-essay">
+                <strong>The Greatest Invention: The Lightbulb</strong><br><br>
+                I think the lightbulb is the best invention in the world. If the lightbulb <strong>hadn't been</strong> invented, the world we know today would be a much different place. <strong>The lightbulb is the greatest invention because it provides essential light for safety and generates a safe source of heat.</strong><br><br>
+                First, <strong>the most important function of the lightbulb is to provide light when it is dark.</strong> If the lightbulb <strong>hadn't been</strong> invented, we <strong>wouldn't be able to</strong> see anything at night. For example, on a cloudy, dark night without fire, you could not see. You would keep bumping into trees, getting lost, or even being attacked by someone or something. <strong>Because of the lightbulb, we can navigate the world safely after the sun goes down.</strong><br><br>
+                Second, <strong>a lightbulb offers a safe way to produce heat.</strong> The first lightbulb that was invented produced a lot of heat. Even though fire also produces heat, it can be dangerous because of the smell and the smoke. However, lightbulbs are very safe and can provide warmth without danger. <strong>This makes them a reliable source of both light and heat in our homes.</strong><br><br>
+                <strong>In conclusion, the lightbulb is a crucial invention because it gives us light for safety and a secure source of heat. It conquered the darkness, making our lives safer, and also offered a controlled way to generate warmth. Without the lightbulb, our modern world would be a much darker and more dangerous place.</strong>
+            </div>
+        </section>
+
+        <!-- Part 6: 학생에게 보내는 편지 -->
+        <section class="section">
+            <div class="letter">
+                <h4>To Students.</h4>
+                <p>정한희 학생에게,</p>
+                <p class="mt-4">'전구'라는 발명품에 대한 학생의 독창적인 생각이 담긴 에세이를 잘 읽었습니다. 전구가 가진 다양한 기능에 대해 깊이 생각해 본 점이 매우 인상 깊었습니다.</p>
+                <p class="mt-4">학생의 <strong>강점</strong>은 하나의 주제에 대해 다양한 아이디어(빛, 열, 과학적 호기심)를 떠올리는 창의력입니다. 특히 전구가 없다면 밤에 얼마나 위험할지에 대한 상상은 글을 흥미롭게 만들었습니다.</p>
+                <p class="mt-4">하지만, 엄격한 에세이 평가 기준에 따라 학생의 글은 아직 개선이 필요한 부분이 많습니다. 가장 큰 <strong>약점</strong>은 <strong>에세이의 기본 구조에 대한 이해 부족</strong>과 <strong>빈번한 문법 오류</strong>입니다. 글의 계획을 보여주는 주제문(Thesis Statement)이 없고, 각 본론 문단이 핵심 주장 없이 아이디어만 나열되어 있어 글 전체가 체계적이지 못합니다. 또한, 가정법 시제 불일치와 같은 문법 오류가 많아 의미 전달에 어려움이 있었습니다.</p>
+                <p class="mt-4">가장 시급한 <strong>개선을 위한 제안</strong>은 <strong>'주제문(Thesis Statement) 만들기'</strong> 연습입니다. 주제문은 에세이의 설계도와 같습니다. 다음 글을 쓸 때는 서론 마지막에 "나는 A가 B라고 생각한다, 왜냐하면 C와 D라는 두 가지 이유 때문이다."라는 형식의 문장을 꼭 넣어보세요. 예를 들어, 이번 에세이에서는 "The lightbulb is the greatest invention because it provides essential light for safety and generates a safe source of heat."와 같은 문장을 만들 수 있습니다. 이 연습만으로도 글 전체가 훨씬 더 논리적이고 체계적으로 변할 것입니다.</p>
+                <p class="mt-4">학생은 좋은 아이디어를 가지고 있으니, 이제 그 아이디어를 에세이라는 틀에 맞춰 멋지게 표현하는 방법을 배우면 됩니다. 기본기부터 차근차근 연습해 나간다면 분명 크게 성장할 수 있을 거예요!</p>
+                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+            </d
