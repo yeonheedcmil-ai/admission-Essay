@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #5b21b6; /* 보라색 계열 */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #5b21b6; /* 보라색 계열 */
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #5b21b6; /* 보라색 계열 */
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-proficient { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #5b21b6; /* 보라색 계열 */
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff; /* 연한 보라색 */
+            border-left: 4px solid #5b21b6; /* 보라색 계열 */
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .letter {
+            background-color: #faf5ff; /* 매우 연한 보라색 */
+            border: 1px solid #d8b4fe; /* 보라색 계열 */
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #5b21b6; /* 보라색 계열 */
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>이지원 학생</p>
+        </header>
+
+        <!-- Part 1: 학생 원본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                Part 1: Original Essay
+            </h3>
+            <div class="original-essay">
+Have you tried visiting places that are mentioned in the book to understand better? Usually, I try to survey about the facts of the place. I prefer travelling rather than reading books because it helps me to understand and experie activities that are mentioned in the book.
+
+My first reason I like travelling is that I could understand better than the book. Book shows me diverse details and facts. On the other hand, travelling helps me to understand. Book is just full of words. It doesn't helps alot for my curiosity. Also, there could be words that I couldn't feel. In real life, it helps me experience all. In childhood, we should be experiencing as many as we can. So, travelling could help us for it.
+
+Secondly, travelling helps me to memorize the facts. It is not even healthy and could lower the memorize if we just try to read books and remember it. Going to the place and feeling every detail we can, could be better for remembering. On the other hand, reading books could lower burden for us. If we live a long time, we will reade hundreds or more literatures. However, we couldn't experience every words we read. For example, I read a book about Spain and if I travel, it will aquire financial burden and I also wouldn't try to read the book focused. In some cases, reading literature could keep me focused and lower burden.
+
+In conclusion, I prefer travelling rather than reading. However, sometimes I think having enough travelling and reading could give us a better chance to learn.
+            </div>
+        </section>
+
+        <!-- Part 2: 평가 점수 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                Part 2: Rubric Score
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>에세이의 기본 구조를 갖추려는 시도는 보이나, 필수 요소가 대부분 누락되거나 불분명합니다. 서론에 Hook이 없고, Thesis Statement가 하나의 중심 생각과 두 가지 이유를 명확하게 제시하지 못합니다. 본론 문단들은 Topic Sentence와 Closing Sentence가 없어 논리적 흐름이 약하며, 두 번째 본론 문단은 책 읽기의 장점을 언급하며 혼란을 줍니다. 결론도 Thesis를 명확히 재진술하지 못합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td>여행이 이해와 경험에 도움이 된다는 주장을 제시했으나, 이를 뒷받침하는 구체적인 예시가 부족합니다. 스페인 책을 예로 들었지만, 여행을 통해 무엇을 더 잘 이해하게 되었는지에 대한 상세한 설명으로 이어지지 못했습니다. 아이디어들이 더 깊이 있게 전개되지 못하고 피상적인 수준에 머물러 있습니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>문법적 오류가 매우 많아 글의 의미를 파악하기 어렵습니다. 시제 불일치, 부정확한 단어 형태(experie, reade), 어색한 문장 구조('Book is just full of words'), 철자 오류(aquire, healthy) 등이 전반적으로 나타납니다. 문법과 어휘에 대한 기초적인 이해가 더 필요합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Score</strong></td>
+                        <td colspan="2"><span class="score"><strong>4 / 12 (33%)</strong></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Part 3: 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                Part 3: Skill Level Analysis
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary</h4>
+                    <span class="level level-beginner">Beginner (G3-G4)</span>
+                    <p><strong>오류:</strong> 'understand', 'helps me', 'book' 등 매우 기본적인 단어들이 반복됩니다. 'diverse', 'financial burden'과 같은 좋은 시도도 있지만, 문맥에 맞지 않게 사용되거나('healthy', 'memorize') 철자가 틀린 경우('aquire', 'literatures')가 많습니다.</p>
+                    <p><strong>제안:</strong> G4-G5 수준의 기본 어휘부터 정확한 철자와 의미를 익히는 것이 중요합니다. 예를 들어 'understand' 대신 'comprehend'나 'grasp'를, 'helps me' 대신 'enables me to'나 'assists in' 같은 표현을 사용하는 연습이 필요합니다. 어휘 목록을 만들어 꾸준히 암기하는 것이 도움이 됩니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar</h4>
+                    <span class="level level-beginner">Beginner (G3-G4)</span>
+                    <p><strong>오류:</strong> 문법 오류가 너무 많아 거의 모든 문장에서 발견됩니다. 주어-동사 불일치('Book shows'), 잘못된 동사 형태('experie'), 어색한 비교급('better than the book'), 불완전한 문장 등 기초적인 문법 규칙에 대한 이해가 부족합니다.</p>
+                    <p><strong>제안:</strong> 주어와 동사의 개념, 단수/복수, 기본 시제(현재, 과거, 미래) 등 가장 기본적인 문법부터 다시 학습해야 합니다. 간단한 문장을 정확하게 만드는 연습부터 시작하여 점차 복잡한 문장으로 나아가는 단계적인 학습이 시급합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure</h4>
+                    <span class="level level-beginner">Beginner (G3-G4)</span>
+                    <p><strong>오류:</strong> 문장들이 짧고 단편적이거나, 여러 아이디어를 어색하게 연결하여 의미가 불분명한 경우가 많습니다. ('Book is just full of words. It doesn't helps alot for my curiosity.') 문장 간의 논리적 연결이 부족합니다.</p>
+                    <p><strong>제안:</strong> 'and', 'but', 'so', 'because'와 같은 기본적인 접속사를 사용하여 두 개의 짧은 문장을 연결하는 연습부터 시작하는 것이 좋습니다. 주어+동사+목적어(S+V+O)의 기본 문장 구조를 익히고, 이를 바탕으로 문장을 확장하는 훈련이 필요합니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Essay Structure</h4>
+                    <span class="level level-beginner">Beginner (G3-G4)</span>
+                    <p><strong>오류:</strong> 에세이의 각 단락이 명확한 목적을 갖지 못하고 아이디어가 뒤섞여 있습니다. 특히 두 번째 본론은 여행의 장점을 설명하다가 갑자기 책 읽기의 장점을 이야기하며 주제에서 벗어납니다. 이는 에세이 구조에 대한 이해가 부족함을 보여줍니다.</p>
+                    <p><strong>제안:</strong> '서론-본론1-본론2-결론'의 4단락 에세이 구조를 명확히 인지하고, 각 단락에 어떤 내용이 들어가야 하는지 템플릿을 통해 학습해야 합니다. 글을 쓰기 전, 각 단락의 중심 내용을 한 문장으로 요약하는 '아웃라인' 작성 연습이 필수적입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                Part 4: Essay Corrections
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 문법 및 철자 교정</h4>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>Original Sentence (원본 문장)</th><th>Corrected Sentence (교정 문장)</th><th>Friendly Explanation (설명)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">Have you tried visiting places that are mentioned in the book to understand better?</td><td class="corrected-sentence">Have you <strong>ever</strong> tried visiting places that are mentioned in a book to understand <strong>them</strong> better?</td><td>'ever'를 넣어 '~해 본 적 있니?'라는 경험을 묻는 느낌을 살렸어요. 특정 책이 아니므로 'the book' 대신 'a book'을, '이해하는' 대상이 'places'이므로 'it' 대신 'them'을 사용했어요.</td></tr>
+                            <tr><td class="original-sentence">Usually, I try to survey about the facts of the place.</td><td class="corrected-sentence">Usually, I try to <strong>learn</strong> about the facts of the place.</td><td>'survey'는 보통 설문조사를 하거나 넓게 살펴보는 것을 의미해요. 여기서는 '사실을 배운다'는 의미이므로 'learn'이 더 자연스러워요.</td></tr>
+                            <tr><td class="original-sentence">I prefer travelling rather than reading books because it helps me to understand and experie activities that are mentioned in the book.</td><td class="corrected-sentence">I prefer <strong>traveling</strong> rather than reading books because it helps me to understand and <strong>experience</strong> activities that are mentioned in <strong>books</strong>.</td><td>'travelling'은 영국식, 'traveling'은 미국식 철자인데, 하나로 통일하는 게 좋아요. 'experie'는 'experience'의 철자 오류예요. 특정 책이 아닌 일반적인 책들을 의미하므로 'books'라고 복수형으로 썼어요.</td></tr>
+                            <tr><td class="original-sentence">My first reason I like travelling is that I could understand better than the book.</td><td class="corrected-sentence">My first reason <strong>for liking to travel</strong> is that I <strong>can</strong> understand <strong>things</strong> better than <strong>I can from a</strong> book.</td><td>'I like travelling'을 'for liking to travel'로 바꾸면 더 자연스러운 표현이 돼요. 일반적인 사실을 말하고 있으므로 'could'보다 'can'이 더 적절해요. 무엇을 이해하는지 명확하게 하기 위해 'things'를 추가하고, 비교 대상을 명확히 하기 위해 문장 구조를 수정했어요.</td></tr>
+                            <tr><td class="original-sentence">Book shows me diverse details and facts.</td><td class="corrected-sentence"><strong>A book can show</strong> me diverse details and facts.</td><td>일반적인 책 한 권을 의미하므로 'A book'으로 시작하고, '~할 수 있다'는 가능성을 나타내는 'can'을 추가했어요. 3인칭 단수 주어 뒤에는 동사에 's'가 붙어야 하지만('A book shows'), 'can'과 함께 쓰일 때는 동사원형을 써요.</td></tr>
+                            <tr><td class="original-sentence">On the other hand, travelling helps me to understand.</td><td class="corrected-sentence">On the other hand, <strong>traveling</strong> helps me to understand <strong>them firsthand</strong>.</td><td>'On the other hand'는 반대되는 내용을 말할 때 쓰는데, 여기서는 책과 여행을 비교하는 것이므로 괜찮아요. '그것들을 직접' 이해한다는 의미를 더하기 위해 'them firsthand'를 추가했어요.</td></tr>
+                            <tr><td class="original-sentence">Book is just full of words.</td><td class="corrected-sentence"><strong>A book</strong> is just full of words.</td><td>일반적인 책을 의미하므로 'A book'으로 시작하는 것이 좋아요.</td></tr>
+                            <tr><td class="original-sentence">It doesn't helps alot for my curiosity.</td><td class="corrected-sentence">It doesn't <strong>help much with</strong> my curiosity.</td><td>'doesn't' 뒤에는 동사원형 'help'가 와야 해요. 'alot'은 'a lot'으로 띄어 써야 하고, 'curiosity'와는 'for'보다 'with'가 더 잘 어울려요. 'a lot' 대신 'much'를 써서 더 자연스럽게 만들었어요.</td></tr>
+                            <tr><td class="original-sentence">Also, there could be words that I couldn't feel.</td><td class="corrected-sentence">Also, there <strong>are</strong> words that I <strong>cannot truly</strong> feel.</td><td>일반적인 사실이므로 'could be'보다 'are'가 더 명확해요. '진정으로 느낄 수 없다'는 의미를 강조하기 위해 'truly'를 추가했어요.</td></tr>
+                            <tr><td class="original-sentence">In real life, it helps me experience all.</td><td class="corrected-sentence">In real life, <strong>traveling</strong> helps me experience <strong>everything</strong>.</td><td>무엇이 도와주는지 명확하게 하기 위해 주어 'traveling'을 넣었어요. 'all'보다는 'everything'이 '모든 것'을 의미하는 데 더 자연스러워요.</td></tr>
+                            <tr><td class="original-sentence">In childhood, we should be experiencing as many as we can.</td><td class="corrected-sentence">In childhood, we should experience as <strong>much</strong> as we can.</td><td>'experience'는 셀 수 없는 명사로 쓰였기 때문에 'many' 대신 'much'를 사용해요.</td></tr>
+                            <tr><td class="original-sentence">So, travelling could help us for it.</td><td class="corrected-sentence">So, <strong>traveling can</strong> help us <strong>do that</strong>.</td><td>'could'보다 가능성을 나타내는 'can'이 더 자연스러워요. 'for it' 대신 '그렇게 하도록 돕는다'는 의미의 'do that'으로 바꾸었어요.</td></tr>
+                            <tr><td class="original-sentence">Secondly, travelling helps me to memorize the facts.</td><td class="corrected-sentence">Secondly, <strong>traveling</strong> helps me <strong>memorize</strong> facts.</td><td>'help' 동사 뒤에는 'to' 없이 동사원형을 바로 쓸 수 있어요. 특정 사실이 아닌 일반적인 사실들이므로 'the facts' 대신 'facts'를 사용했어요.</td></tr>
+                            <tr><td class="original-sentence">It is not even healthy and could lower the memorize if we just try to read books and remember it.</td><td class="corrected-sentence"><strong>It is not very effective and can even hinder memorization</strong> if we just try to read books and remember <strong>facts from them</strong>.</td><td>'healthy'(건강한)는 문맥에 맞지 않아요. '효과적이지 않다'는 'not very effective'가 더 적절해요. 'memorize'는 동사이고, 명사는 'memorization'이에요. '기억을 방해한다'는 의미로 'hinder memorization'으로 수정했어요.</td></tr>
+                            <tr><td class="original-sentence">Going to the place and feeling every detail we can, could be better for remembering.</td><td class="corrected-sentence">Going to a place and feeling every detail we can <strong>is</strong> better for remembering.</td><td>'Going and feeling'이 문장의 주어이므로 단수 동사 'is'를 사용해야 해요. '~일 수도 있다'는 추측보다 '~이다'라는 사실을 말하는 것이므로 'is'가 더 좋아요.</td></tr>
+                            <tr><td class="original-sentence">On the other hand, reading books could lower burden for us.</td><td class="corrected-sentence">On the other hand, reading books <strong>can be less of a</strong> burden for us.</td><td>'부담을 덜어준다'는 표현은 'can be less of a burden'이 더 자연스러워요.</td></tr>
+                            <tr><td class="original-sentence">If we live a long time, we will reade hundreds or more literatures.</td><td class="corrected-sentence">If we live a long time, we will <strong>read</strong> hundreds or more <strong>works of literature</strong>.</td><td>'reade'는 'read'의 철자 오류예요. 'literature'는 보통 셀 수 없는 명사로 쓰이거나, 여러 작품을 의미할 때는 'works of literature'라고 표현해요.</td></tr>
+                            <tr><td class="original-sentence">However, we couldn't experience every words we read.</td><td class="corrected-sentence">However, we <strong>cannot</strong> experience <strong>everything</strong> we read.</td><td>일반적인 사실이므로 'couldn't'보다 'cannot'이 더 적절해요. 'every words'는 문법적으로 틀린 표현이에요. 'everything'으로 바꾸면 '우리가 읽는 모든 것'이라는 의미가 돼요.</td></tr>
+                            <tr><td class="original-sentence">For example, I read a book about Spain and if I travel, it will aquire financial burden and I also wouldn't try to read the book focused.</td><td class="corrected-sentence">For example, <strong>if I read a book about Spain and then decide to travel there, it will require money and I might not read the book as attentively.</strong></td><td>문장이 너무 길고 복잡해서 두 가지 아이디어로 나누고 더 명확하게 만들었어요. 'aquire'는 'require'(필요로 하다)의 철자 오류로 보여요. 'financial burden'은 'money'로 쉽게 표현할 수 있어요. 'focused'는 부사 'attentively'(주의 깊게)로 바꾸는 것이 더 자연스러워요.</td></tr>
+                            <tr><td class="original-sentence">In some cases, reading literature could keep me focused and lower burden.</td><td class="corrected-sentence">In some cases, reading literature <strong>can</strong> keep me focused and <strong>be less of a</strong> burden.</td><td>'could'보다 'can'이 더 자연스럽고, 'lower burden'은 앞에서처럼 'be less of a burden'으로 수정했어요.</td></tr>
+                            <tr><td class="original-sentence">In conclusion, I prefer travelling rather than reading.</td><td class="corrected-sentence">In conclusion, I prefer <strong>traveling</strong> rather than reading.</td><td>철자를 'traveling'으로 통일했어요.</td></tr>
+                            <tr><td class="original-sentence">However, sometimes I think having enough travelling and reading could give us a better chance to learn.</td><td class="corrected-sentence">However, I think that <strong>combining both</strong> traveling and reading <strong>gives</strong> us a better chance to learn.</td><td>'having enough'보다 'combining both'(둘 다 결합하는 것)가 의미를 더 명확하게 해요. 주어가 'combining'(동명사)이므로 단수 동사 'gives'를 사용해야 해요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 2: 어휘 선택 및 최종 교정 에세이</h4>
+                <p class="text-gray-600"><strong>단어 반복 (Word Repetition):</strong> 에세이에서 'understand', 'helps me', 'book', 'travelling'과 같은 기본 단어가 매우 자주 반복됩니다. 이로 인해 글이 단조롭고 설득력이 떨어집니다.</p>
+                <p class="text-gray-600 mt-2"><strong>제안 (Suggestion):</strong> 글을 쓰기 전에 주제와 관련된 다양한 단어를 미리 생각해 보는 것이 좋습니다. 예를 들어, '이해하다'라는 의미로 'comprehend', 'grasp', 'gain insight' 등을, '경험하다'는 'encounter', 'engage in' 등으로 바꾸어 쓸 수 있습니다. 다양한 어휘를 사용하는 것은 글을 훨씬 더 흥미롭고 수준 높게 만듭니다.</p>
+            </div>
+
+            <div class="correction-step">
+                <h4>Part 5: Final Corrected Essay</h4>
+                <p class="text-gray-600 mb-4">학생의 아이디어를 바탕으로, 엄격한 에세이 형식 기준에 맞춰 재구성한 모델 에세이입니다. 수정된 부분은 <strong>굵은 글씨</strong>로 표시했습니다.</p>
+                <div class="final-essay">
+                    <strong>The Value of Experiential Learning</strong><br><br>
+                    Is it better to read about the world or to see it with your own eyes? While books offer a window to diverse facts and details, I believe that <strong>traveling is more important than reading to truly understand people and the world.</strong> This is because traveling provides <strong>firsthand experiences</strong> that books cannot, and it helps to <strong>solidify knowledge in our memory.</strong><br><br>
+                    First, <strong>traveling allows for a deeper, more personal level of understanding.</strong> A book can describe a place with words, but it cannot replicate the feeling of standing in a historic square or the taste of authentic local food. For instance, words on a page can feel distant and abstract. In contrast, real-life travel allows me to engage all my senses and experience everything directly. <strong>This direct engagement is crucial, especially in childhood, as it helps build a tangible connection to the world that words alone cannot provide.</strong><br><br>
+                    Second, <strong>visiting a place is a more effective way to remember facts and details.</strong> Simply reading information and trying to memorize it can be ineffective. However, by going to a location, we can connect facts to real feelings and sensory details, which makes them easier to recall. For example, actually walking through the ruins of ancient Rome makes its history far more memorable than just reading about it. While it is true that reading is more accessible and less of a financial burden, the depth of learning from direct experience is unparalleled. <strong>Therefore, the memories created through travel are more vivid and lasting.</strong><br><br>
+                    In conclusion, although both methods have their merits, I prefer traveling over reading because it offers <strong>irreplaceable firsthand experiences and strengthens memory.</strong> However, I believe that the <strong>ideal way to learn is by combining both reading and traveling,</strong> as this approach provides the most comprehensive and enriching understanding of our world.
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 6: 학생에게 보내는 편지 -->
+        <section class="section">
+            <div class="letter">
+                <h4>Part 6: Letter to Students</h4>
+                <p>이지원 학생에게,</p>
+                <p class="mt-4">여행과 독서 중 어느 것이 세상을 이해하는 데 더 중요한지에 대한 학생의 생각을 잘 읽었어요. 직접 경험하는 것의 가치를 중요하게 생각하는 점이 인상 깊었습니다.</p>
+                <p class="mt-4">학생의 <strong>강점(Strength)</strong>은 자신의 주장을 논리적으로 구성하려는 시도입니다. 여행이 더 좋다고 생각하는 두 가지 이유(더 나은 이해, 더 나은 기억)를 제시하며 글을 전개하려고 노력한 점이 좋았어요. 이것은 좋은 글쓰기의 기본이 되는 중요한 능력입니다.</p>
+                <p class="mt-4">우리가 함께 집중적으로 개선해야 할 <strong>약점(Weakness)</strong>은 '문법의 정확성'과 '에세이 구조의 명확성'입니다. 아쉽게도, 거의 모든 문장에서 문법적인 오류가 발견되어 학생이 전달하려는 좋은 아이디어가 명확하게 표현되지 못했어요. 또한, 각 문단의 중심 생각이 뚜렷하게 드러나지 않고, 특히 두 번째 본론에서는 주장이 흔들리는 모습을 보였습니다.</p>
+                <p class="mt-4"><strong>개선을 위한 제안(Suggested Study)</strong>을 할게요. 지금 학생에게 가장 필요한 것은 '기초 다지기'입니다. 영어 문장의 가장 기본적인 구조인 **'주어 + 동사 + 목적어'** 형식에 맞춰 아주 짧고 간단한 문장을 매일 5개씩 만들어보는 연습을 시작해 보세요. 예를 들어, "I like travel." 이 아니라 "I like traveling." 처럼요. 이 작은 연습이 쌓이면, 점차 더 길고 정확한 문장을 만들 수 있는 튼튼한 기반이 될 거예요.</p>
+                <p class="mt-4">학생은 좋은 생각을 가지고 있지만, 아직 그것을 표현할 도구가 조금 부족할 뿐이에요. 기본기부터 차근차근 함께 연습해 나간다면, 머릿속에 있는 멋진 생각들을 글로 훨씬 더 잘 표현할 수 있게 될 거예요. 포기하지 말고 꾸준히 노력합시다!</p>
+                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
