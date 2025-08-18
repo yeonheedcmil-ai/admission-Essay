@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #5b21b6;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #5b21b6;
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #5b21b6;
+        }
+        .total-score-row {
+            background-color: #f5f3ff;
+            font-weight: 700;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-proficient { background-color: #e9d5ff; color: #5b21b6; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #5b21b6;
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #5b21b6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>여윤재 학생</p>
+        </header>
+
+        <!-- Part 1: 학생 원본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+<strong>Title: None</strong>
+
+I think the great invention in the world is a smart phone.
+
+First, smart phone is small. We can take phone comfortably and fast because it is small. Also, it have many apps and saving place. I had suprized because its so good!
+
+Second, smart phone is so smart like it's home. smart phone can do many things and have many sestems. It can do almost everything!
+
+Third, smart phone just don't almost break. smart phone is hard so it don't break when it falls or stomped but sometimes, it break. We can set the phone cover and make more hard.
+
+All of all, I think smart phone is the best invention in the world.
+            </div>
+        </section>
+
+        <!-- Part 2: 평가 점수 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                평가 점수 (Rubric Score)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>에세이의 기본 구조에 대한 이해가 부족합니다. 서론에 Hook과 주제 소개가 없고, Thesis Statement가 두 가지 이유를 제시하지 못했습니다. 각 본론 문단은 Topic Sentence와 Closing Sentence가 누락되었으며, 결론 역시 Thesis 재진술과 본론 요약 없이 Final Thought만으로 구성되어 있습니다. 엄격한 형식 기준의 거의 모든 요소가 빠져 있어 높은 점수를 줄 수 없습니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>세 가지 이유(크기, 기능, 내구성)를 제시하려는 시도는 좋았으나, 각 아이디어에 대한 구체적인 예시나 설명이 매우 부족합니다. 'many apps', 'many things', 'many sestems'와 같이 추상적인 표현만 반복될 뿐, 독자를 설득할 만한 상세한 내용 전개가 이루어지지 않았습니다. 아이디어를 구체화하는 연습이 시급합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>문법 오류가 매우 빈번하게 나타납니다. 주어-동사 불일치(it have), 잘못된 동사 형태(had suprized), 부정문 오류(don't almost break), 대소문자 규칙 위반 등 기초적인 문법 실수가 많습니다. 철자 오류(suprized, sestems) 또한 발견되어 글의 가독성을 크게 저해합니다.</td>
+                    </tr>
+                    <tr class="total-score-row">
+                        <td>총점 (Total Score)</td>
+                        <td><span class="score">3 / 12 (25%)</span></td>
+                        <td>에세이 형식에 대한 기본적인 이해와 문법 규칙의 정확성, 그리고 아이디어를 구체적으로 발전시키는 능력 전반에 걸쳐 큰 개선이 필요합니다. 현재로서는 자신의 생각을 영어 문장으로 나열하는 수준에 머물러 있습니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Part 3: 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                학생 역량 분석 (Skill Level Analysis)
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary</h4>
+                    <span class="level level-beginner">Beginner (G2-G3)</span>
+                    <p><strong>오류:</strong> 사용된 어휘가 'small', 'fast', 'good', 'hard' 등 매우 기초적인 수준에 머물러 있습니다. G3-G5 권장 어휘 목록에 있는 단어는 거의 사용되지 않았습니다. 'sestems'(systems)와 같은 철자 오류도 발견됩니다.</p>
+                    <p><strong>제안:</strong> 자신의 생각을 표현할 때 더 구체적이고 다양한 단어를 사용하는 연습이 필요합니다. 예를 들어 'small' 대신 '<strong>portable</strong>'이나 '<strong>compact</strong>'를, 'good' 대신 '<strong>convenient</strong>'나 '<strong>efficient</strong>'를 사용하는 연습을 해보세요.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar & Punctuation</h4>
+                    <span class="level level-beginner">Beginner (G2-G3)</span>
+                    <p><strong>오류:</strong> 3인칭 단수 주어 뒤에 동사 '-s'를 붙이는 규칙(it has), be동사와 일반동사의 올바른 사용, 부정문 만들기(it doesn't break) 등 G3 수준의 핵심 문법에서 반복적인 오류가 나타납니다. 대소문자 사용 규칙도 일관성이 없습니다.</p>
+                    <p><strong>제안:</strong> 가장 기본적인 문법 규칙부터 다시 학습하고 문장에 적용하는 연습이 시급합니다. 특히 주어와 동사의 수를 일치시키는 훈련에 집중해야 합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure</h4>
+                    <span class="level level-beginner">Beginner (G3)</span>
+                    <p><strong>오류:</strong> 대부분의 문장이 '주어 + 동사' 형태의 단순한 구조로 이루어져 있습니다. CCSS G3 표준에서 요구하는 복합문(compound sentences) 사용이 거의 없습니다. "smart phone is so smart like it's home"과 같이 의미가 불분명한 문장도 있습니다.</p>
+                    <p><strong>제안:</strong> 'and', 'but', 'so'와 같은 접속사를 사용하여 두 개의 짧은 문장을 하나로 연결하는 연습부터 시작해 보세요. 예를 들어, "Smart phone is small. We can take it fast."를 "Smart phone is small, <strong>so</strong> we can take it fast."로 바꿀 수 있습니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Essay Structure</h4>
+                    <span class="level level-beginner">Beginner (G2-G3)</span>
+                    <p><strong>오류:</strong> 서론-본론-결론이라는 개념은 어렴풋이 알고 있는 듯하나, 각 구성 요소에 반드시 포함되어야 할 핵심적인 장치들(Hook, Thesis, Topic/Closing sentences 등)이 모두 누락되었습니다. 이는 에세이 작문의 기초가 부족함을 의미합니다.</p>
+                    <p><strong>제안:</strong> 에세이의 각 문단이 어떤 역할을 해야 하는지, 그리고 각 문단을 구성하는 필수 문장들은 무엇인지 배우는 것이 가장 중요합니다. 특히 글 전체의 설계도인 Thesis Statement를 작성하는 훈련부터 시작해야 합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                상세 교정 (Essay Corrections)
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 문법 및 철자 교정</h4>
+                <p class="text-gray-600 mb-4">각 문장의 오류를 분석하고 올바른 표현과 친절한 설명을 제공합니다.</p>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>Original Sentence (원본 문장)</th><th>Corrected Sentence (교정 문장)</th><th>Friendly Explanation (설명)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">I think the great invention in the world is a smart phone.</td><td class="corrected-sentence">I think the <strong>greatest</strong> invention in the world is <strong>the smartphone</strong>.</td><td>'가장 훌륭한'이라는 최상급을 나타낼 때는 'greatest'를 사용해요. 그리고 특정 발명품을 지칭하므로 'a' 대신 'the'를 씁니다.</td></tr>
+                            <tr><td class="original-sentence">First, smart phone is small.</td><td class="corrected-sentence">First, <strong>a smartphone</strong> is small.</td><td>문장의 시작은 항상 대문자로 써야 해요. 일반적인 스마트폰을 말할 때는 'a smartphone'이라고 표현해요.</td></tr>
+                            <tr><td class="original-sentence">We can take phone comfortably and fast because it is small.</td><td class="corrected-sentence">We can <strong>carry the</strong> phone comfortably and <strong>quickly</strong> because it is small.</td><td>'take'보다는 'carry'(가지고 다니다)가 더 자연스러워요. 'fast'는 형용사이고, 동사를 꾸며주는 부사는 'quickly'를 사용해야 해요.</td></tr>
+                            <tr><td class="original-sentence">Also, it have many apps and saving place.</td><td class="corrected-sentence">Also, it <strong>has</strong> many apps and <strong>storage</strong> place.</td><td>주어가 'it' (3인칭 단수)일 때 동사는 'have'가 아니라 'has'를 써요. '저장 공간'은 영어로 'storage place' 또는 'storage'라고 해요.</td></tr>
+                            <tr><td class="original-sentence">I had suprized because its so good!</td><td class="corrected-sentence">I <strong>was surprised</strong> because <strong>it's</strong> so good!</td><td>'놀라움을 느꼈다'고 할 때는 'I was surprised'라고 표현해요. '그것은'이라는 뜻의 'it is'의 줄임말은 'it's'입니다. 'suprized'의 올바른 철자는 'surprised'예요.</td></tr>
+                            <tr><td class="original-sentence">Second, smart phone is so smart like it's home.</td><td class="corrected-sentence">Second, <strong>a smartphone</strong> is so smart, <strong>it is like having a computer at home.</strong></td><td>'like it's home'은 의미가 불분명해요. '집에 컴퓨터가 있는 것 같다'는 의미로 문장을 구체적으로 바꿔주었어요.</td></tr>
+                            <tr><td class="original-sentence">smart phone can do many things and have many sestems.</td><td class="corrected-sentence"><strong>A smartphone</strong> can do many things and <strong>has</strong> many <strong>systems</strong>.</td><td>문장 시작은 대문자로 써야 해요. 주어가 'A smartphone'이므로 동사는 'has'를 사용해요. 'sestems'의 올바른 철자는 'systems'입니다.</td></tr>
+                            <tr><td class="original-sentence">It can do almost everything!</td><td class="corrected-sentence">Good sentence.</td><td>수정할 필요 없음.</td></tr>
+                            <tr><td class="original-sentence">Third, smart phone just don't almost break.</td><td class="corrected-sentence">Third, <strong>a smartphone</strong> <strong>doesn't</strong> break <strong>easily</strong>.</td><td>주어가 3인칭 단수일 때 부정문은 'don't'가 아니라 'doesn't'를 써요. '거의'라는 뜻의 'almost'와 부정문이 함께 쓰이면 어색해서 '쉽게 ~하지 않는다'는 의미로 'doesn't break easily'로 수정했어요.</td></tr>
+                            <tr><td class="original-sentence">smart phone is hard so it don't break when it falls or stomped but sometimes, it break.</td><td class="corrected-sentence"><strong>A smartphone</strong> is <strong>durable</strong>, so it <strong>doesn't</strong> break when it falls or is <strong>stepped on</strong>, but sometimes it <strong>breaks</strong>.</td><td>'hard'보다는 '튼튼하다'는 뜻의 'durable'이 더 좋은 단어예요. '밟히는' 것이므로 수동태 'is stepped on'을 써야 해요. 주어가 'it'이므로 동사에는 '-s'를 붙여 'breaks'라고 써야 합니다.</td></tr>
+                            <tr><td class="original-sentence">We can set the phone cover and make more hard.</td><td class="corrected-sentence">We can <strong>put on a</strong> phone cover <strong>to</strong> make <strong>it</strong> more <strong>durable</strong>.</td><td>'set'보다는 'put on'이 더 자연스러운 표현이에요. '~하기 위해서'라는 뜻의 'to'를 사용하고, 무엇을 더 튼튼하게 만드는지 명확하게 하기 위해 'it'을 추가했어요.</td></tr>
+                            <tr><td class="original-sentence">All of all, I think smart phone is the best invention in the world.</td><td class="corrected-sentence"><strong>All in all,</strong> I think <strong>the smartphone</strong> is the best invention in the world.</td><td>'결론적으로'라는 뜻의 표현은 'All of all'이 아니라 'All in all'이에요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Part 5: 최종 교정 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                최종 교정 에세이 (Final Corrected Essay)
+            </h3>
+            <p class="text-gray-600 mb-4">학생의 아이디어를 바탕으로 요구된 에세이 형식에 맞춰 재구성한 모델 에세이입니다. 변경된 부분은 <strong>굵은 글씨</strong>로 표시했습니다.</p>
+            <div class="final-essay">
+                <strong>The World's Greatest Invention</strong><br><br>
+                <strong>What is the most amazing invention in the world?</strong> I think the <strong>greatest</strong> invention is the <strong>smartphone because it is convenient and durable.</strong><br><br>
+                First, <strong>a smartphone is very convenient to use.</strong> It is small and <strong>portable</strong>, so we can carry it comfortably and use it quickly. Also, it has many useful apps and a lot of <strong>storage</strong> space. For example, we can take pictures, listen to music, and find information with just one device. <strong>This makes our lives much easier.</strong><br><br>
+                Second, <strong>a smartphone is surprisingly durable.</strong> Many smartphones are built to be strong, so they <strong>don't</strong> break easily when they fall or are accidentally <strong>stepped on</strong>. We can also put on a phone cover to make it even more <strong>protected</strong>. <strong>This durability means we can use our phones for a long time without worrying.</strong><br><br>
+                In conclusion, <strong>the smartphone is the best invention because it is both easy to carry and very strong. It helps us with many tasks and lasts for a long time.</strong> For these reasons, I believe the smartphone has truly changed the world.
+            </div>
+        </section>
+
+        <!-- Part 6: 학생에게 보내는 편지 -->
+        <section class="section">
+            <div class="letter">
+                <h4>To Students.</h4>
+                <p>여윤재 학생에게,</p>
+                <p class="mt-4">스마트폰이 왜 최고의 발명품이라고 생각하는지에 대한 글 잘 읽었어요. 학생의 생각을 분명하게 전달하려는 노력이 엿보였습니다.</p>
+                <p class="mt-4">학생의 <strong>강점</strong>은 자신의 생각을 세 가지 이유로 나누어 설명하려고 시도했다는 점입니다. 글의 기본적인 틀을 잡으려는 노력은 글쓰기의 중요한 첫걸음입니다.</p>
+                <p class="mt-4">하지만, 우리는 앞으로 몇 가지 중요한 부분을 함께 발전시켜야 합니다. 첫째는 <strong>에세이의 형식</strong>입니다. 훌륭한 에세이는 정해진 구조(서론-본론-결론)와 각 부분에 꼭 들어가야 할 요소들이 있습니다. 둘째는 <strong>문법의 정확성</strong>입니다. 주어와 동사의 수를 맞추는 것과 같은 기초적인 문법 규칙을 익히는 것이 매우 중요합니다. 마지막으로 <strong>아이디어를 구체적으로 설명하는 능력</strong>을 키워야 합니다. '좋다' 또는 '많다'와 같은 표현 대신, '왜' 좋은지, '무엇이' 많은지 구체적인 예시를 들어 설명하는 연습이 필요합니다.</p>
+                <p class="mt-4">한 가지 <strong>제안</strong>을 할게요. 다음 글을 쓰기 전, 딱 한 문장으로 된 **주제문(Thesis Statement)**을 먼저 만들어보는 연습을 해보세요. 예를 들어, "나는 스마트폰이 편리하고 튼튼하기 때문에 최고의 발명품이라고 생각한다." 와 같이 글 전체의 핵심 내용을 한 문장으로 요약하는 것입니다. 이 문장이 글의 방향을 잡아주는 중요한 나침반이 될 거예요.</p>
+                <p class="mt-4">지금은 부족한 점이 많아 보일 수 있지만, 이것은 모든 훌륭한 작가들이 거쳐가는 과정입니다. 기초부터 차근차근 함께 연습해 나간다면, 머릿속의 멋진 생각들을 훨씬 더 설득력 있고 정확한 글로 표현할 수 있게 될 거예요. 학생의 가능성을 믿고 응원합니다!</p>
+                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
