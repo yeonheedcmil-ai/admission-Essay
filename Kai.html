@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation - 김규현</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #8B5CF6; /* Purple background */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #8B5CF6; /* Purple icon */
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .total-score-row {
+            background-color: #f3f4f6;
+            font-weight: 700;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-proficient { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #8B5CF6; /* Purple underline */
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff; /* Lighter purple */
+            border-left: 4px solid #8B5CF6; /* Purple border */
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .final-essay strong {
+            color: #6d28d9;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>김규현 학생</p>
+        </header>
+
+        <!-- 학생 원본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+Their are multiple inventions in our worl. But, a good invention makes our life comfortabl. In my opinion, I think the best invention is the smart phone, I will tell few reasons about it.
+
+To start with, we could comunicate faster. In past, people used letters to comunicate so, we couldnt comunicate fastly if is a important news. But, we could decrease a lot of time by using the internet. For example, we could send a message by our kakaotalk. But, if we use the postbox it goes by a truck so we need to wait patiently for days. It decrease uncomforta ble time of wating.
+
+In addition, it gives us entertainment.
+            </div>
+        </section>
+
+        <!-- 평가 점수 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                평가 점수 (Rubric Score)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score" style="color: #f97316;">2 / 4</span></td>
+                        <td>에세이의 기본 구조(서론, 본론)를 시도했으나, 두 번째 본론이 단 한 문장으로 끝나고 결론이 없어 글이 미완성되었습니다. 구조적 완결성이 부족합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score" style="color: #f97316;">2 / 4</span></td>
+                        <td>첫 번째 본론 문단은 과거(편지)와 현재(카카오톡)를 비교하며 아이디어를 구체적으로 잘 설명했습니다. 하지만 두 번째 본론 문단은 전혀 전개되지 않았습니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score" style="color: #ef4444;">1 / 4</span></td>
+                        <td>철자, 문법, 문장 부호 등 언어 규칙 전반에 걸쳐 오류가 빈번하게 발생하여 글의 의미를 명확하게 파악하기 어렵습니다. (예: Their are, comfortabl, comunicate)</td>
+                    </tr>
+                    <tr class="total-score-row">
+                        <td>Total Score (총점)</td>
+                        <td class="whitespace-nowrap">
+                            <span class="score" style="color: #ef4444;">5 / 12</span>
+                            <span class="ml-2 font-bold">(42%)</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                학생 역량 분석 (Skill Level Analysis)
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary (어휘력)</h4>
+                    <span class="level level-intermediate">Intermediate (G3)</span>
+                    <p><strong>오류:</strong> 아이디어를 표현하기 위해 `multiple`, `patiently`와 같은 좋은 단어를 사용했지만, `decrease time`과 같이 어색한 표현도 있었습니다.</p>
+                    <p><strong>제안:</strong> '시간을 줄이다'는 `save time` 또는 `reduce time`과 같이 더 자연스러운 표현을 익히는 것이 좋습니다. 다양한 동사와 형용사를 활용하면 글이 더 풍부해집니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar & Punctuation (문법 및 구두점)</h4>
+                    <span class="level level-beginner">Beginner-Intermediate (G3)</span>
+                    <p><strong>오류:</strong> `Their are` (There are), `life` (lives)와 같은 주어-동사 및 단/복수 불일치 오류가 있습니다. `comunicate`, `comfortabl` 등 철자 오류도 많습니다.</p>
+                    <p><strong>제안:</strong> 글을 완성한 후, 특히 자주 틀리는 철자와 문법 규칙(예: There is/are)을 중심으로 다시 한번 검토하는 습관을 들이는 것이 중요합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure (문장 구조)</h4>
+                    <span class="level level-intermediate">Intermediate (G3)</span>
+                    <p><strong>오류:</strong> `But, if we use the postbox it goes by a truck so we need to wait...`와 같이 여러 아이디어가 쉼표 없이 연결된 비문(run-on sentence)이 있습니다.</p>
+                    <p><strong>제안:</strong> 긴 문장은 접속사(`and`, `but`, `so`)를 사용해 두 개의 짧은 문장으로 나누거나, 문장 간의 관계를 명확히 하여 재구성하는 연습이 필요합니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Essay Understanding & Structure (에세이 구조 이해)</h4>
+                    <span class="level level-intermediate">Intermediate (G3)</span>
+                    <p><strong>오류:</strong> 서론-본론-결론의 기본 개념은 이해하고 있으나, 에세이를 완성하지 못했습니다. 두 번째 아이디어를 문단으로 발전시키고, 전체 내용을 요약하는 결론을 추가해야 합니다.</p>
+                    <p><strong>제안:</strong> 글을 쓰기 전, 각 문단에 어떤 내용을 쓸지 간단한 개요(outline)를 작성하는 연습이 도움이 됩니다. (예: 서론-주제 제시, 본론1-빠른 소통, 본론2-엔터테인먼트, 결론-요약)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                상세 교정 (Essay Corrections)
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 문법 및 철자 교정</h4>
+                <p class="text-gray-600 mb-4">각 문장의 오류를 분석하고 올바른 표현과 친절한 설명을 제공합니다.</p>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>Original Sentence (원본 문장)</th><th>Corrected Sentence (교정 문장)</th><th>Friendly Explanation (설명)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">Their are multiple inventions in our worl.</td><td class="corrected-sentence"><strong>There</strong> are multiple inventions in our <strong>world</strong>.</td><td>'~이 있다'는 'There are'라고 써요. 'Their'는 '그들의'라는 뜻이에요. 'world'의 철자도 확인해 주세요.</td></tr>
+                            <tr><td class="original-sentence">But, a good invention makes our life comfortabl.</td><td class="corrected-sentence">But, a good invention makes our <strong>lives comfortable</strong>.</td><td>여러 사람의 '삶'이므로 복수형 'lives'를 써요. '편안한'이라는 뜻의 단어는 'comfortable'이에요.</td></tr>
+                            <tr><td class="original-sentence">In past, people used letters to comunicate so, we couldnt comunicate fastly if is a important news.</td><td class="corrected-sentence">In <strong>the</strong> past, people used letters to <strong>communicate</strong>, so we <strong>couldn't</strong> communicate <strong>fast</strong> if <strong>it was</strong> important news.</td><td>'과거에'는 'In the past'라고 해요. 'communicate'와 'couldn't'의 철자를 고쳤어요. 'fastly'는 보통 'fast'라고만 써요.</td></tr>
+                            <tr><td class="original-sentence">But, we could decrease a lot of time by using the internet.</td><td class="corrected-sentence">But, we could <strong>save</strong> a lot of time by using the internet.</td><td>'시간을 줄이다'는 'decrease time'보다 'save time'(시간을 절약하다)이 더 자연스러운 표현이에요.</td></tr>
+                             <tr><td class="original-sentence">It decrease uncomforta ble time of wating.</td><td class="corrected-sentence">It <strong>decreases</strong> the <strong>uncomfortable</strong> time of <strong>waiting</strong>.</td><td>주어가 'It'이므로 동사에 '-s'를 붙여요. 'uncomfortable'과 'waiting'의 철자를 확인해 주세요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 2: 어휘 선택 및 문장 흐름 교정</h4>
+                <p class="text-gray-600"><strong>아이디어 발전 (Idea Development):</strong> "it gives us entertainment"라는 문장은 아주 좋은 시작점이지만, 그 자체로는 완전한 문단이 되기 어렵습니다. 이 아이디어를 더 발전시켜야 합니다.</p>
+                <p class="text-gray-600 mt-2"><strong>제안 (Suggestion):</strong> 스마트폰이 어떻게 우리에게 즐거움을 주는지 구체적인 예시를 추가해 보세요. 예를 들어, "We can watch funny videos on YouTube, play exciting games, or listen to our favorite music." (우리는 유튜브에서 재미있는 영상을 보거나, 신나는 게임을 하거나, 좋아하는 음악을 들을 수 있습니다.) 와 같이 설명하면 문단이 훨씬 풍부해집니다.</p>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 3: 최종 교정 에세이</h4>
+                <p class="text-gray-600 mb-4">학생의 아이디어를 바탕으로 요구된 에세이 형식에 맞춰 재구성한 모델 에세이입니다. 변경된 부분은 <strong>굵은 글씨</strong>로 표시했습니다.</p>
+                <div class="final-essay">
+                    <strong>The Best Invention: The Smartphone</strong><br><br>
+                    <strong>There</strong> are multiple inventions in our <strong>world</strong>, but a good invention makes our <strong>lives comfortable</strong>. In my opinion, I think the best invention is the <strong>smartphone</strong>. I will tell <strong>a</strong> few reasons why.<br><br>
+                    To start with, we can <strong>communicate</strong> much faster. In the past, people used letters to <strong>communicate</strong>. <strong>Because of this,</strong> we <strong>couldn't</strong> share important news <strong>quickly</strong>. But <strong>now</strong>, we can <strong>save</strong> a lot of time by using the internet. For example, we can send a message <strong>instantly</strong> by using KakaoTalk. If we use the postbox, a letter goes by truck, so we need to wait patiently for days. The smartphone <strong>reduces</strong> the <strong>uncomfortable</strong> time of <strong>waiting</strong>.<br><br>
+                    In addition, it gives us entertainment. <strong>With a smartphone, we are never bored. We can watch funny videos, play exciting games with friends, or listen to our favorite music anytime we want. For example, if I am on a long bus ride, I can watch a movie to make the time go faster. This little device holds endless fun.</strong><br><br>
+                    <strong>For these reasons, the smartphone is the greatest invention. It helps us communicate faster and provides entertainment. It has truly made our lives more convenient and enjoyable.</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- 학생에게 보내는 편지 -->
+        <section class="section">
+            <div class="letter">
+                <h4>To Students.</h4>
+                <p>김규현 학생에게,</p>
+                <p class="mt-4">'스마트폰'이라는 주제로 쓴 에세이 잘 읽었어요. 스마트폰이 우리 생활을 어떻게 편리하게 만들었는지에 대한 학생의 논리적인 생각에 깊은 인상을 받았어요.</p>
+                <p class="mt-4">학생의 가장 큰 <strong>강점</strong>은 자신의 주장을 뒷받침하기 위해 과거와 현재를 비교하는 능력이 뛰어나다는 점이에요. 편지를 사용했던 과거와 카카오톡을 사용하는 현재를 비교하며 '빠른 소통'의 중요성을 설명한 부분은 정말 훌륭했어요. 이처럼 명확한 근거를 들어 설명하는 능력은 앞으로 더 복잡한 글을 쓸 때 큰 자산이 될 거예요.</p>
+                <p class="mt-4">우리가 함께 발전시켜 나갈 부분은 <strong>글을 완성하는 힘</strong>과 <strong>문법의 정확성</strong>이에요. '엔터테인먼트'라는 좋은 아이디어를 제시했지만, 그 생각을 구체적인 예시로 발전시키지 못해 조금 아쉬웠어요. 또, 글 곳곳에 있는 철자나 문법 오류들이 학생의 멋진 아이디어를 조금 가리고 있었어요.</p>
+                <p class="mt-4">한 가지 <strong>제안</strong>을 할게요. 다음 글을 쓸 때는, **본론 문단을 최소 3~4문장으로 채우겠다**고 목표를 세워보는 거예요. 첫 문장에 중심 생각을 쓰고, 나머지 문장들은 그 생각을 뒷받침하는 구체적인 예시나 설명으로 채워보는 거죠. 그리고 글을 다 쓴 후에는 꼭 소리 내어 읽어보며 어색한 부분을 확인해 보세요!</p>
+                <p class="mt-4">학생은 이미 논리적으로 생각하고 글의 뼈대를 세우는 능력을 갖추고 있어요. 여기에 글을 끝까지 완성하는 끈기와 정확성을 더한다면, 훨씬 더 강력하고 설득력 있는 글을 쓸 수 있을 거예요!</p>
+                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
