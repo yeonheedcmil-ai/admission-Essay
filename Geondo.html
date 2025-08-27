@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation - 박건도</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #5b21b6; /* Purple */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #7c3aed; /* Purple Accent */
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #7c3aed; /* Purple Accent */
+        }
+        .total-score-row td {
+            font-weight: 700;
+            background-color: #f5f3ff;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #7c3aed; /* Purple Accent */
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff; /* Purple Accent */
+            border-left: 4px solid #7c3aed; /* Purple Accent */
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p class="text-purple-200">박건도 (Geondo) 학생</p>
+        </header>
+
+        <!-- 학생 원본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+It is clear that everyone has a best place they've ever visited. From my point of view, My best place I ever visited. It was Saipan This is because there was many waterslide. I like the one that I ate in saipan. and I went to a kids club.
+
+First, there are many water slide there was a gaint red slide it goes up very slow but it goes fast it is falling and there was a purple curly slide it was slow but its to curly.
+
+second, I like foods I ate in saipan in hotell restuarant. there was sasage, pizza, ice cream, and french frie. I don't eat many of them in my home. It was so delightful and meaningful.
+
+Third, I went to kid club. In there we can draw a swimy and catch crabs in water. I like there becuse teacher is funny his name is tomas and he has hary musles. I like to play with him.
+
+In conclusion, If I can coose best place where I went before I will choose Saipan. I because there was many water slide and I like foods that I ate in Saipan. I went to a kids club. I want to go again to saipan. it was meaningful and delightful.
+            </div>
+        </section>
+
+        <!-- 평가 점수 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                평가 점수 (Rubric Score)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score">3 / 4</span></td>
+                        <td>서론, 본론, 결론의 5문단 에세이 구조를 이해하고 적용한 점이 매우 훌륭합니다. 서론에 주제문이 명확하고, 각 본론 문단이 하나의 중심 생각을 다루고 있으며, 결론에서 내용을 요약하는 등 형식적 요소를 잘 갖추었습니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score">3 / 4</span></td>
+                        <td>사이판을 좋아하는 세 가지 이유(워터 슬라이드, 음식, 키즈 클럽)를 구체적인 예시를 들어 잘 설명했습니다. 특히 워터 슬라이드의 색깔과 모양, 음식의 종류, 키즈 클럽 선생님의 특징을 묘사하여 글이 생생합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>글의 구조는 좋지만, 문법과 철자에서 많은 기초적인 오류가 발견됩니다. 철자 오류(`gaint`, `sasage`), 시제 불일치, 어색한 문장 구조(`I because there was...`) 등이 글의 명확성을 저해합니다.</td>
+                    </tr>
+                    <tr class="total-score-row">
+                        <td><strong>Total Score</strong></td>
+                        <td colspan="2"><span class="score">7 / 12 (58%)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                학생 역량 분석 (Skill Level Analysis)
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary</h4>
+                    <span class="level level-intermediate">Intermediate (G3)</span>
+                    <p><strong>오류:</strong> `many things`, `like foods` 등 어휘가 다소 일반적입니다. `delightful`, `meaningful`과 같은 좋은 단어를 사용했지만, 더 다양한 어휘를 사용하면 글이 풍부해질 것입니다.</p>
+                    <p><strong>제안:</strong> 자신의 경험을 더 자세하게 묘사하는 단어를 사용해 보세요. 예를 들어, 'goes up very slow but it goes fast' 대신 **'climbs slowly and then rushes down'** (천천히 올라가서 빠르게 돌진해요) 라고 표현할 수 있습니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar & Punctuation</h4>
+                    <span class="level level-beginner">Beginner (G2)</span>
+                    <p><strong>오류:</strong> 철자 오류(`gaint`, `sasage`, `restuarant`), 주어-동사 불일치(`there was many waterslide`), 어색한 관사 사용(`a swimy`), 그리고 불완전한 문장(`My best place I ever visited.`) 등 기초적인 문법 오류가 많습니다.</p>
+                    <p><strong>제안:</strong> 글을 쓴 후에 단어의 철자를 꼼꼼히 확인하는 습관이 중요합니다. 또한, 주어가 여러 개일 때 동사를 어떻게 써야 하는지(`There are many waterslides`) 복습하는 것이 필요합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure</h4>
+                    <span class="level level-beginner">Beginner (G2)</span>
+                    <p><strong>오류:</strong> `it goes up very slow but it goes fast it is falling` 처럼 여러 생각을 마침표 없이 한 문장으로 연결하는 경향(Run-on sentence)이 있습니다. `I because...` 와 같이 문법적으로 완전하지 않은 문장도 있습니다.</p>
+                    <p><strong>제안:</strong> 한 문장에는 하나의 완전한 생각만 담는 연습을 해보세요. 문장이 너무 길어지면 마침표를 찍고 새로운 문장을 시작하는 것이 좋습니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Essay Structure</h4>
+                    <span class="level level-proficient">Proficient (G3)</span>
+                    <p><strong>오류:</strong> 5문단 구조에 대한 이해는 매우 훌륭합니다. 다만, 서론의 주제문(Thesis statement)이 본론에서 다룰 세 가지 이유를 미리 명확하게 제시하지 않은 점이 아쉽습니다.</p>
+                    <p><strong>제안:</strong> 서론의 마지막 문장에, 본론에서 설명할 세 가지 이유를 간략하게 소개해 보세요. 예를 들어, "I love Saipan because of its exciting waterslides, delicious food, and the fun kids' club." 와 같이 쓸 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                상세 교정 (Essay Corrections)
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 문법 및 철자 교정</h4>
+                <p class="text-gray-600 mb-4">학생의 원본 에세이에 있는 모든 문장을 확인하고 첨삭했습니다.</p>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>Original Sentence (원본 문장)</th><th>Corrected Sentence (교정 문장)</th><th>Friendly Explanation (설명)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">It is clear that everyone has a best place they've ever visited.</td><td class="corrected-sentence">It is clear that everyone has a <strong>favorite</strong> place they've ever visited.</td><td>'a best place' 보다는 'a favorite place'가 더 자연스러운 표현이에요.</td></tr>
+                            <tr><td class="original-sentence">From my point of view, My best place I ever visited. It was Saipan</td><td class="corrected-sentence">From my point of view, <strong>the</strong> best place I <strong>have</strong> ever visited <strong>is</strong> Saipan.</td><td>문장이 중간에 끊겼어요. 하나의 완전한 문장으로 만들어 주었어요.</td></tr>
+                            <tr><td class="original-sentence">This is because there was many waterslide.</td><td class="corrected-sentence">This is because there <strong>were</strong> many <strong>waterslides</strong>.</td><td>'waterslides'가 여러 개니까 'was' 대신 'were'를 써야 해요. 복수형 's'도 붙여주고요.</td></tr>
+                            <tr><td class="original-sentence">I like the one that I ate in saipan. and I went to a kids club.</td><td class="corrected-sentence">I <strong>liked</strong> the <strong>food</strong> that I ate in <strong>Saipan</strong>, and I went to a kids' club.</td><td>과거의 일이니 'liked'라고 써야 해요. 'the one'이 무엇인지 명확하게 'the food'로 바꿔주었어요. 'Saipan'은 지명이라 대문자로 시작해요.</td></tr>
+                            <tr><td class="original-sentence">First, there are many water slide there was a gaint red slide it goes up very slow but it goes fast it is falling and there was a purple curly slide it was slow but its to curly.</td><td class="corrected-sentence">First, there <strong>were</strong> many <strong>waterslides</strong>. There was a <strong>giant</strong> red slide that <strong>went</strong> up very <strong>slowly</strong>, but it <strong>came down</strong> fast. There was also a purple, curly slide that was slow but <strong>too</strong> curly.</td><td>문장이 너무 길어서 나누었어요. 철자('giant')와 시제('were', 'went')를 고치고, 'to'는 'too'로 수정했어요.</td></tr>
+                            <tr><td class="original-sentence">second, I like foods I ate in saipan in hotell restuarant.</td><td class="corrected-sentence"><strong>Second</strong>, I <strong>liked the food</strong> I ate in the <strong>hotel restaurant</strong>.</td><td>과거형 'liked'로 고치고, 'foods'보다는 'the food'가 더 자연스러워요. 'hotel restaurant'의 철자도 수정했어요.</td></tr>
+                            <tr><td class="original-sentence">there was sasage, pizza, ice cream, and french frie.</td><td class="corrected-sentence">There was <strong>sausage</strong>, pizza, ice cream, and <strong>French fries</strong>.</td><td>'sausage'와 'French fries'의 올바른 철자예요. 'French'는 고유명사라 대문자로 써요.</td></tr>
+                            <tr><td class="original-sentence">I don't eat many of them in my home.</td><td class="corrected-sentence">Good sentence.</td><td>수정할 필요 없는 좋은 문장입니다.</td></tr>
+                            <tr><td class="original-sentence">It was so delightful and meaningful.</td><td class="corrected-sentence">Good sentence.</td><td>수정할 필요 없는 좋은 문장입니다.</td></tr>
+                            <tr><td class="original-sentence">Third, I went to kid club.</td><td class="corrected-sentence">Third, I went to <strong>the kids'</strong> club.</td><td>'아이들의' 클럽이라는 뜻으로 'kids''라고 써요.</td></tr>
+                            <tr><td class="original-sentence">In there we can draw a swimy and catch crabs in water.</td><td class="corrected-sentence"><strong>There</strong>, we <strong>could draw</strong>, <strong>swim</strong>, and catch crabs in the water.</td><td>과거의 일이니 'could'를 쓰고, 'swimy'는 'swim'으로 수정했어요.</td></tr>
+                            <tr><td class="original-sentence">I like there becuse teacher is funny his name is tomas and he has hary musles.</td><td class="corrected-sentence">I <strong>liked it</strong> there <strong>because the</strong> teacher <strong>was</strong> funny. His name <strong>was Tomas</strong>, and he <strong>had hairy muscles</strong>.</td><td>과거형으로 모두 바꾸고, 'becuse'와 'hary musles'의 철자를 고쳤어요. 'Tomas'는 이름이라 대문자로 시작해요.</td></tr>
+                            <tr><td class="original-sentence">I like to play with him.</td><td class="corrected-sentence">I <strong>liked</strong> to play with him.</td><td>과거형으로 수정했어요.</td></tr>
+                            <tr><td class="original-sentence">In conclusion, If I can coose best place where I went before I will choose Saipan.</td><td class="corrected-sentence">In conclusion, if I <strong>could choose the</strong> best place that I have visited, I would choose Saipan.</td><td>'coose'는 'choose'로 고치고, 가정하는 상황이므로 'could'와 'would'를 사용해서 문장을 더 자연스럽게 만들었어요.</td></tr>
+                            <tr><td class="original-sentence">I because there was many water slide and I like foods that I ate in Saipan.</td><td class="corrected-sentence">I <strong>would choose it</strong> because there <strong>were</strong> many <strong>waterslides</strong>, and I <strong>liked the food</strong> that I ate in Saipan.</td><td>불완전한 문장이었어요. 'I would choose it'을 추가하고, 시제와 복수형을 수정했어요.</td></tr>
+                            <tr><td class="original-sentence">I went to a kids club.</td><td class="corrected-sentence">I <strong>also</strong> went to a kids' club.</td><td>'또한'이라는 의미의 'also'를 추가하여 앞 내용과 연결했어요.</td></tr>
+                            <tr><td class="original-sentence">I want to go again to saipan.</td><td class="corrected-sentence">I want to go to <strong>Saipan</strong> again.</td><td>'Saipan'은 지명이라 대문자로 써야 해요.</td></tr>
+                            <tr><td class="original-sentence">it was meaningful and delightful.</td><td class="corrected-sentence">It was a meaningful and delightful trip.</td><td>'trip'(여행)이라는 단어를 추가하여 문장을 완성했어요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 2: 어휘 선택 및 문장 흐름 교정</h4>
+                <p class="text-gray-600"><strong>문장 연결 (Sentence Connection):</strong> 학생의 글은 좋은 아이디어를 많이 담고 있지만, 문장들이 마침표 없이 길게 이어지는 경향이 있습니다. 예를 들어, 워터 슬라이드에 대한 묘사는 여러 개의 짧은 문장으로 나누면 더 읽기 쉽습니다.</p>
+                <p class="text-gray-600 mt-2"><strong>제안 (Suggestion):</strong> 글을 다 쓴 후에 소리 내어 읽어보면서, 숨이 차거나 이야기가 잠시 멈추는 부분에 마침표를 찍는 연습을 해보세요. 이렇게 하면 글의 호흡이 좋아지고 독자가 이해하기 더 쉬워집니다.</p>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 3: 최종 교정 에세이</h4>
+                <p class="text-gray-600 mb-4">학생의 아이디어를 바탕으로 요구된 에세이 형식에 맞춰 재구성한 모델 에세이입니다. 변경된 부분은 <strong>굵은 글씨</strong>로 표시했습니다.</p>
+                <div class="final-essay">
+                    <strong>My Best Trip to Saipan</strong><br><br>
+                    It is clear that everyone has a favorite place they've ever visited. From my point of view, the best place I have ever visited is Saipan. **I love Saipan because of its exciting waterslides, the delicious food, and the fun kids' club.**<br><br>
+                    First, there <strong>were</strong> many <strong>waterslides</strong>. There was a <strong>giant</strong> red slide that <strong>went</strong> up very <strong>slowly</strong> but <strong>came down</strong> fast. There was also a purple, curly slide that was slow but very fun. **I loved the feeling of rushing down the slides.**<br><br>
+                    Second, I <strong>liked</strong> the food I ate in the <strong>hotel restaurant</strong>. There was <strong>sausage</strong>, pizza, ice cream, and <strong>French fries</strong>. I don't eat many of them at home, so it was a <strong>delightful</strong> and meaningful treat for me.<br><br>
+                    Third, I went to the <strong>kids'</strong> club. There, we <strong>could</strong> draw, swim, and catch crabs in the water. I <strong>liked</strong> it there because the teacher <strong>was</strong> funny. His name <strong>was Tomas</strong>, and he <strong>had hairy muscles</strong>. I <strong>liked</strong> to play with him.<br><br>
+                    In conclusion, if I <strong>could choose the</strong> best place I have visited, I would choose Saipan. **This is** because of the many <strong>waterslides</strong>, the <strong>delicious food</strong>, and the fun I <strong>had</strong> at the kids' club. It was a meaningful and delightful trip, and I want to go to <strong>Saipan</strong> again.
+                </div>
+            </div>
+        </section>
+
+        <!-- 학생에게 보내는 편지 -->
+        <section class="section">
+            <div class="letter">
+                <h4>To Students.</h4>
+                <p>박건도(Geondo) 학생에게,</p>
+                <p class="mt-4">사이판 여행에 대한 멋진 에세이를 잘 읽었어요. 학생의 글쓰기 실력에 깊은 인상을 받았어요.</p>
+                <p class="mt-4">학생의 가장 큰 <strong>강점</strong>은 글을 논리적인 구조로 짜는 능력이에요. 서론, 본론, 결론의 5문단 구조를 이해하고, 각 본론마다 명확한 이유를 제시한 점이 정말 훌륭해요! 특히, 워터 슬라이드의 색깔과 모양, 키즈 클럽 선생님의 특징을 자세하게 묘사해서 글이 아주 생생하고 재미있었어요.</p>
+                <p class="mt-4">우리가 함께 발전시켜 나갈 부분은 **문법의 정확성**이에요. 글의 뼈대는 매우 튼튼하지만, 철자나 시제 같은 작은 실수들이 글의 완성도를 조금 아쉽게 만들었어요. 마치 멋진 레고 작품을 만들었는데, 몇몇 블록이 살짝 삐뚤어져 있는 것과 같아요.</p>
+                <p class="mt-4">한 가지 <strong>제안</strong>을 할게요. 다음 글을 쓸 때는, 글을 다 쓴 후에 **'실수 찾기 탐정 놀이'**를 해보는 거예요! 내가 쓴 글을 다시 한번 천천히 읽으면서, 혹시 철자가 틀린 단어는 없는지, 과거 이야기를 하는데 현재형 동사를 쓰지는 않았는지 찾아보는 거죠. 이렇게 스스로 글을 점검하는 습관을 들이면, 지금보다 훨씬 더 정확하고 멋진 글을 쓸 수 있을 거예요.</p>
+                <p class="mt-4">학생은 이미 훌륭한 작가의 자질을 갖추고 있어요. 지금의 구조적인 능력에 정확한 문법을 더한다면, 정말 뛰어난 글을 쓸 수 있을 거예요!</p>
+                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
