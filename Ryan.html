@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation - 장민준</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #8B5CF6; /* Purple background */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #8B5CF6; /* Purple icon */
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .total-score-row {
+            background-color: #f3f4f6;
+            font-weight: 700;
+        }
+        .total-score-row td {
+            font-size: 1rem; /* Adjusted font size */
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-proficient { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #8B5CF6; /* Purple underline */
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff; /* Lighter purple */
+            border-left: 4px solid #8B5CF6; /* Purple border */
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .final-essay strong {
+            color: #6d28d9;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>장민준 학생</p>
+        </header>
+
+        <!-- 학생 원본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+What do you think the greatest invention In the world?
+Some people think the invention is very good and wonderful all about that However, I think the very good and wonderful invention of is the electric car.
+First, the electric car is made of ilon mosk He is a very wise and kind persan. Scally, the Robot and a lot of electric things are good in the future and modarn. The good things of the electric car is that is not voice in there. Secald, the electric car is don't have a bad air and quliet good nice. That is a good and in car from has a electric car. There is going just electric car.
+Third, all about in the electric car is in BMW, porshe, and more. The electric car is unbelievable and fantastic.
+For example, the soccer of god is like pele, messi, mbappe, and Ronaldo and more people is a unbelievable. The car of god is a electric car. In conclusion, the electric car is nice and cool things. Also the so cally that Is the greatest invention is a electric car. thank you for listen!
+            </div>
+        </section>
+
+        <!-- 평가 점수 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                평가 점수 (Rubric Score)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score" style="color: #f97316;">2 / 4</span></td>
+                        <td>서론, 본론, 결론의 형태를 갖추고 'First, Second, Third'와 같은 전환어를 사용하려는 시도는 긍정적입니다. 하지만 각 문단의 중심 생각이 명확하지 않고 아이디어들이 논리적으로 연결되지 않아 구조가 불안정합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score" style="color: #ef4444;">1 / 4</span></td>
+                        <td>전기차가 위대한 발명품이라는 주제는 좋으나, 그 이유를 뒷받침하는 내용이 거의 없습니다. 아이디어들이(예: 일론 머스크, 로봇, 축구 선수) 주제와 관련성이 떨어지거나 설명이 부족하여 설득력이 없습니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score" style="color: #ef4444;">1 / 4</span></td>
+                        <td>문법, 철자, 문장 구조 전반에 걸쳐 오류가 매우 빈번하게 발생하여 글의 의미를 파악하기가 매우 어렵습니다. 기본적인 문장 구성 능력에 대한 집중적인 지도가 필요합니다.</td>
+                    </tr>
+                    <tr class="total-score-row">
+                        <td>Total Score (총점)</td>
+                        <td class="whitespace-nowrap">
+                            <span class="score" style="color: #ef4444;">4 / 12</span>
+                            <span class="ml-2 font-bold">(33%)</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                학생 역량 분석 (Skill Level Analysis)
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary (어휘력)</h4>
+                    <span class="level level-beginner">Beginner (G2)</span>
+                    <p><strong>오류:</strong> `good`, `nice`, `wonderful` 등 매우 기본적인 단어들로 아이디어를 표현하고 있습니다. 철자 오류가 많아(`ilon mosk`, `persan`, `modarn`) 의미 전달에 어려움이 있습니다.</p>
+                    <p><strong>제안:</strong> G3 수준의 기본 어휘 철자를 정확히 익히는 것이 최우선입니다. 이후 '전기차'와 관련된 단어(예: `eco-friendly`, `quiet`, `engine`)를 배우면 글이 더 구체적으로 변할 수 있습니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar & Punctuation (문법 및 구두점)</h4>
+                    <span class="level level-beginner">Beginner (G2)</span>
+                    <p><strong>오류:</strong> 문장이 완전하게 끝나지 않거나, 여러 문장이 마침표 없이 연결되는 경우가 많습니다. 주어와 동사의 기본적인 관계를 이해하는 데 어려움을 보입니다. (예: `the electric car is don't have...`)</p>
+                    <p><strong>제안:</strong> **'주어 + 동사'**로 이루어진 완전한 문장을 만드는 연습부터 시작해야 합니다. 하나의 생각을 하나의 완전한 문장으로 표현하고 마침표를 찍는 훈련이 시급합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure (문장 구조)</h4>
+                    <span class="level level-beginner">Beginner (G2)</span>
+                    <p><strong>오류:</strong> 아이디어들이 논리적 연결 없이 나열되어 있습니다. 특히 축구 선수들을 예시로 든 부분은 글 전체의 흐름과 전혀 관련이 없어 독자를 혼란스럽게 만듭니다.</p>
+                    <p><strong>제안:</strong> 에세이의 기본 구조인 **서론-본론-결론**의 역할을 이해하는 것이 중요합니다. 글을 쓰기 전에, 내가 하고 싶은 말을 세 가지 이유로 정리하고 각 이유를 별도의 문단에 쓰는 연습이 필요합니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Essay Understanding & Structure (에세이 구조 이해)</h4>
+                    <span class="level level-beginner">Beginner (G2)</span>
+                    <p><strong>오류:</strong> 에세이가 무엇인지, 어떻게 생각을 조직하고 논리적으로 전달해야 하는지에 대한 기본적인 이해가 부족합니다.</p>
+                    <p><strong>제안:</strong> 글쓰기 지도의 가장 첫 단계로 돌아가야 합니다. 주제에 대해 **왜 그렇게 생각하는지 이유를 2~3개** 만들고, 각 이유에 대해 **한두 문장으로 설명**하는 브레인스토밍 활동부터 시작하는 것을 추천합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                상세 교정 (Essay Corrections)
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 문법 및 철자 교정</h4>
+                <p class="text-gray-600 mb-4">문장 구조의 오류가 많아, 학생의 원래 아이디어를 최대한 살리면서 문장을 재구성하는 데 초점을 맞추었습니다.</p>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>Original Sentence (원본 문장)</th><th>Corrected Sentence (교정 문장)</th><th>Friendly Explanation (설명)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">I think the very good and wonderful invention of is the electric car.</td><td class="corrected-sentence">However, I think the best and most wonderful invention is the electric car.</td><td>학생이 쓰려던 '가장 좋고 멋진 발명품'이라는 의미를 살려 자연스러운 문장으로 다듬었어요.</td></tr>
+                            <tr><td class="original-sentence">First, the electric car is made of ilon mosk He is a very wise and kind persan.</td><td class="corrected-sentence">First, the electric car was invented by Elon Musk, who is a very smart person.</td><td>'ilon mosk'는 'Elon Musk'의 철자 오류예요. 'is made of'는 '~로 만들어졌다'는 뜻이라 어색해요. 'invented by' (~에 의해 발명되었다)가 더 정확한 표현이에요.</td></tr>
+                            <tr><td class="original-sentence">Secald, the electric car is don't have a bad air and quliet good nice.</td><td class="corrected-sentence">Second, the electric car doesn't produce bad air and is very quiet and nice.</td><td>'don't have'는 문법적으로 틀린 표현이에요. 'doesn't produce' (만들어내지 않는다)로 고치고, 'quiet' 철자를 수정하여 문장을 명확하게 만들었어요.</td></tr>
+                             <tr><td class="original-sentence">For example, the soccer of god is like pele, messi, mbappe, and Ronaldo and more people is a unbelievable. The car of god is a electric car.</td><td class="corrected-sentence">For example, some people think soccer stars like Pele, Messi, and Mbappé are unbelievable. I think the electric car is unbelievable like them.</td><td>학생이 '최고의 축구 선수들처럼 전기차도 최고다'라고 말하고 싶었던 것 같아요. 그 의미를 살려서 두 개의 문장으로 나누어 더 이해하기 쉽게 만들었어요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 2: 어휘 선택 및 문장 흐름 교정</h4>
+                <p class="text-gray-600"><strong>논리적 비약 (Logical Gaps):</strong> 이 에세이는 아이디어 간의 논리적 연결이 매우 부족합니다. 전기차에 대해 이야기하다가 갑자기 로봇, 미래, 축구 선수들로 주제가 바뀌는 부분이 많습니다. 이는 독자가 글의 핵심 내용을 파악하기 어렵게 만듭니다.</p>
+                <p class="text-gray-600 mt-2"><strong>제안 (Suggestion):</strong> 글을 쓰기 전에 **하나의 중심 주제(전기차)**를 정하고, 그 주제와 **직접적으로 관련된 이유**만 생각하는 연습이 필요합니다. 예를 들어, '전기차가 위대한 이유'는 '환경에 좋아서', '조용해서'와 같이 주제와 바로 연결되는 것이어야 합니다.</p>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 3: 최종 교정 에세이</h4>
+                <p class="text-gray-600 mb-4">학생의 아이디어를 바탕으로 5단락 에세이 형식에 맞춰 완전히 재구성한 모델 에세이입니다.</p>
+                <div class="final-essay">
+                    <strong>The Electric Car: A Wonderful Invention</strong><br><br>
+                    Many people think about which invention is the greatest in the world. Some might say it is the computer or the airplane. However, I believe the most wonderful invention is the electric car. <strong>I think the electric car is the greatest invention because it is good for the Earth and it is very quiet.</strong><br><br>
+                    First, the electric car is a great invention because it helps protect our environment. Regular cars use gasoline, which creates bad air and pollution. But the electric car runs on electricity, so it <strong>does not produce</strong> harmful smoke. This means we can have cleaner and healthier air in our cities. <strong>Driving an electric car is a good way to take care of our planet.</strong><br><br>
+                    Second, the electric car is amazing because it is very quiet. Cars with regular engines can be very noisy, especially on busy streets. The electric car, however, has a very quiet motor. When it moves, it makes almost no sound. This makes driving more peaceful and our neighborhoods much quieter. <strong>This quiet and nice feature makes it a fantastic invention.</strong><br><br>
+                    Finally, many famous companies like BMW and Porsche are making amazing electric cars. They are not just good for the Earth; they are also unbelievable and fantastic to look at and drive. <strong>Just like how Pelé and Messi are seen as the "gods of soccer," some people might see these new electric cars as the "gods of cars" because they are so advanced and cool.</strong><br><br>
+                    In conclusion, the electric car is a nice and cool invention. <strong>Because it keeps our air clean and our streets quiet, I truly believe the electric car is the greatest invention.</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- 학생에게 보내는 편지 -->
+        <section class="section">
+            <div class="letter">
+                <h4>To Students.</h4>
+                <p>최재원 학생에게,</p>
+                <p class="mt-4">'전기차'가 가장 위대한 발명품이라는 학생의 독창적인 생각이 담긴 글, 정말 흥미롭게 읽었어요. 다른 사람들이 쉽게 떠올리지 못하는 주제를 선택한 것에서 학생의 창의력이 엿보였어요.</p>
+                <p class="mt-4">학생의 가장 큰 <strong>강점</strong>은 세상을 자신만의 시각으로 바라보고, 그것을 글로 표현하려는 열정이에요. 일론 머스크나 멋진 축구 선수들을 떠올리며 전기차의 '대단함'을 표현하려는 시도는 정말 재미있었어요. 이렇게 풍부한 상상력은 글쓰기의 가장 중요한 에너지랍니다.</p>
+                <p class="mt-4">우리가 함께 해결해야 할 가장 중요한 숙제는 **'생각의 길을 만드는 연습'**이에요. 지금은 멋진 생각들이 여기저기 흩어져 있어서, 독자들이 길을 잃기 쉬운 것 같아요. 이 생각들을 하나의 길로 잘 연결해서 독자들이 학생의 최종 목적지까지 쉽게 따라올 수 있도록 안내해야 해요.</p>
+                <p class="mt-4">한 가지 <strong>제안</strong>을 할게요. 다음 글을 쓸 때는, 글을 쓰기 전에 **주제와 관련된 단어들을 3개만 먼저 적어보는 거예요.** 예를 들어 '전기차'라는 주제에는 '환경', '소음', '기술'처럼요. 그리고 글을 쓸 때는 오직 이 세 가지 단어와 관련된 이야기만 하겠다고 스스로 약속하는 거죠. 이 연습이 생각의 길을 명확하게 만드는 데 큰 도움이 될 거예요.</p>
+                <p class="mt-4">학생의 머릿속에는 보물 같은 생각들이 가득해요. 이제 그 보물들을 멋지게 보여줄 수 있도록 차근차근 정리하는 방법을 배우면, 누구보다 훌륭한 글을 쓸 수 있을 거예요! 선생님이 항상 응원할게요.</p>
+                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
