@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation - 길이안 (Ian)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #5b21b6; /* Purple */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #7c3aed; /* Purple Accent */
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #7c3aed; /* Purple Accent */
+        }
+        .total-score-row td {
+            font-weight: 700;
+            background-color: #f5f3ff;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #7c3aed; /* Purple Accent */
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff; /* Purple Accent */
+            border-left: 4px solid #7c3aed; /* Purple Accent */
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p class="text-purple-200">길이안 (Ian) 학생</p>
+        </header>
+
+        <!-- 학생 원본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+I visited many place that are week. so I write about a place I want to visit again and why.
+
+I visit many country Korea, USA... So I think my best place that I went was (USA) in USA there are many place and my brother's. too! My favorite place We Sea Brook Seabrook was fun to play and theres a big size of beach I never get before many place that my favorite place was 2 kinds of it! first, the Seabrook beach Seabrook beach have lots of Sand and I saw a many sea animals I can't see on the beach. I ride a bicycle So I can see lot of grass on the back first time I think 'why does grass was draw on the beach? but later I know it that's why I like Seabrook.
+
+Seacond place was park on the seoul that was very pretty. How ever, I don't know the park name " " on that park there's lot of grass and flowers on there. I like it because the flower was pretty.
+
+I get 2 kinds of place did you saw that it's Seabrook and park thanks!
+            </div>
+        </section>
+
+        <!-- 평가 점수 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                평가 점수 (Rubric Score)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>질문('가장 좋았던 장소 **한 곳**')을 이해하지 못하고, 여러 장소(미국, 한국, 시브룩, 서울의 공원)를 나열했습니다. 이로 인해 글의 중심 생각이 없고, 서론-본론-결론의 구조가 명확하지 않습니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td>시브룩 해변의 모래, 바다 동물, 자전거 타기, 서울 공원의 풀과 꽃 등 좋아하는 이유를 구체적인 예시를 들어 설명하려는 노력이 돋보입니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>철자 오류(`week`, `Seacond`), 시제 불일치(`visit` vs `visited`), 어색한 문장 구조(`why does grass was draw...`) 등 기초적인 문법 오류가 많아 글의 의미 전달을 방해합니다.</td>
+                    </tr>
+                    <tr class="total-score-row">
+                        <td><strong>Total Score</strong></td>
+                        <td colspan="2"><span class="score">4 / 12 (33%)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                학생 역량 분석 (Skill Level Analysis)
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>오류:</strong> `many place`, `fun to play`, `pretty` 등 어휘가 단순하고 반복적입니다. `week`(주)와 `weak`(약한)처럼 철자가 다른 단어를 혼동했습니다.</p>
+                    <p><strong>제안:</strong> 자신의 경험을 더 자세하게 묘사하는 단어를 사용해 보세요. 예를 들어, `pretty` 대신 **'beautiful' (아름다운)**, **'colorful' (알록달록한)**, **'charming' (매력적인)** 과 같은 단어를 사용할 수 있습니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar & Punctuation</h4>
+                    <span class="level level-beginner">Beginner (G2)</span>
+                    <p><strong>오류:</strong> 동사의 시제를 일관되게 사용하지 못하고 있습니다 (`visit` vs `visited`). 주어-동사 불일치(`there's lot of grass`)와 어색한 문장 구조(`why does grass was draw`)가 많습니다.</p>
+                    <p><strong>제안:</strong> 이미 다녀온 여행 이야기이므로, 모든 동사는 **과거 형태(past tense)**로 써야 합니다. `see` → `saw`, `ride` → `rode` 와 같이 바꾸는 연습이 가장 중요합니다. 또한, 문장을 완성한 후 주어와 동사가 맞는지 확인하는 습관을 들이는 것이 좋습니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure</h4>
+                    <span class="level level-beginner">Beginner (G2)</span>
+                    <p><strong>오류:</strong> `So I think...`, `that's why I like...` 와 같은 비슷한 구조가 반복됩니다. 문장이 너무 길게 이어지거나, 문법적으로 완성되지 않은 부분이 많습니다.</p>
+                    <p><strong>제안:</strong> 먼저 **하나의 완전한 문장**을 만드는 연습이 필요합니다. "주어(누가) + 동사(무엇을 했다)" 형태를 기본으로, 한 문장에는 하나의 생각만 담는 연습을 해보세요. 예를 들어, "I saw many sea animals. They were interesting." 와 같이 짧게 끊어 쓰는 것이 좋습니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Essay Structure</h4>
+                    <span class="level level-beginner">Beginner (G2)</span>
+                    <p><strong>오류:</strong> 학생은 에세이가 **하나의 중심 생각**을 가져야 한다는 점을 이해하지 못했습니다. 질문은 '가장 좋은 장소 한 곳'을 물었지만, 글은 여러 장소를 나열하고 있습니다.</p>
+                    <p><strong>제안:</strong> 에세이는 하나의 튼튼한 **기둥(중심 생각)**과, 그 기둥을 지탱하는 여러 개의 **가지(이유)**가 있어야 합니다. 글을 쓰기 전에, 여러 장소 중 **딱 한 곳만** 고르고, 그 장소를 좋아하는 이유 두 가지를 생각하는 연습을 하는 것이 가장 중요합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                상세 교정 (Essay Corrections)
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 문법 및 철자 교정</h4>
+                <p class="text-gray-600 mb-4">학생의 원본 에세이에 있는 모든 문장을 확인하고 첨삭했습니다.</p>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>Original Sentence (원본 문장)</th><th>Corrected Sentence (교정 문장)</th><th>Friendly Explanation (설명)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">I visited many place that are week.</td><td class="corrected-sentence">I <strong>have</strong> visited many <strong>places</strong> that were <strong>great</strong>.</td><td>'place'는 여러 곳이니 'places'로, 'week'(주)는 'great'(멋진) 같은 단어로 바꿔야 해요.</td></tr>
+                            <tr><td class="original-sentence">so I write about a place I want to visit again and why.</td><td class="corrected-sentence">So, I will write about a place I want to visit again and explain why.</td><td>'쓸 것이다'라는 의미로 'will write'를 사용하고, 'and why'를 더 명확하게 'and explain why'로 고쳤어요.</td></tr>
+                            <tr><td class="original-sentence">I visit many country Korea, USA...</td><td class="corrected-sentence">I <strong>have visited</strong> many <strong>countries like</strong> Korea and the USA.</td><td>과거부터 지금까지의 경험을 말할 때는 'have visited'를 써요. 'country'는 여러 나라니 'countries'로 바꿔요.</td></tr>
+                            <tr><td class="original-sentence">So I think my best place that I went was (USA) in USA there are many place and my brother's. too!</td><td class="corrected-sentence">So, I think the best place I went to was in the USA, where my brother lives.</td><td>문장이 너무 길고 복잡해서 더 자연스럽고 명확하게 다시 썼어요.</td></tr>
+                            <tr><td class="original-sentence">My favorite place We Sea Brook Seabrook was fun to play and theres a big size of beach I never get before</td><td class="corrected-sentence">My favorite place was Seabrook. It was fun to play there, and there was a big beach that I had never seen before.</td><td>문장이 중간에 끊어지고 이어져서, 두 개의 완전한 문장으로 나누었어요.</td></tr>
+                            <tr><td class="original-sentence">many place that my favorite place was 2 kinds of it!</td><td class="corrected-sentence">My favorite places were two kinds of places.</td><td>문장 구조를 더 명확하게 다듬었어요.</td></tr>
+                            <tr><td class="original-sentence">first, the Seabrook beach Seabrook beach have lots of Sand and I saw a many sea animals I can't see on the beach.</td><td class="corrected-sentence">First, the Seabrook beach had lots of sand, and I saw many sea animals that I can't normally see on a beach.</td><td>과거의 일이니 'have'는 'had'로, 'can't'는 'can't normally'로 고쳐서 의미를 더 분명하게 했어요.</td></tr>
+                             <tr><td class="original-sentence">I ride a bicycle So I can see lot of grass on the back first time I think 'why does grass was draw on the beach? but later I know it that's why I like Seabrook.</td><td class="corrected-sentence">I rode a bicycle, so I could see a lot of grass. At first, I thought, "Why is there grass on the beach?" But later, I understood, and that's why I like Seabrook.</td><td>문장이 너무 길어서 나누고, 과거형 동사(`rode`, `could`)를 사용했어요. 생각하는 부분은 따옴표 안에 넣었어요.</td></tr>
+                            <tr><td class="original-sentence">Seacond place was park on the seoul that was very pretty.</td><td class="corrected-sentence">The second place was a park in Seoul that was very pretty.</td><td>'Seacond'와 'seoul'의 철자를 고치고, 문장을 더 자연스럽게 다듬었어요.</td></tr>
+                            <tr><td class="original-sentence">How ever, I don't know the park name " "</td><td class="corrected-sentence">However, I don't know the park's name.</td><td>'How ever'는 'However'로 붙여 쓰고, '공원의 이름'은 'the park's name'이라고 표현해요.</td></tr>
+                            <tr><td class="original-sentence">on that park there's lot of grass and flowers on there.</td><td class="corrected-sentence">In that park, there were a lot of grass and flowers.</td><td>'on that park' 대신 'In that park'을, 'there's' 대신 과거형 'there were'를 사용했어요.</td></tr>
+                            <tr><td class="original-sentence">I like it because the flower was pretty.</td><td class="corrected-sentence">I liked it because the flowers were pretty.</td><td>과거형 동사 'liked'를 쓰고, 꽃이 여러 송이니 'flowers were'라고 복수형으로 썼어요.</td></tr>
+                            <tr><td class="original-sentence">I get 2 kinds of place did you saw that it's Seabrook and park thanks!</td><td class="corrected-sentence">I have told you about two kinds of places: Seabrook and a park. Thank you for reading!</td><td>학생이 말하고자 하는 의도를 파악해서, 더 명확하고 예의 바른 마무리 문장으로 다시 썼어요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 2: 어휘 선택 및 문장 흐름 교정</h4>
+                <p class="text-gray-600"><strong>시제 일관성 (Tense Consistency):</strong> 학생의 글에서 가장 큰 개선점은 시제 사용입니다. 과거의 경험을 이야기할 때는 모든 동사를 `visited`, `saw`, `rode` 와 같은 과거형으로 일관되게 사용하는 것이 매우 중요합니다.</p>
+                <p class="text-gray-600 mt-2"><strong>제안 (Suggestion):</strong> 글을 다 쓴 후에, 내가 쓴 모든 동사(움직임을 나타내는 말)에 동그라미를 치고, 그 동사가 과거의 일을 나타내는지 확인하는 '동사 점검' 시간을 가져보세요. 이 습관은 글의 정확성을 크게 높여줄 것입니다.</p>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 3: 최종 교정 에세이</h4>
+                <p class="text-gray-600 mb-4">학생의 아이디어를 바탕으로, 질문에 맞게 **한 가지 장소(시브룩)**를 선택하여 재구성한 모델 에세이입니다. 변경된 부분은 <strong>굵은 글씨</strong>로 표시했습니다.</p>
+                <div class="final-essay">
+                    <strong>My Favorite Place, Seabrook</strong><br><br>
+                    I have visited many <strong>great</strong> places, but I want to write about the place I want to visit again: Seabrook in the USA. **The best place I have ever visited is Seabrook because it has a unique beach and it was fun to explore with my family.**<br><br>
+                    First, the Seabrook beach was very special. It <strong>had</strong> lots of sand, and I <strong>saw</strong> many sea animals that I <strong>cannot normally</strong> see on other beaches. Another interesting thing was the grass. I <strong>rode</strong> a bicycle near the beach and <strong>saw</strong> a lot of grass for the first time. At first, I <strong>thought</strong>, "Why is there grass on the beach?" But later, I <strong>understood</strong> that this makes Seabrook a special and natural place. **That's why I loved the beach there.**<br><br>
+                    Secondly, it was fun to be there with my brother and my family. We <strong>played</strong> together on the big beach and <strong>explored</strong> the area on a bicycle. **Sharing these new experiences with my family** made the trip very memorable and happy. **Everything was more fun because we were together.**<br><br>
+                    In conclusion, Seabrook was my favorite place because of its **unusual, beautiful nature** and the **joyful time I spent with my family**. It was a unique and pretty place, and I hope I can visit again soon.
+                </div>
+            </div>
+        </section>
+
+        <!-- 학생에게 보내는 편지 -->
+        <section class="section">
+            <div class="letter">
+                <h4>To Students.</h4>
+                <p>길이안(Ian) 학생에게,</p>
+                <p class="mt-4">미국 시브룩과 서울의 공원에서 보낸 즐거운 시간에 대한 글, 정말 잘 읽었어요. 해변에 풀이 자라는 것을 보고 궁금해했던 점이나, 예쁜 꽃들을 보고 좋아했던 마음이 글에 잘 담겨 있어서 선생님도 함께 그 장소들을 상상할 수 있었어요.</p>
+                <p class="mt-4">학생의 가장 큰 <strong>강점</strong>은 자신의 경험을 구체적으로 설명하는 능력이에요. 특히, 해변에서 자전거를 탔던 경험이나 바다 동물을 봤던 이야기를 자세하게 써준 점이 정말 훌륭했어요.</p>
+                <p class="mt-4">우리가 함께 발전시켜 나갈 부분은 **'질문에 집중해서 글의 중심 잡기'**와 **'올바른 시제 사용하기'**예요. 이번 질문은 '가장 좋았던 장소 **한 곳**'을 물어봤어요. 여러 장소를 쓰는 것보다, 딱 한 곳을 골라서 그 이유를 자세히 설명했다면 글이 더 힘있게 느껴졌을 거예요. 그리고 이미 다녀온 여행 이야기이므로, 모든 동사는 과거형으로 써야 해요.</p>
+                <p class="mt-4">한 가지 <strong>제안</strong>을 할게요. 다음 글을 쓸 때는, 글을 쓰기 전에 **가장 좋아하는 장소 딱 한 곳**만 정하고, 그 장소를 좋아하는 **이유 두 가지**를 미리 적어보는 거예요. 그리고 글을 다 쓴 후에는, 내가 쓴 모든 동사가 과거의 일을 이야기하는지 확인하는 **'동사 점검'** 시간을 가져보세요!</p>
+                <p class="mt-4">학생의 글에는 멋진 생각과 경험이 가득해요. 그 생각들을 더 명확하고 힘있게 전달하는 방법을 함께 연습해 봐요!</p>
+                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
