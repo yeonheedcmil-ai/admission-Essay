@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation - 최재원 (Jaewon)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #8B5CF6; /* Purple Header */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #8B5CF6;
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ef4444;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-advanced { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #8B5CF6;
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #8B5CF6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .final-essay strong {
+            color: #6d28d9;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>최재원 (Jaewon) 학생</p>
+        </header>
+
+        <!-- Part 1: 학생 원본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                Part 1: 학생 원본 에세이
+            </h3>
+            <div class="original-essay">
+what do you think is a greatest invention? like haveing air conidoner? Or computer? In my opinoin it is smartphone! Because in smartphone we can buy food or toys, and something you what everying you want (When you have money) and we can see videos in youtube. we can play games to! when we need to send the message we don't need go to the mail offser and take 1-7 days just use kako ko talk or email! Second, when we don't have smartphone when we want to get then we don't take 3-4 hours! Now we just need to buy in smartphone! when we are bored now almost people see youtube, or play ames. Lastly, in our live smart phone is very important. now amoslt people use smart phone!
+            </div>
+        </section>
+
+        <!-- Part 2: 평가 점수 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                Part 2: 평가 점수 (Rubric Score)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>에세이가 서론, 본론, 결론의 명확한 구조를 갖추고 있지 않습니다. 생각이 떠오르는 대로 자유롭게 나열되어 있어, 글의 중심 생각을 따라가기 어렵습니다. 'Second', 'Lastly'와 같은 전환어를 사용하려는 시도는 좋았으나, 각 부분이 독립된 문단으로 구성되지 않아 하나의 긴 문단처럼 보입니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td>스마트폰의 장점으로 쇼핑, 영상 시청, 빠른 메시지 전송, 시간 절약 등 매우 구체적이고 창의적인 아이디어들을 제시한 점이 훌륭합니다. 특히 우체국에 가서 1-7일을 기다리는 것과 카카오톡/이메일을 비교한 예시는 매우 효과적입니다. 하지만 이러한 좋은 아이디어들이 체계적으로 정리되지 않고 섞여 있어 아쉽습니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>자신의 생각을 영어로 표현하려는 열정이 느껴집니다. 하지만 불완전한 문장('like haveing air conidoner?'), 시제 오류, 철자 오류('opinoin', 'conidoner', 'offser'), 문법 오류('something you what everying you want')가 매우 많아 글의 의미를 이해하기 어려운 부분이 많습니다. 문장의 기본 구조와 문법 규칙에 대한 학습이 시급합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Overall Score (총점)</strong></td>
+                        <td colspan="2"><span class="score"><strong>4 / 12 (33.3%)</strong></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Part 3: 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                Part 3: 학생 역량 분석
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary (어휘력)</h4>
+                    <span class="level level-beginner">G3: Beginner</span>
+                    <p><strong>오류 (Errors):</strong> 'buy', 'see', 'play', 'need' 등 매우 기초적인 G3 어휘를 사용하여 생각을 표현하고 있습니다. 'invention', 'opinion', 'important'와 같은 좋은 단어를 사용하려는 시도는 보이지만, 철자 오류가 많고('opinoin', 'conidoner') 문맥에 맞지 않는 단어 선택('what' for 'want')이 있습니다.</p>
+                    <p><strong>제안 (Suggestions):</strong> 먼저, 기본적인 단어들의 철자를 정확하게 쓰는 연습이 필요합니다. G3 어휘 목록을 보며 자주 쓰는 단어들을 따라 써보는 것이 좋습니다. 'buy' 대신 '<strong>purchase</strong>'(구매하다), 'see videos' 대신 '<strong>watch content</strong>'(콘텐츠를 보다)와 같이 조금 더 구체적인 단어를 사용하는 연습을 해보세요.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar (문법)</h4>
+                    <span class="level level-beginner">G3: Beginner</span>
+                    <p><strong>오류 (Errors):</strong> 문장의 기본 구조(주어+동사)를 갖추지 못한 문장 조각(Sentence Fragment)이 많습니다(오류 유형 #21). 예를 들어, "like haveing air conidoner?"는 완전한 문장이 아닙니다. 또한 시제, 주어-동사 수 일치, 대명사 사용 등 거의 모든 문법 영역에서 오류가 발견됩니다.</p>
+                    <p><strong>제안 (Suggestions):</strong> 가장 먼저 '주어(누가) + 동사(무엇을 한다)' 형태의 완전한 문장을 만드는 연습에 집중해야 합니다. "I like smartphones." 처럼 간단한 문장부터 시작해서, 문장을 쓰고 난 뒤 주어와 동사가 모두 있는지 확인하는 습관을 들이는 것이 매우 중요합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure (문장 구조)</h4>
+                    <span class="level level-beginner">G3: Beginner</span>
+                    <p><strong>오류 (Errors):</strong> 글 전체가 하나의 긴 문장처럼 연결되어 있거나, 반대로 문장이 되어야 할 것들이 조각나 있습니다(오류 유형 #22 Run-on sentences, #21 Sentence fragments). 'Because', 'when'과 같은 접속사를 사용하려는 시도는 좋았지만, 문장을 어디서 시작하고 어디서 끝내야 하는지에 대한 이해가 필요합니다.</p>
+                    <p><strong>제안 (Suggestions):</strong> 모든 문장은 대문자로 시작해서 마침표(.)로 끝난다는 규칙을 기억하는 것이 중요합니다(규칙 #80, #97). 하나의 완전한 생각이 끝나면 반드시 마침표를 찍고, 다음 문장을 대문자로 시작하는 연습을 반복해야 합니다. 이 연습만으로도 글이 훨씬 더 명확하고 읽기 쉬워질 것입니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Overall Essay (에세이 종합)</h4>
+                    <span class="level level-beginner">G3: Beginner</span>
+                    <p><strong>오류 (Errors):</strong> 이 글은 에세이의 기본 구조를 갖추고 있지 않습니다. 서론, 본론, 결론이 명확하게 구분되지 않았으며, 글의 핵심 주장을 담은 주제문이 없습니다. 아이디어는 풍부하지만, 체계적으로 정리되지 않아 좋은 발명품으로서의 스마트폰의 장점이 효과적으로 전달되지 못했습니다.</p>
+                    <p><strong>제안 (Suggestions):</strong> 에세이를 쓰기 전에 '계획'을 세우는 것이 가장 시급하고 중요합니다. (1) 서론: 스마트폰이 최고의 발명품이라고 주장하기. (2) 본론 1: 첫 번째 이유(예: 빠른 소통) 설명하기. (3) 본론 2: 두 번째 이유(예: 편리한 쇼핑) 설명하기. (4) 결론: 다시 한번 요약하기. 이처럼 아이디어를 문단별로 나누는 연습부터 시작해야 합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                Part 4: 상세 교정
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 문법 및 철자 교정</h4>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>원본 문장</th><th>교정 문장</th><th>친절한 설명</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">what do you think is a greatest invention? like haveing air conidoner? Or computer?</td><td class="corrected-sentence">What do you think is the greatest invention? Is it an air conditioner or a computer?</td><td>'greatest'는 최상급이므로 관사 'the'를 써야 해요. 'Is it...?' 형태로 완전한 질문 문장을 만들어 주었어요. 철자도 고쳤습니다.</td></tr>
+                            <tr><td class="original-sentence">In my opinoin it is smartphone!</td><td class="corrected-sentence">In my <strong>opinion</strong>, it is the smartphone.</td><td>'opinion'의 철자를 고쳤고, 'the'를 붙여주었어요.</td></tr>
+                            <tr><td class="original-sentence">Because in smartphone we can buy food or toys, and something you what everying you want (When you have money)</td><td class="corrected-sentence">This is because with a smartphone, we can buy anything we want, like food and toys, when we have money.</td><td>문장이 매우 혼란스러워 의미에 맞게 전체적으로 다시 만들었어요. 'what'은 'want'의 오타로 보여요.</td></tr>
+                            <tr><td class="original-sentence">we don't need go to the mail offser and take 1-7 days just use kako ko talk or email!</td><td class="corrected-sentence">We don't need to go to the post office and wait 1-7 days. We can just use KakaoTalk or email.</td><td>'need' 다음에는 'to'를 써야 해요. 의미가 명확해지도록 두 문장으로 나누었어요. 'mail offser'는 'post office'가 맞는 표현이에요.</td></tr>
+                            <tr><td class="original-sentence">Second, when we don't have smartphone when we want to get then we don't take 3-4 hours!</td><td class="corrected-sentence">Second, in the past, when we wanted to get something, it took 3-4 hours.</td><td>과거의 상황을 설명하는 것이므로, 과거 시제('wanted', 'took')를 사용했어요. 문장의 의미를 명확하게 다듬었어요.</td></tr>
+                            <tr><td class="original-sentence">Now we just need to buy in smartphone!</td><td class="corrected-sentence">Now, we just need to buy it with a smartphone.</td><td>'스마트폰으로' 산다는 의미이므로 전치사 'with'를 사용했어요.</td></tr>
+                            <tr><td class="original-sentence">when we are bored now almost people see youtube, or play ames.</td><td class="corrected-sentence">Now, when we are bored, most people watch YouTube or play games.</td><td>'almost people'은 '거의 모든 사람들'이라는 의미로 'most people'이라고 써야 해요.</td></tr>
+                            <tr><td class="original-sentence">Lastly, in our live smart phone is very important.</td><td class="corrected-sentence">Lastly, the smartphone is very important in our lives.</td><td>'in our live'는 'in our lives'(우리의 삶에서)가 맞는 표현이에요. 문장의 순서를 바로잡았어요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 2: 어휘 선택 및 문장 흐름 교정</h4>
+                <p class="text-gray-600">글에 좋은 아이디어가 많지만, 문장들이 정리되지 않은 채로 길게 이어져 있어요. 먼저, 하나의 생각이 끝나면 마침표(.)를 찍어 문장을 끝내는 연습이 필요해요. 그리고 다음 문장은 대문자로 시작해야 합니다. 이것이 글을 명확하게 만드는 가장 첫걸음이에요.</p>
+                 <p class="text-gray-600 mt-2">아이디어들을 그룹으로 묶어보는 것도 좋은 방법이에요. '쇼핑'과 '시간 절약'에 대한 이야기는 '편리함'이라는 하나의 주제로 묶을 수 있고, '유튜브'와 '게임'은 '즐거움'이라는 주제로 묶을 수 있어요. 이렇게 아이디어를 정리한 후 문단으로 만들면 훨씬 더 구조적인 글이 될 거예요.</p>
+            </div>
+
+            <div class="correction-step">
+                <h4>Step 3: 최종 교정 에세이 (Final Corrected Essay)</h4>
+                <p class="text-gray-600 mb-4">학생의 창의적인 아이디어를 바탕으로, 에세이의 기본 구조와 문법에 맞춰 재구성한 모델 에세이입니다. 변경된 부분은 <strong>굵은 글씨</strong>로 표시했습니다.</p>
+                <div class="final-essay">
+                    <p>
+                        <strong>What is the greatest invention in the world? In my opinion, it is the smartphone. The smartphone is the best invention because it makes our lives more convenient and fun.</strong>
+                    </p>
+                    <p>
+                        <strong>First, smartphones make everything much more convenient.</strong> In the past, if we wanted to send a message, we had to go to the post office and wait for one to seven days for it to be delivered. But now, we can just use KakaoTalk or email to send a message instantly. Also, shopping is much easier. Instead of taking three to four hours to go to a store, we can buy anything we want, like food or toys, directly <strong>with</strong> a smartphone.
+                    </p>
+                    <p>
+                        <strong>Second, smartphones provide us with endless entertainment.</strong> When we are bored, most people <strong>watch</strong> interesting videos on YouTube or play fun games on their phones. We can see funny clips or learn new things from videos. We can also challenge our friends in many different games. <strong>This helps us relax and enjoy our free time easily.</strong>
+                    </p>
+                    <p>
+                        <strong>In conclusion, the smartphone is a very important invention in our lives.</strong> It saves us a lot of time and gives us many ways to have fun. <strong>For these reasons, I believe the smartphone is the greatest invention ever.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 5: 학생에게 보내는 편지 -->
+        <section class="section">
+            <div class="letter">
+                <h4>To. 최재원 (Jaewon) 학생에게</h4>
+                <p class="mt-4">안녕하세요, Jaewon 학생! '세상에서 가장 위대한 발명품'으로 스마트폰을 꼽은 글, 정말 재미있게 읽었어요. 예전에는 우체국에 가서 며칠씩 걸려 편지를 보냈는데 지금은 카톡으로 바로 보낼 수 있다는 비교, 정말 마음에 쏙 들었어요! 쇼핑, 유튜브, 게임 등 우리 생활과 관련된 구체적인 예시들을 많이 생각해 낸 점이 정말 훌륭해요.</p>
+                <p class="mt-4">Jaewon 학생의 머릿속에는 보석 같은 아이디어들이 정말 많아요. 이제 그 보석들을 예쁜 보석함에 차곡차곡 정리하는 방법을 배워볼까요? 글쓰기에서 가장 기본이면서도 중요한 규칙 두 가지를 알려줄게요.</p>
+                <p class="mt-4">다음 글을 쓸 때는 딱 두 가지만 기억해 보세요. 첫째, **하나의 생각이 끝나면 꼭 마침표(.)를 찍어 문장을 마무리하기!** 둘째, **새로운 문장을 시작할 때는 항상 대문자로 시작하기!** 이 두 가지 규칙만 지켜도 글이 훨씬 더 깔끔하고 읽기 쉬워진답니다. 마치 흩어져 있던 레고 조각들을 색깔별로 정리하는 것과 같아요. 지금처럼 창의적인 생각들을 계속해서 글로 표현해 주세요. 선생님이 항상 응원할게요!</p>
+                <p class="mt-6 font-semibold text-right">- 선생님이</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
+
