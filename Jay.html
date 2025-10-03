@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #5b21b6;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #5b21b6;
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #5b21b6;
+        }
+        .rubric-table tfoot tr {
+            background-color: #f5f3ff;
+            font-weight: 700;
+        }
+        .rubric-table tfoot td {
+            border-top: 2px solid #5b21b6;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-proficient { background-color: #ede9fe; color: #5b21b6; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #5b21b6;
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #5b21b6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>이재현 (Jay) 학생</p>
+        </header>
+
+        <!-- Part 1: 학생 원본 에세이 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                Original Essay
+            </h3>
+            <div class="original-essay">
+There is benefits of learning English language. First we can talk with anyone who know the English. Example, you are going trip to another country but you need to go hotel then you need to pay for it, but, people in there can't speak korean, but he can speak English and his countrys word. So, we can talk with someone who is living in another country.
+Second, we can use message to another country. Example, you need to send message to another country but I don't know friends countrys language and that friend don't know our countrys language too. But we both known English. Then we will speak with English in message.
+Third, If there is some bad phone-call we can make them call calling me. If some one is calling "please push harst" with korean. Then I can say "what? I can't say korean". Then that people will never call you.
+Forth, we can know the thing that is from another country. Example, You bought candy in another country. Then You can read constiation.
+This is why I think there is benefit of learning English language.
+            </div>
+        </section>
+
+        <!-- Part 2: 평가 점수 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                Rubric Score
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <tr>
+                        <td>Organization & Structure (구성 & 구조)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td>'First', 'Second' 등 순서를 나타내는 말을 사용하여 아이디어를 체계적으로 나열하려는 시도가 좋습니다. 하지만 글이 문단으로 나뉘어 있지 않고, 서론과 결론이 매우 짧아 에세이의 기본 구조를 갖추었다고 보기는 어렵습니다. 아이디어를 나열한 목록(list)에 가깝습니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 & 상세화)</td>
+                        <td><span class="score">3 / 4</span></td>
+                        <td>각 주장마다 매우 구체적이고 창의적인 예시를 제시한 점이 매우 훌륭합니다. 해외 호텔 상황, 외국 친구와 메시지, 스팸 전화 대처, 수입 과자 성분 읽기 등 실제 생활과 관련된 예시를 통해 내용을 풍부하게 만들었습니다. 이는 학생의 뛰어난 관찰력과 응용력을 보여줍니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 & 규칙)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td>의미를 이해하는 데 큰 어려움은 없지만, 문법과 철자 오류가 자주 발견됩니다. 주어-동사 불일치('There is benefits', 'who know'), 복수형 오류('countrys'), 동사 형태 오류('known') 등이 많아 글의 완성도를 저해합니다.</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><strong>총점 (Total Score)</strong></td>
+                        <td colspan="2"><span class="score">7 / 12 (58.3%)</span></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <!-- Part 3: 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                Skill Level Analysis
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary</h4>
+                    <span class="level level-intermediate">Intermediate (G4)</span>
+                    <p><strong>분석:</strong> 'benefits', 'communicate', 'message', 'country' 등 주제와 관련된 G4 수준의 기본 어휘를 잘 사용하고 있습니다. 'constiation'(ingredients/constitution)처럼 어려운 단어를 사용하려는 시도도 긍정적입니다.</p>
+                    <p><strong>제안:</strong> 지금처럼 다양한 상황을 영어로 표현하려는 노력을 계속하는 것이 중요합니다. 일상 생활에서 마주치는 사물이나 상황을 영어 단어로 어떻게 표현하는지 찾아보는 습관을 들이면 어휘력이 크게 향상될 것입니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar & Punctuation</h4>
+                     <span class="level level-beginner">Beginner (G4)</span>
+                    <p><strong>오류:</strong> 주어와 동사의 수를 맞추는 것('There is benefits' -> are), 3인칭 단수 주어 뒤 동사에 -s 붙이기('who know' -> knows), 명사의 복수형('countrys' -> countries) 등 기본적인 문법 규칙에서 실수가 많습니다.</p>
+                    <p><strong>제안:</strong> 문장을 쓴 뒤, 주어가 한 개/한 명인지 여러 개/여러 명인지 확인하고 그에 맞는 동사를 썼는지 검토하는 연습을 해야 합니다. 주어-동사 수 일치는 영어 문법의 가장 중요한 기초입니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure</h4>
+                    <span class="level level-intermediate">Intermediate (G4)</span>
+                    <p><strong>분석:</strong> CCSS 기준에 따라 평가했을 때, 'who', 'but', 'if'와 같은 접속사를 사용하여 단순한 문장들을 연결하고 아이디어를 확장할 수 있습니다. 문장의 길이가 길고 복잡한 구조를 시도하는 점이 돋보입니다.</p>
+                    <p><strong>제안:</strong> 긴 문장을 만들 때 문법 오류가 자주 발생하므로, 우선 짧고 정확한 문장을 여러 개 만드는 연습을 한 뒤, 접속사로 연결하는 훈련을 하면 좋습니다. "I go to a hotel. I pay for it." -> "When I go to a hotel, I have to pay for it." 과 같이 바꿀 수 있습니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Essay Structure</h4>
+                    <span class="level level-beginner">Beginner (G4)</span>
+                    <p><strong>오류:</strong> 'First, Second, Third, Forth'를 사용하여 아이디어를 순서대로 나열하는 것은 좋지만, 에세이의 기본 단위인 '문단(paragraph)'의 개념이 부족합니다. 글 전체가 하나의 긴 덩어리로 되어 있어 가독성이 떨어집니다.</p>
+                    <p><strong>제안:</strong> '햄버거 문단' 구조를 배우는 것이 시급합니다. 하나의 중심 생각(Topic Sentence, 빵)과 그것을 뒷받침하는 구체적인 예시(Supporting Details, 패티/야채), 그리고 내용을 마무리하는 문장(Closing Sentence, 빵)으로 이루어진 문단을 만드는 연습을 해야 합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                Essay Corrections
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 문법 및 철자 교정</h4>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>Original Sentence (원본 문장)</th><th>Corrected Sentence (교정 문장)</th><th>Friendly Explanation (설명)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">There is benefits of learning English language.</td><td class="corrected-sentence">There <strong>are</strong> benefits to learning the English language.</td><td>'benefits'는 여러 개니까 'is' 대신 'are'를 써야 해요. '~에 대한' 이라는 뜻으로 'to'가 더 자연스러워요.</td></tr>
+                            <tr><td class="original-sentence">First we can talk with anyone who know the English.</td><td class="corrected-sentence">First, we can talk with anyone who <strong>knows</strong> English.</td><td>주어 'anyone'은 한 명을 의미하므로 동사 'know'에 -s를 붙여야 해요. 언어 앞에는 보통 'the'를 붙이지 않아요.</td></tr>
+                            <tr><td class="original-sentence">Example, you are going trip to another country but you need to go hotel then you need to pay for it, but, people in there can't speak korean, but he can speak English and his countrys word.</td><td class="corrected-sentence">For example, when you go on a trip to another country, you need to pay at the hotel. However, the people there may not speak Korean, but they can probably speak English or their country's language.</td><td>문장이 너무 길어서 의미에 맞게 다듬었어요. 'Example' 보다는 'For example'이 더 좋아요. 'go on a trip'이 '여행을 가다'라는 표현이에요.</td></tr>
+                            <tr><td class="original-sentence">Second, we can use message to another country.</td><td class="corrected-sentence">Second, we can send <strong>messages</strong> to another country.</td><td>'메시지를 사용하다' 보다는 '메시지를 보내다(send)'가 더 자연스러워요. 보통 여러 메시지를 보내니까 복수형 'messages'를 써요.</td></tr>
+                            <tr><td class="original-sentence">Example, you need to send message to another country but I don't know friends countrys language and that friend don't know our countrys language too.</td><td class="corrected-sentence">For example, you need to send a message to a friend in another country, but you don't know your <strong>friend's country's</strong> language, and that friend <strong>doesn't</strong> know your <strong>country's</strong> language either.</td><td>'~의'라는 뜻을 가진 's를 써야 해요. 주어가 3인칭 단수('that friend')일 때 'don't' 대신 'doesn't'를 써요.</td></tr>
+                            <tr><td class="original-sentence">But we both known English.</td><td class="corrected-sentence">But we both <strong>know</strong> English.</td><td>'known'은 과거분사에요. 여기서는 현재형 'know'를 써야 해요.</td></tr>
+                            <tr><td class="original-sentence">Third, If there is some bad phone-call we can make them call calling me.</td><td class="corrected-sentence">Third, if we get a spam phone call, we can handle it.</td><td>문장의 의미가 불분명해서 "스팸 전화를 받으면, 대처할 수 있다"는 뜻으로 명확하게 고쳤어요.</td></tr>
+                            <tr><td class="original-sentence">If some one is calling "please push harst" with korean. Then I can say "what? I can't say korean".</td><td class="corrected-sentence">For instance, if someone calls and speaks Korean for a phishing attempt, I can pretend not to understand by saying, "What? I can't speak Korean."</td><td>아마 스팸/피싱 전화 상황을 말하는 것 같아요. 의미를 살려서 더 자연스러운 문장으로 만들었어요.</td></tr>
+                            <tr><td class="original-sentence">Forth, we can know the thing that is from another country.</td><td class="corrected-sentence">Fourth, we can understand things from another country.</td><td>'Forth'의 올바른 철자는 'Fourth'예요. 'know the thing' 보다는 'understand things'가 더 자연스러운 표현이에요.</td></tr>
+                            <tr><td class="original-sentence">Example, You bought candy in another country. Then You can read constiation.</td><td class="corrected-sentence">For example, if you buy candy from another country, you can read the <strong>ingredients</strong>.</td><td>'constiation'은 아마 '성분'을 뜻하는 'ingredients'를 쓰려던 것 같아요. 문맥에 맞게 수정했어요.</td></tr>
+                            <tr><td class="original-sentence">This is why I think there is benefit of learning English language.</td><td class="corrected-sentence">This is why I think there <strong>are</strong> benefits to learning the English language.</td><td>'benefit'이 여러 개일 수 있으니 'benefits'라고 쓰고, 동사는 'are'를 사용해요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="correction-step">
+                <h4>Part 5: 최종 교정 에세이</h4>
+                <p class="text-gray-600 mb-4">학생의 창의적인 아이디어와 구체적인 예시들을 바탕으로, 표준적인 4문단 에세이 구조에 맞춰 재구성한 모델 에세이입니다.</p>
+                <div class="final-essay">
+                    <strong>The Practical Benefits of Learning English</strong><br><br>
+                    There are many practical benefits to learning the English language. Knowing English can help us communicate with people from all over the world and understand important information in our daily lives.<br><br>
+                    First, English is a key tool for communication. For example, when you go on a trip to another country, the hotel staff may not speak Korean. However, if you can speak English, you can easily check in and ask for what you need. Also, if you have a friend in a different country, you might not know each other's native languages. But if you both know English, you can still send messages and build a great friendship.<br><br>
+                    Second, English helps us solve real-life problems. For instance, if you buy candy imported from another country, the label will likely be in English. Being able to read English allows you to check the ingredients to see what is inside. It can even be useful for tricky situations, like getting a spam phone call. If you pretend you only speak English, the caller might give up and not bother you again.<br><br>
+                    In conclusion, learning English is very useful for these reasons. It helps us talk to new people and handle everyday situations more easily. This is why I think there are great benefits to learning the English language.
+                </div>
+            </div>
+        </section>
+        
+        <!-- Part 6: 학생에게 보내는 편지 -->
+        <section class="section">
+             <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                Letter to Students
+            </h3>
+            <div class="letter">
+                <h4>이재현 (Jay) 학생에게,</h4>
+                <p class="mt-4">영어를 배우면 좋은 점에 대한 학생의 에세이를 정말 흥미롭게 읽었어요. 학생만의 독특한 생각과 예시들이 돋보이는 글이었어요.</p>
+                <p class="mt-4">학생의 가장 큰 <strong>강점(Strength)</strong>은 구체적이고 창의적으로 생각하는 능력이에요. 다른 친구들이 생각하기 어려운 '스팸 전화 대처법'이나 '수입 과자 성분 읽기' 같은 실제적인 예시를 들어준 점이 정말 인상 깊었어요. 좋은 글은 바로 이런 구체적인 내용에서 시작된답니다. 이 능력은 꼭 계속 발전시켜 나가세요!</p>
+                <p class="mt-4">우리가 함께 노력해야 할 <strong>약점(Weakness)</strong>은 글의 '구조'와 '문법'이에요. 좋은 생각들을 가지고 있지만, 그것들을 문단으로 정리하지 않고 쭉 나열해서 조금 산만해 보였어요. 또, 'There is benefits'처럼 주어와 동사의 수를 맞추는 것과 같은 기본적인 문법 실수가 많아서 글의 신뢰도를 조금 떨어뜨릴 수 있어요.</p>
+                <p class="mt-4">그래서 아주 재미있는 <strong>개선을 위한 제안(Suggested Study)</strong>을 할게요. 학생의 멋진 아이디어들을 '정리 서랍'에 넣는다고 생각해 보세요. 첫 번째 서랍(문단)에는 '소통'과 관련된 아이디어(호텔, 친구 메시지)를 넣고, 두 번째 서랍(문단)에는 '문제 해결'과 관련된 아이디어(스팸 전화, 과자 성분)를 넣는 거예요. 이렇게 비슷한 아이디어끼리 묶어서 한 문단으로 만드는 연습을 하면, 글이 훨씬 더 체계적이고 읽기 쉬워질 거예요.</p>
+                <p class="mt-4">학생은 이미 보석 같은 아이디어들을 많이 가지고 있어요. 이제 그 보석들을 종류별로 나누어 멋진 보석함(문단)에 담는 방법을 함께 배워봐요. 학생의 창의력이 잘 정리된 글 속에서 더욱 빛날 거라고 확신해요!</p>
+                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
+
