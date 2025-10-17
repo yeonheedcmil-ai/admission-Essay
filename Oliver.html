@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #5b21b6;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #5b21b6;
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ef4444;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-advance { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #5b21b6;
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #5b21b6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .final-essay strong {
+            color: #6d28d9;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- Part 1: Original Student Writing -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>조윤우 (Oliver) 학생 에세이 분석 보고서</p>
+        </header>
+
+        <!-- Part 1: Original Student Writing -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path></svg>
+                Original Student Writing (학생 원본 에세이)
+            </h3>
+            <div class="original-essay">
+If I could be an animal one day, I would be a dog and I would sleep all day.
+First, I want to tell that I like to be a pet dog.
+            </div>
+        </section>
+
+        <!-- Part 2: Rubric Score -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Rubric Score (평가 점수)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td><strong>평가:</strong> 글의 시작 부분은 있으나, **중간(전개)과 끝(결말) 부분이 전혀 없습니다.** 'First'라는 전환어를 사용했지만 그에 이어지는 내용이 없어 논리적 순서가 형성되지 않았습니다. 평가 기준 대부분이 누락되어 1점을 부여합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td><strong>평가:</strong> '애완견이 되어 하루 종일 자고 싶다'는 창의적인 아이디어를 제시했지만, 그 아이디어를 발전시키는 **구체적인 사건 묘사나 감정 표현이 전혀 없습니다.** 글이 너무 짧아 평가 기준을 거의 충족하지 못하므로 1점을 부여합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td><strong>평가:</strong> 작성된 두 문장은 문법적으로 정확하고, 철자 오류도 없습니다. 가독성도 좋습니다. 하지만 글의 양이 너무 적어 **어휘 선택의 다양성, 문장 구조의 다양성** 등을 평가하기 어렵습니다. 기준을 일부만 충족하므로 최대 2점을 부여합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Overall Score (총점)</strong></td>
+                        <td colspan="2"><span class="score"><strong>4 / 12 (33%)</strong></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Part 3: Skill Level Analysis -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197"></path></svg>
+                Skill Level Analysis (학생 역량 분석)
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary (어휘력)</h4>
+                    <span class="level level-beginner">Beginner (G1-G2)</span>
+                    <p><strong>분석:</strong> 'animal', 'dog', 'sleep', 'pet' 등 G1 수준의 기본적인 단어를 사용하여 문장을 구성했습니다. 글의 양이 매우 적어 학생의 실제 어휘 수준을 정확히 파악하기는 어렵습니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar (문법)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 'If I could be..., I would be...' 와 같은 가정법 문장을 문법 오류 없이 정확하게 사용했습니다. 'I want to tell that...' 과 같은 복문 구조도 이해하고 있습니다. 제한된 문장 안에서는 G2 수준의 안정적인 문법 실력을 보여줍니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure (문장 구조)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 조건절을 포함한 복문을 구사할 수 있습니다. 그러나 글 전체가 단 두 문장으로 이루어져 있어, 문장 구조의 다양성이나 문장 연결 능력은 평가할 수 없습니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Story Structure (글의 구조)</h4>
+                    <span class="level level-beginner">Beginner (G1-G2)</span>
+                    <p><strong>분석:</strong> 글의 주제를 제시하는 도입부만 있으며, 이야기를 전개하고 마무리하는 구성 능력이 부족합니다. 아이디어를 구체적인 사건과 순서로 배열하여 하나의 완성된 이야기로 만드는 훈련이 필요합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: Detailed Corrections -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path></svg>
+                Detailed Corrections (상세 교정)
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: Sentence-by-Sentence Correction</h4>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr>
+                                <th>Original Sentence</th>
+                                <th>Corrected Sentence</th>
+                                <th>Explanation (설명)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="original-sentence">If I could be an animal one day, I would be a dog and I would sleep all day.</td>
+                                <td class="corrected-sentence">If I could be an animal for one day, I would want to be a dog so I could sleep all day.</td>
+                                <td>'하루 동안'이라는 의미로 'for one day'가 더 자연스러워요. '하루 종일 자기 위해서' 개가 되고 싶다는 인과관계를 보여주기 위해 'and' 대신 'so'를 사용했어요.</td>
+                            </tr>
+                             <tr>
+                                <td class="original-sentence">First, I want to tell that I like to be a pet dog.</td>
+                                <td class="corrected-sentence">First, I want to tell you why I would like to be a pet dog.</td>
+                                <td>'왜 애완견이 되고 싶은지 말하고 싶다'는 의미를 더 명확하게 하기 위해 'you why'를 추가했어요.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="correction-step">
+                <h4>Step 2: Overall Flow & Word Choice</h4>
+                <p class="text-gray-600"><strong>반복 및 어색한 표현 (Repetition & Awkward Phrasing):</strong> 글의 양이 너무 적어 평가하기 어렵습니다. 자신의 생각을 더 길고 구체적으로 표현하는 연습이 필요합니다.</p>
+                <p class="text-gray-600 mt-2"><strong>제안 (Suggestion):</strong> '왜' 하루 종일 자고 싶은지, 애완견이 되어서 또 무엇을 하고 싶은지, 어떤 기분일지 등을 더 자세히 써보는 것이 좋습니다. 생각을 확장하는 연습이 필요합니다.</p>
+            </div>
+        </section>
+
+        <!-- Part 5: Final Corrected Model -->
+        <section class="section">
+             <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0011.667 0l3.181-3.183m-4.991-2.691V5.006h-4.992a8.25 8.25 0 01-11.667 0v4.992m16.66-4.993l-3.181 3.183a8.25 8.25 0 01-11.667 0l-3.181-3.183"></path></svg>
+                Final Corrected Model (최종 교정본)
+            </h3>
+            <p class="text-gray-600 mb-4">학생의 아이디어를 바탕으로, 내용을 풍부하게 확장하여 G2 수준에 맞춰 재구성한 모델 스토리입니다. 추가된 부분은 <strong>굵은 글씨</strong>로 표시했습니다.</p>
+            <div class="final-essay">
+                <strong>A Dog's Dream</strong><br><br>
+                If I could be an animal for one day, I would want to be a pet dog. <strong>There are many exciting things I would do, but my main goal would be to enjoy a full day of rest and fun.</strong><br><br>
+                First, I would sleep all day! <strong>As a student, I often have to wake up early, but as a dog, I could sleep in a cozy bed for as long as I want. I would not have any homework to do or tests to study for. It would be a peaceful day.</strong><br><br>
+                <strong>After a long nap,</strong> I would want to play. <strong>I would find my favorite squeaky toy and bring it to my owner. We could play fetch in a big, green park. I would run as fast as I can, feeling the wind in my fur. That would be so much fun.</strong><br><br>
+                <strong>Finally, at the end of the day, I would cuddle with my family on the sofa.</strong> Being a pet dog for a day would be the best vacation. That is why I want to be a pet dog.
+            </div>
+        </section>
+
+        <!-- Part 6: Letter to the Student -->
+        <section class="section">
+             <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path></svg>
+                Letter to the Student (학생에게 보내는 편지)
+            </h3>
+            <div class="letter">
+                <h4>조윤우 (Oliver) 학생에게.</h4>
+                <p class="mt-4">윤우 학생, 안녕하세요! 만약 동물이 된다면 '하루 종일 자고 싶은 애완견'이 되고 싶다는 아이디어가 정말 재미있었어요. 매일 바쁘게 생활하는 학생의 마음이 느껴져서 선생님도 고개를 끄덕였답니다. 간결하지만 문법적으로 정확한 문장을 쓸 수 있는 능력이 돋보였어요.</p>
+                <p class="mt-4"><strong>(Strength/강점)</strong> 윤우 학생의 가장 큰 강점은 **정확한 문장 구사 능력**이에요. 'If I could..., I would...'와 같은 복잡한 문법도 실수 없이 잘 사용했어요. 이것은 앞으로 더 길고 멋진 글을 쓸 수 있는 튼튼한 기초가 될 거예요.</p>
+                <p class="mt-4"><strong>(Weakness/보완할 점)</strong> 하지만 멋진 생각을 단 두 문장으로만 표현해서 너무 아쉬웠어요. 학생의 머릿속에 있는 재미있는 상상들을 글로 충분히 꺼내 보여주지 못한 것 같아요. **글을 더 길고 풍부하게 만드는 연습**이 필요해요.</p>
+                <p class="mt-4"><strong>(Suggested Study Tip/학습 팁)</strong> 그래서 다음에는 **'생각의 꼬리 물기 놀이'**를 해보는 걸 추천해요.  먼저 중심 생각("나는 애완견이 되고 싶다")을 적고, 그 생각에 대한 질문의 꼬리를 물어보는 거예요. "왜? → 하루 종일 자고 싶어서." "왜 자고 싶은데? → 숙제가 없으니까." "자고 일어나서는 뭘 할 건데? → 공원에서 공 던지기 놀이를 할 거야." 이렇게 계속 질문하고 답하다 보면, 어느새 글이 풍성해져 있을 거예요!</p>
+                <p class="mt-6 font-semibold text-right">- From mil Writing Coach</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
