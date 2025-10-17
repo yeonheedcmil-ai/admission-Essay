@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mil English Essay Evaluation - 길이안 (Ian)</title>
+    <title>mil English Essay Evaluation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -20,7 +20,7 @@
             overflow: hidden;
         }
         .report-header {
-            background-color: #5b21b6; /* Purple */
+            background-color: #5b21b6;
             color: white;
             padding: 2rem;
             text-align: center;
@@ -54,7 +54,7 @@
             width: 28px;
             height: 28px;
             margin-right: 0.75rem;
-            color: #7c3aed; /* Purple Accent */
+            color: #5b21b6;
         }
         .original-essay {
             background-color: #f9fafb;
@@ -83,11 +83,7 @@
         .rubric-table td .score {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #7c3aed; /* Purple Accent */
-        }
-        .total-score-row td {
-            font-weight: 700;
-            background-color: #f5f3ff;
+            color: #ef4444;
         }
         .skill-grid {
             display: grid;
@@ -115,6 +111,7 @@
         }
         .level-beginner { background-color: #fee2e2; color: #b91c1c; }
         .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-advance { background-color: #dbeafe; color: #1e40af; }
         .skill-card p {
             font-size: 0.95rem;
             line-height: 1.6;
@@ -131,7 +128,7 @@
             font-weight: 600;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid #7c3aed; /* Purple Accent */
+            border-bottom: 2px solid #5b21b6;
             display: inline-block;
         }
         .correction-table {
@@ -143,6 +140,7 @@
             padding: 0.75rem 1rem;
             text-align: left;
             border: 1px solid #e5e7eb;
+            vertical-align: top;
         }
         .correction-table th {
             background-color: #f3f4f6;
@@ -155,11 +153,14 @@
             font-weight: 500;
         }
         .final-essay {
-            background-color: #f5f3ff; /* Purple Accent */
-            border-left: 4px solid #7c3aed; /* Purple Accent */
+            background-color: #f5f3ff;
+            border-left: 4px solid #5b21b6;
             padding: 1.5rem;
             border-radius: 8px;
             line-height: 1.8;
+        }
+        .final-essay strong {
+            color: #6d28d9;
         }
         .letter {
             background-color: #fffbeb;
@@ -168,39 +169,39 @@
             padding: 2rem;
             line-height: 1.7;
         }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
 
     <div class="report-container">
-        <!-- 보고서 헤더 -->
+        <!-- Part 1: Original Student Writing -->
         <header class="report-header">
             <h1>mil English Essay Evaluation</h1>
-            <p class="text-purple-200">길이안 (Ian) 학생</p>
+            <p>석이안 (Ian) 학생 에세이 분석 보고서</p>
         </header>
 
-        <!-- 학생 원본 에세이 -->
+        <!-- Part 1: Original Student Writing -->
         <section class="section">
             <h3 class="section-title">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
-                학생 원본 에세이
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path></svg>
+                Original Student Writing (학생 원본 에세이)
             </h3>
             <div class="original-essay">
-I visited many place that are week. so I write about a place I want to visit again and why.
-
-I visit many country Korea, USA... So I think my best place that I went was (USA) in USA there are many place and my brother's. too! My favorite place We Sea Brook Seabrook was fun to play and theres a big size of beach I never get before many place that my favorite place was 2 kinds of it! first, the Seabrook beach Seabrook beach have lots of Sand and I saw a many sea animals I can't see on the beach. I ride a bicycle So I can see lot of grass on the back first time I think 'why does grass was draw on the beach? but later I know it that's why I like Seabrook.
-
-Seacond place was park on the seoul that was very pretty. How ever, I don't know the park name " " on that park there's lot of grass and flowers on there. I like it because the flower was pretty.
-
-I get 2 kinds of place did you saw that it's Seabrook and park thanks!
+When I woke up as an animal one day I would need help. Needing helps. One example is I and other animals would need the zookeeper to give us food. Ohe example is dog food. We would like to eat, sleep and play in the water cages. I would play with many other animals. The animals are rabbits, giraffes, pigs and horses. Are we going to play eat? OINK! OINK! Are we going to roll in the mud? habit rhbit rhbit. We are going to play catch and polo water in the water. We are going to run 1 meters said one of the horse. And we are going to have polo water in the summer like sport playing water in the water in the summer. Moo! Moo! Moo! In the water were playing 'sllt ball' my faurte said rabbit. Rabbit hope to do it and hop around because of exitment and also rabbit have to catch her friends. She catched all of her friends. finally it was bed time they sleeped now. The next day it was spring rabbit jumped off her bed se saw out the window she was so happy that it was spring. Wait a minit i have to visit for sun mer. And suddenly it was summer how amazing that could be. she suddenly trew her clothes and run out of her house to miss there friends.
             </div>
         </section>
 
-        <!-- 평가 점수 -->
+        <!-- Part 2: Rubric Score -->
         <section class="section">
             <h3 class="section-title">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                평가 점수 (Rubric Score)
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Rubric Score (평가 점수)
             </h3>
             <table class="rubric-table">
                 <thead>
@@ -213,124 +214,162 @@ I get 2 kinds of place did you saw that it's Seabrook and park thanks!
                 <tbody>
                     <tr>
                         <td>Organization & Structure (구성 및 구조)</td>
-                        <td><span class="score">1 / 4</span></td>
-                        <td>질문('가장 좋았던 장소 **한 곳**')을 이해하지 못하고, 여러 장소(미국, 한국, 시브룩, 서울의 공원)를 나열했습니다. 이로 인해 글의 중심 생각이 없고, 서론-본론-결론의 구조가 명확하지 않습니다.</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td><strong>평가:</strong> 글에 시작(동물이 됨)과 중간(동물들과 노는 모습)은 있으나, **명확한 결말이 없습니다.** 이야기가 갑자기 끝나버리는 느낌을 줍니다. 또한, 여러 아이디어가 한 문단 안에 섞여 있어 **문단 구분이 필요**합니다. 여러 기준이 누락되어 최대 2점을 부여합니다.</td>
                     </tr>
                     <tr>
                         <td>Development & Elaboration (내용 전개 및 상세화)</td>
                         <td><span class="score">2 / 4</span></td>
-                        <td>시브룩 해변의 모래, 바다 동물, 자전거 타기, 서울 공원의 풀과 꽃 등 좋아하는 이유를 구체적인 예시를 들어 설명하려는 노력이 돋보입니다.</td>
+                        <td><strong>평가:</strong> 동물들과 함께 다양한 놀이를 하는 상상은 창의적입니다. 하지만 대부분의 내용이 '무엇을 할 것이다'라는 행동의 나열에 그치고, **인물의 감정이나 생각에 대한 묘사가 부족**합니다. 'she was so happy'라는 직접적인 감정 표현 외에 깊이 있는 묘사가 없습니다. 여러 기준이 누락되어 최대 2점을 부여합니다.</td>
                     </tr>
                     <tr>
                         <td>Language & Conventions (언어 및 규칙)</td>
                         <td><span class="score">1 / 4</span></td>
-                        <td>철자 오류(`week`, `Seacond`), 시제 불일치(`visit` vs `visited`), 어색한 문장 구조(`why does grass was draw...`) 등 기초적인 문법 오류가 많아 글의 의미 전달을 방해합니다.</td>
+                        <td><strong>평가:</strong> 'OINK!', 'Moo!'와 같은 의성어를 사용하여 생동감을 주려 한 시도는 좋으나, **문법과 기계적 규칙에서 심각한 오류**가 발견됩니다. 주어-동사 불일치('were playing'), 시제 오류('catched', 'sleeped'), 수많은 철자 오류('ohe', 'faurte', 'exitment')가 글의 가독성을 크게 해칩니다. 규칙에 따라 1점을 부여합니다.</td>
                     </tr>
-                    <tr class="total-score-row">
-                        <td><strong>Total Score</strong></td>
-                        <td colspan="2"><span class="score">4 / 12 (33%)</span></td>
+                    <tr>
+                        <td><strong>Overall Score (총점)</strong></td>
+                        <td colspan="2"><span class="score"><strong>5 / 12 (42%)</strong></span></td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
-        <!-- 학생 역량 분석 -->
+        <!-- Part 3: Skill Level Analysis -->
         <section class="section">
             <h3 class="section-title">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
-                학생 역량 분석 (Skill Level Analysis)
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197"></path></svg>
+                Skill Level Analysis (학생 역량 분석)
             </h3>
             <div class="skill-grid">
                 <div class="skill-card">
-                    <h4>Vocabulary</h4>
+                    <h4>Vocabulary (어휘력)</h4>
                     <span class="level level-intermediate">Intermediate (G2)</span>
-                    <p><strong>오류:</strong> `many place`, `fun to play`, `pretty` 등 어휘가 단순하고 반복적입니다. `week`(주)와 `weak`(약한)처럼 철자가 다른 단어를 혼동했습니다.</p>
-                    <p><strong>제안:</strong> 자신의 경험을 더 자세하게 묘사하는 단어를 사용해 보세요. 예를 들어, `pretty` 대신 **'beautiful' (아름다운)**, **'colorful' (알록달록한)**, **'charming' (매력적인)** 과 같은 단어를 사용할 수 있습니다.</p>
+                    <p><strong>분석:</strong> 'zookeeper', 'giraffes', 'suddenly', 'amazing' 등 G2 수준의 다양한 어휘를 사용하려고 노력합니다. 그러나 'exitment'(excitement), 'faurte'(favorite) 등 많은 단어에서 파닉스 규칙에 의존한 철자 오류가 발생합니다.</p>
                 </div>
                 <div class="skill-card">
-                    <h4>Grammar & Punctuation</h4>
-                    <span class="level level-beginner">Beginner (G2)</span>
-                    <p><strong>오류:</strong> 동사의 시제를 일관되게 사용하지 못하고 있습니다 (`visit` vs `visited`). 주어-동사 불일치(`there's lot of grass`)와 어색한 문장 구조(`why does grass was draw`)가 많습니다.</p>
-                    <p><strong>제안:</strong> 이미 다녀온 여행 이야기이므로, 모든 동사는 **과거 형태(past tense)**로 써야 합니다. `see` → `saw`, `ride` → `rode` 와 같이 바꾸는 연습이 가장 중요합니다. 또한, 문장을 완성한 후 주어와 동사가 맞는지 확인하는 습관을 들이는 것이 좋습니다.</p>
+                    <h4>Grammar (문법)</h4>
+                    <span class="level level-beginner">Beginner (G1-G2)</span>
+                    <p><strong>분석:</strong> 시제(sleeped→slept, catched→caught), 주어-동사 수 일치(In the water were playing→we were playing), 문장 구조 등 G1-G2 수준의 핵심 문법 규칙 전반에 걸쳐 오류가 많습니다. 특히 불규칙 동사의 과거형에 대한 학습이 시급합니다.</p>
                 </div>
                 <div class="skill-card">
-                    <h4>Sentence Structure</h4>
-                    <span class="level level-beginner">Beginner (G2)</span>
-                    <p><strong>오류:</strong> `So I think...`, `that's why I like...` 와 같은 비슷한 구조가 반복됩니다. 문장이 너무 길게 이어지거나, 문법적으로 완성되지 않은 부분이 많습니다.</p>
-                    <p><strong>제안:</strong> 먼저 **하나의 완전한 문장**을 만드는 연습이 필요합니다. "주어(누가) + 동사(무엇을 했다)" 형태를 기본으로, 한 문장에는 하나의 생각만 담는 연습을 해보세요. 예를 들어, "I saw many sea animals. They were interesting." 와 같이 짧게 끊어 쓰는 것이 좋습니다.</p>
+                    <h4>Sentence Structure (문장 구조)</h4>
+                    <span class="level level-beginner">Beginner (G1-G2)</span>
+                    <p><strong>분석:</strong> 대부분 'We are going to...' 와 같은 단순하고 반복적인 문장 구조를 사용합니다. 'In the water were playing...'과 같이 주어가 생략된 불완전한 문장을 구사하는 경우가 많아, 완전한 문장을 만드는 기초 훈련이 필요합니다.</p>
                 </div>
                  <div class="skill-card">
-                    <h4>Essay Structure</h4>
-                    <span class="level level-beginner">Beginner (G2)</span>
-                    <p><strong>오류:</strong> 학생은 에세이가 **하나의 중심 생각**을 가져야 한다는 점을 이해하지 못했습니다. 질문은 '가장 좋은 장소 한 곳'을 물었지만, 글은 여러 장소를 나열하고 있습니다.</p>
-                    <p><strong>제안:</strong> 에세이는 하나의 튼튼한 **기둥(중심 생각)**과, 그 기둥을 지탱하는 여러 개의 **가지(이유)**가 있어야 합니다. 글을 쓰기 전에, 여러 장소 중 **딱 한 곳만** 고르고, 그 장소를 좋아하는 이유 두 가지를 생각하는 연습을 하는 것이 가장 중요합니다.</p>
+                    <h4>Story Structure (글의 구조)</h4>
+                    <span class="level level-beginner">Beginner (G1-G2)</span>
+                    <p><strong>분석:</strong> 생각의 흐름대로 아이디어를 나열하는 경향이 강합니다. 시작-중간-끝이라는 기본적인 서사 구조에 대한 이해가 부족하며, 글의 중심 내용을 이끌어가는 하나의 줄거리가 없습니다. 아이디어를 논리적 순서에 따라 배열하는 연습이 필요합니다.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 상세 교정 -->
+        <!-- Part 4: Detailed Corrections -->
         <section class="section">
             <h3 class="section-title">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
-                상세 교정 (Essay Corrections)
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path></svg>
+                Detailed Corrections (상세 교정)
             </h3>
             <div class="correction-step">
-                <h4>Step 1: 문장별 문법 및 철자 교정</h4>
-                <p class="text-gray-600 mb-4">학생의 원본 에세이에 있는 모든 문장을 확인하고 첨삭했습니다.</p>
+                <h4>Step 1: Sentence-by-Sentence Correction</h4>
                 <div class="correction-table-container overflow-x-auto">
                     <table class="correction-table">
                         <thead>
-                            <tr><th>Original Sentence (원본 문장)</th><th>Corrected Sentence (교정 문장)</th><th>Friendly Explanation (설명)</th></tr>
+                            <tr>
+                                <th>Original Sentence</th>
+                                <th>Corrected Sentence</th>
+                                <th>Explanation (설명)</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="original-sentence">I visited many place that are week.</td><td class="corrected-sentence">I <strong>have</strong> visited many <strong>places</strong> that were <strong>great</strong>.</td><td>'place'는 여러 곳이니 'places'로, 'week'(주)는 'great'(멋진) 같은 단어로 바꿔야 해요.</td></tr>
-                            <tr><td class="original-sentence">so I write about a place I want to visit again and why.</td><td class="corrected-sentence">So, I will write about a place I want to visit again and explain why.</td><td>'쓸 것이다'라는 의미로 'will write'를 사용하고, 'and why'를 더 명확하게 'and explain why'로 고쳤어요.</td></tr>
-                            <tr><td class="original-sentence">I visit many country Korea, USA...</td><td class="corrected-sentence">I <strong>have visited</strong> many <strong>countries like</strong> Korea and the USA.</td><td>과거부터 지금까지의 경험을 말할 때는 'have visited'를 써요. 'country'는 여러 나라니 'countries'로 바꿔요.</td></tr>
-                            <tr><td class="original-sentence">So I think my best place that I went was (USA) in USA there are many place and my brother's. too!</td><td class="corrected-sentence">So, I think the best place I went to was in the USA, where my brother lives.</td><td>문장이 너무 길고 복잡해서 더 자연스럽고 명확하게 다시 썼어요.</td></tr>
-                            <tr><td class="original-sentence">My favorite place We Sea Brook Seabrook was fun to play and theres a big size of beach I never get before</td><td class="corrected-sentence">My favorite place was Seabrook. It was fun to play there, and there was a big beach that I had never seen before.</td><td>문장이 중간에 끊어지고 이어져서, 두 개의 완전한 문장으로 나누었어요.</td></tr>
-                            <tr><td class="original-sentence">many place that my favorite place was 2 kinds of it!</td><td class="corrected-sentence">My favorite places were two kinds of places.</td><td>문장 구조를 더 명확하게 다듬었어요.</td></tr>
-                            <tr><td class="original-sentence">first, the Seabrook beach Seabrook beach have lots of Sand and I saw a many sea animals I can't see on the beach.</td><td class="corrected-sentence">First, the Seabrook beach had lots of sand, and I saw many sea animals that I can't normally see on a beach.</td><td>과거의 일이니 'have'는 'had'로, 'can't'는 'can't normally'로 고쳐서 의미를 더 분명하게 했어요.</td></tr>
-                             <tr><td class="original-sentence">I ride a bicycle So I can see lot of grass on the back first time I think 'why does grass was draw on the beach? but later I know it that's why I like Seabrook.</td><td class="corrected-sentence">I rode a bicycle, so I could see a lot of grass. At first, I thought, "Why is there grass on the beach?" But later, I understood, and that's why I like Seabrook.</td><td>문장이 너무 길어서 나누고, 과거형 동사(`rode`, `could`)를 사용했어요. 생각하는 부분은 따옴표 안에 넣었어요.</td></tr>
-                            <tr><td class="original-sentence">Seacond place was park on the seoul that was very pretty.</td><td class="corrected-sentence">The second place was a park in Seoul that was very pretty.</td><td>'Seacond'와 'seoul'의 철자를 고치고, 문장을 더 자연스럽게 다듬었어요.</td></tr>
-                            <tr><td class="original-sentence">How ever, I don't know the park name " "</td><td class="corrected-sentence">However, I don't know the park's name.</td><td>'How ever'는 'However'로 붙여 쓰고, '공원의 이름'은 'the park's name'이라고 표현해요.</td></tr>
-                            <tr><td class="original-sentence">on that park there's lot of grass and flowers on there.</td><td class="corrected-sentence">In that park, there were a lot of grass and flowers.</td><td>'on that park' 대신 'In that park'을, 'there's' 대신 과거형 'there were'를 사용했어요.</td></tr>
-                            <tr><td class="original-sentence">I like it because the flower was pretty.</td><td class="corrected-sentence">I liked it because the flowers were pretty.</td><td>과거형 동사 'liked'를 쓰고, 꽃이 여러 송이니 'flowers were'라고 복수형으로 썼어요.</td></tr>
-                            <tr><td class="original-sentence">I get 2 kinds of place did you saw that it's Seabrook and park thanks!</td><td class="corrected-sentence">I have told you about two kinds of places: Seabrook and a park. Thank you for reading!</td><td>학생이 말하고자 하는 의도를 파악해서, 더 명확하고 예의 바른 마무리 문장으로 다시 썼어요.</td></tr>
+                            <tr>
+                                <td class="original-sentence">Needing helps.</td>
+                                <td class="corrected-sentence">I would need help.</td>
+                                <td>주어 'I'를 넣어 완전한 문장으로 만들었어요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Ohe example is dog food.</td>
+                                <td class="corrected-sentence">Another example is getting dog food.</td>
+                                <td>'ohe'는 'another'의 철자 오류로 보여요. '강아지 사료를 받는 것'이라는 의미로 'getting'을 추가했어요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">In the water were playing 'sllt ball' my faurte said rabbit.</td>
+                                <td class="corrected-sentence">"We were playing 'silly ball' in the water," said my favorite rabbit.</td>
+                                <td>주어 'We'를 추가하고 문장 구조를 바로잡았어요. 'sllt'와 'faurte'는 각각 'silly', 'favorite'의 철자 오류로 보여요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Rabbit hope to do it and hop around because of exitment...</td>
+                                <td class="corrected-sentence">The rabbit <strong>hoped</strong> to do it and <strong>hopped</strong> around because of <strong>excitement</strong>.</td>
+                                <td>과거 이야기이므로 동사를 과거형('hoped', 'hopped')으로 써야 해요. 'exitment'는 'excitement'(신남)가 맞는 철자예요.</td>
+                            </tr>
+                             <tr>
+                                <td class="original-sentence">She catched all of her friends.</td>
+                                <td class="corrected-sentence">She <strong>caught</strong> all of her friends.</td>
+                                <td>'catch'의 과거형은 'caught'예요. 불규칙 동사는 외워두는 것이 좋아요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">finally it was bed time they sleeped now.</td>
+                                <td class="corrected-sentence">Finally, it was bedtime, so they <strong>slept</strong>.</td>
+                                <td>'bedtime'은 한 단어예요. 'sleep'의 과거형은 'slept'에요. 'now'는 현재를 나타내므로 어색해서 뺐어요.</td>
+                            </tr>
+                             <tr>
+                                <td class="original-sentence">The next day it was spring rabbit jumped off her bed se saw out the window...</td>
+                                <td class="corrected-sentence">The next day, it was spring. The rabbit jumped off her bed. She saw out the window...</td>
+                                <td>너무 긴 문장이어서 세 개의 짧은 문장으로 나누었어요. 'se'는 'She'의 철자 오류로 보여요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Wait a minit i have to visit for sun mer.</td>
+                                <td class="corrected-sentence">"Wait a <strong>minute</strong>! I have to get ready for <strong>summer</strong>."</td>
+                                <td>'minute'와 'summer'의 철자를 고치고, 토끼가 하는 말처럼 따옴표를 넣었어요.</td>
+                            </tr>
+                             <tr>
+                                <td class="original-sentence">she suddenly trew her clothes and run out of her house to miss there friends.</td>
+                                <td class="corrected-sentence">She suddenly <strong>threw on</strong> her clothes and <strong>ran</strong> out of her house to <strong>meet her</strong> friends.</td>
+                                <td>'throw'와 'run'의 과거형은 'threw', 'ran'이에요. '옷을 급하게 입다'는 'threw on'이라고 표현해요. 친구를 '만나러' 가는 것이므로 'meet her'가 더 자연스러워요.</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
             <div class="correction-step">
-                <h4>Step 2: 어휘 선택 및 문장 흐름 교정</h4>
-                <p class="text-gray-600"><strong>시제 일관성 (Tense Consistency):</strong> 학생의 글에서 가장 큰 개선점은 시제 사용입니다. 과거의 경험을 이야기할 때는 모든 동사를 `visited`, `saw`, `rode` 와 같은 과거형으로 일관되게 사용하는 것이 매우 중요합니다.</p>
-                <p class="text-gray-600 mt-2"><strong>제안 (Suggestion):</strong> 글을 다 쓴 후에, 내가 쓴 모든 동사(움직임을 나타내는 말)에 동그라미를 치고, 그 동사가 과거의 일을 나타내는지 확인하는 '동사 점검' 시간을 가져보세요. 이 습관은 글의 정확성을 크게 높여줄 것입니다.</p>
-            </div>
-
-            <div class="correction-step">
-                <h4>Step 3: 최종 교정 에세이</h4>
-                <p class="text-gray-600 mb-4">학생의 아이디어를 바탕으로, 질문에 맞게 **한 가지 장소(시브룩)**를 선택하여 재구성한 모델 에세이입니다. 변경된 부분은 <strong>굵은 글씨</strong>로 표시했습니다.</p>
-                <div class="final-essay">
-                    <strong>My Favorite Place, Seabrook</strong><br><br>
-                    I have visited many <strong>great</strong> places, but I want to write about the place I want to visit again: Seabrook in the USA. **The best place I have ever visited is Seabrook because it has a unique beach and it was fun to explore with my family.**<br><br>
-                    First, the Seabrook beach was very special. It <strong>had</strong> lots of sand, and I <strong>saw</strong> many sea animals that I <strong>cannot normally</strong> see on other beaches. Another interesting thing was the grass. I <strong>rode</strong> a bicycle near the beach and <strong>saw</strong> a lot of grass for the first time. At first, I <strong>thought</strong>, "Why is there grass on the beach?" But later, I <strong>understood</strong> that this makes Seabrook a special and natural place. **That's why I loved the beach there.**<br><br>
-                    Secondly, it was fun to be there with my brother and my family. We <strong>played</strong> together on the big beach and <strong>explored</strong> the area on a bicycle. **Sharing these new experiences with my family** made the trip very memorable and happy. **Everything was more fun because we were together.**<br><br>
-                    In conclusion, Seabrook was my favorite place because of its **unusual, beautiful nature** and the **joyful time I spent with my family**. It was a unique and pretty place, and I hope I can visit again soon.
-                </div>
+                <h4>Step 2: Overall Flow & Word Choice</h4>
+                <p class="text-gray-600"><strong>반복 및 어색한 표현 (Repetition & Awkward Phrasing):</strong> 'We are going to...'와 같은 표현이 반복되어 글이 단조롭게 느껴집니다. 주어가 없는 문장이 많고, 여러 아이디어가 뒤섞여 있어 글의 흐름을 따라가기 어렵습니다.</p>
+                <p class="text-gray-600 mt-2"><strong>제안 (Suggestion):</strong> 먼저 '누가, 무엇을 한다(주어+동사)' 형태의 완전한 한 문장을 만드는 연습에 집중해야 합니다. 그 다음 'First, Next, Then, Finally'와 같은 순서 단어를 사용해서 문장들을 시간 순서대로 연결하는 연습을 하면 글의 구조가 훨씬 탄탄해질 것입니다.</p>
             </div>
         </section>
 
-        <!-- 학생에게 보내는 편지 -->
+        <!-- Part 5: Final Corrected Model -->
         <section class="section">
+             <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0011.667 0l3.181-3.183m-4.991-2.691V5.006h-4.992a8.25 8.25 0 01-11.667 0v4.992m16.66-4.993l-3.181 3.183a8.25 8.25 0 01-11.667 0l-3.181-3.183"></path></svg>
+                Final Corrected Model (최종 교정본)
+            </h3>
+            <p class="text-gray-600 mb-4">학생의 창의적인 아이디어를 바탕으로, G1-G2 수준에 맞춰 쉽고 명확한 이야기로 재구성한 모델 스토리입니다. </p>
+            <div class="final-essay">
+                <strong>A Day at the Zoo</strong><br><br>
+                One day, I woke up and I was an animal at the zoo! I realized I would need help to live here. For example, all the animals and I would need the zookeeper to give us food. <br><br>
+                I would like to eat, sleep, and play with many other animals like rabbits, giraffes, pigs, and horses. <strong>It would be a fun party every day!</strong> A pig might say, "OINK! OINK! Let's roll in the mud!" A rabbit might say, "Let's play catch!" We could even play water polo in our pond.<br><br>
+                One day, my favorite rabbit, Ruby, said, "Let's play tag!" She hopped around with <strong>excitement</strong>. Ruby had to catch all her friends. She was very fast and <strong>caught</strong> everyone. <br><br>
+                Finally, it was bedtime, and all the animals <strong>slept</strong>. The next day, it was spring! Ruby jumped out of her bed and saw the beautiful sunny day out the window. She was so happy.<br><br>
+                "Wait a <strong>minute</strong>!" she shouted. "I have to get ready for <strong>summer</strong>!" <br><br>
+                Suddenly, the season changed to summer. "How amazing!" Ruby thought. She quickly <strong>threw on</strong> her clothes and <strong>ran</strong> out of her house to <strong>meet her</strong> friends for a summer adventure.
+            </div>
+        </section>
+
+        <!-- Part 6: Letter to the Student -->
+        <section class="section">
+             <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path></svg>
+                Letter to the Student (학생에게 보내는 편지)
+            </h3>
             <div class="letter">
-                <h4>To Students.</h4>
-                <p>길이안(Ian) 학생에게,</p>
-                <p class="mt-4">미국 시브룩과 서울의 공원에서 보낸 즐거운 시간에 대한 글, 정말 잘 읽었어요. 해변에 풀이 자라는 것을 보고 궁금해했던 점이나, 예쁜 꽃들을 보고 좋아했던 마음이 글에 잘 담겨 있어서 선생님도 함께 그 장소들을 상상할 수 있었어요.</p>
-                <p class="mt-4">학생의 가장 큰 <strong>강점</strong>은 자신의 경험을 구체적으로 설명하는 능력이에요. 특히, 해변에서 자전거를 탔던 경험이나 바다 동물을 봤던 이야기를 자세하게 써준 점이 정말 훌륭했어요.</p>
-                <p class="mt-4">우리가 함께 발전시켜 나갈 부분은 **'질문에 집중해서 글의 중심 잡기'**와 **'올바른 시제 사용하기'**예요. 이번 질문은 '가장 좋았던 장소 **한 곳**'을 물어봤어요. 여러 장소를 쓰는 것보다, 딱 한 곳을 골라서 그 이유를 자세히 설명했다면 글이 더 힘있게 느껴졌을 거예요. 그리고 이미 다녀온 여행 이야기이므로, 모든 동사는 과거형으로 써야 해요.</p>
-                <p class="mt-4">한 가지 <strong>제안</strong>을 할게요. 다음 글을 쓸 때는, 글을 쓰기 전에 **가장 좋아하는 장소 딱 한 곳**만 정하고, 그 장소를 좋아하는 **이유 두 가지**를 미리 적어보는 거예요. 그리고 글을 다 쓴 후에는, 내가 쓴 모든 동사가 과거의 일을 이야기하는지 확인하는 **'동사 점검'** 시간을 가져보세요!</p>
-                <p class="mt-4">학생의 글에는 멋진 생각과 경험이 가득해요. 그 생각들을 더 명확하고 힘있게 전달하는 방법을 함께 연습해 봐요!</p>
-                <p class="mt-6 font-semibold text-right">- 선생님 드림</p>
+                <h4>석이안 (Ian) 학생에게.</h4>
+                <p class="mt-4">이안 학생, 안녕하세요! 동물원의 동물이 되어 다른 동물 친구들과 신나게 노는 모습이 정말 재미있었어요. 돼지, 토끼, 말 친구들과 함께 진흙탕에서 뒹굴고, 물놀이하는 상상이 선생님을 웃음 짓게 만들었답니다. 머릿속에 떠오르는 생각들을 자유롭게 글로 표현하는 모습이 인상적이었어요.</p>
+                <p class="mt-4"><strong>(Strength/강점)</strong> 이안 학생의 가장 큰 강점은 **풍부한 상상력과 자신감**이에요. 동물들의 울음소리를 흉내 내고, 계절이 갑자기 바뀌는 등 재미있는 생각들을 두려움 없이 글로 써 내려갔어요. 이런 자신감은 글쓰기에서 가장 중요한 무기랍니다.</p>
+                <p class="mt-4"><strong>(Weakness/보완할 점)</strong> 하지만 재미있는 생각들이 너무 많아서 글이 조금 어수선하게 느껴졌어요. 가장 큰 이유는 **완전한 문장을 만들지 못하고, 철자를 자주 틀리기 때문**이에요. 예를 들어 'In the water were playing'처럼 주어(누가?)가 빠진 문장이 많았고, 'catched', 'sleeped'처럼 동사의 과거형을 잘못 쓴 경우가 많았어요.</p>
+                <p class="mt-4"><strong>(Suggested Study Tip/학습 팁)</strong> 그래서 지금 이안 학생에게 가장 필요한 연습은 **'문장 레고 조립하기'**예요.  '누가(주어)', '무엇을 한다(동사)'라는 레고 블록 두 개를 꼭 붙여서 하나의 완전한 문장을 만드는 연습을 해보는 거예요. 예를 들어, "The rabbit hops." 처럼요. 이렇게 짧고 완벽한 문장을 만드는 연습을 꾸준히 하면, 학생의 멋진 상상력을 다른 사람들이 훨씬 더 쉽게 이해할 수 있을 거예요!</p>
+                <p class="mt-6 font-semibold text-right">- From mil Writing Coach</p>
             </div>
         </section>
     </div>
