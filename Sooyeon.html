@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #5b21b6;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #5b21b6;
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ef4444;
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-advance { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #5b21b6;
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #5b21b6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .final-essay strong {
+            color: #6d28d9;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8a04;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- Part 1: Original Student Writing -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>이수연 (Sooyeon) 학생 에세이 분석 보고서</p>
+        </header>
+
+        <!-- Part 1: Original Student Writing -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path></svg>
+                Original Student Writing (학생 원본 에세이)
+            </h3>
+            <div class="original-essay">
+I will tell you what do I do when a friendly monster was afraid of people.
+
+First, I will find the monster everywhere. If I can't find the monster I will search for what do monsters eat, and sneak up on the monster's food. Now the monster will come.
+
+Second, If the monster hide I would give it leader and some milk to improve myself that I am a kind person. And if it doesn't talk I would slowly get the monster up and talk to it kindly. Hello, I'm Sooyeon. I'm a very very kind person so believe me and don't be afraid. I said.
+
+Last, Now I will give it a slide and give it her favorite toy. I think now the monster is nice to me. And she ever gave me a box of cookie bakery. I am so so glad that the monster know that people are kind.
+
+Now you can have a better live. Thank you monster! And can you come to my house one day. We hope. I will miss you.
+            </div>
+        </section>
+
+        <!-- Part 2: Rubric Score -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Rubric Score (평가 점수)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score">4 / 4</span></td>
+                        <td><strong>평가:</strong> 모든 평가 기준을 완벽하게 충족합니다. '몬스터를 돕는다'는 명확한 목표를 설정하고, 'First, Second, Last'의 전환어를 사용해 문제 해결 과정을 논리적으로 전개했습니다. 문단 나누기도 매우 적절하여 글의 구조가 탄탄합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td><strong>평가:</strong> 창의적 아이디어, 인물(자신과 몬스터)의 생각/감정 묘사, 구체적인 사건, 교훈 등 대부분의 기준을 충족합니다. 그러나 몬스터를 만나는 장소나 집 등 **배경에 대한 묘사(Setting description)가 전혀 없어** 이야기가 어디서 일어나는지 상상하기 어렵습니다. 규칙에 따라 최대 2점을 부여합니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td><strong>평가:</strong> 어휘 선택, 문장 다양성, 목소리, 가독성 기준은 충족했으나, **문법(Grammar)**과 **기계적 규칙(Mechanics)** 기준을 충족하지 못했습니다. 시제가 현재, 미래, 과거가 혼재되어 있으며('was afraid'/'I will find'/'I would give'), 간접의문문 어순 오류('what do monsters eat') 등 문법 실수가 많습니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Overall Score (총점)</strong></td>
+                        <td colspan="2"><span class="score"><strong>8 / 12 (67%)</strong></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Part 3: Skill Level Analysis -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197"></path></svg>
+                Skill Level Analysis (학생 역량 분석)
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary (어휘력)</h4>
+                    <span class="level level-advance">Advance (G3)</span>
+                    <p><strong>분석:</strong> 'search', 'sneak up', 'improve', 'kindly', 'believe' 등 G3 수준의 어휘를 사용하여 자신의 계획과 감정을 구체적으로 표현합니다. 글의 주제에 맞는 어휘를 풍부하게 구사하는 능력이 뛰어납니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar (문법)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 가정법('If...') 문장을 여러 번 사용하지만, 주절과 종속절의 시제를 일치시키지 못하는 오류가 반복됩니다('If the monster hide I would give...'). 또한 간접의문문의 어순('what monsters eat')과 같은 G3 수준의 문법 규칙에 대한 이해가 부족합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure (문장 구조)</h4>
+                    <span class="level level-advance">Advance (G3)</span>
+                    <p><strong>분석:</strong> 'If I can't find the monster I will search for...'와 같이 복잡한 조건문을 포함한 긴 문장을 능숙하게 구사합니다. 문장의 구조가 다양하여 글이 논리적이고 설득력 있습니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Story Structure (글의 구조)</h4>
+                    <span class="level level-advance">Advance (G3)</span>
+                    <p><strong>평가:</strong> 프롬프트의 내용을 완벽하게 이해하고 '어떻게 몬스터를 도울 것인가'에 대한 계획을 서론-본론-결론 형식으로 체계적으로 제시했습니다. 이는 단순한 이야기 나열을 넘어선 G3 수준의 논리적 글쓰기 능력입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: Detailed Corrections -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path></svg>
+                Detailed Corrections (상세 교정)
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: Sentence-by-Sentence Correction</h4>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr>
+                                <th>Original Sentence</th>
+                                <th>Corrected Sentence</th>
+                                <th>Explanation (설명)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="original-sentence">I will tell you what do I do when a friendly monster was afraid of people.</td>
+                                <td class="corrected-sentence">I will tell you what <strong>I would do</strong> if a friendly monster <strong>was</strong> afraid of people.</td>
+                                <td>'만약 ~라면'이라는 가정이므로 'when' 대신 'if'를, 'do I do' 대신 'I would do'를 써서 시제를 맞춰야 해요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">...I will search for what do monsters eat, and sneak up on the monster's food.</td>
+                                <td class="corrected-sentence">...I will search for what monsters <strong>eat</strong> and sneak up on the monster's food.</td>
+                                <td>의문사가 문장 중간에 올 때는 '주어+동사' 순서로 써야 해요. 'what monsters eat'가 맞아요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">Second, If the monster hide I would give it leader and some milk to improve myself that I am a kind person.</td>
+                                <td class="corrected-sentence">Second, if the monster <strong>hides</strong>, I would give it <strong>leather</strong> and some milk to <strong>prove</strong> that I am a kind person.</td>
+                                <td>주어가 'the monster'(3인칭 단수)이므로 동사에 's'를 붙여 'hides'라고 써야 해요. '증명하다'는 'prove'가 더 정확해요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">And if it doesn't talk I would slowly get the monster up and talk to it kindly.</td>
+                                <td class="corrected-sentence">And if it doesn't talk, I would slowly <strong>approach</strong> the monster and talk to it kindly.</td>
+                                <td>'get up'은 '일으키다'는 뜻이에요. '다가가다'는 뜻의 'approach'가 더 자연스러워요.</td>
+                            </tr>
+                            <tr>
+                                <td class="original-sentence">And she ever gave me a box of cookie bakery.</td>
+                                <td class="corrected-sentence">And she even gave me a box of <strong>cookies from a bakery</strong>.</td>
+                                <td>'ever' 대신 '심지어'라는 뜻의 'even'이 더 자연스러워요. '베이커리에서 파는 쿠키 한 상자'라는 의미로 문장을 다듬었어요.</td>
+                            </tr>
+                             <tr>
+                                <td class="original-sentence">I am so so glad that the monster know that people are kind.</td>
+                                <td class="corrected-sentence">I am so glad that the monster <strong>knows</strong> that people are kind.</td>
+                                <td>주어가 'the monster'이므로 동사에 's'를 붙여 'knows'라고 써야 해요.</td>
+                            </tr>
+                             <tr>
+                                <td class="original-sentence">Now you can have a better live.</td>
+                                <td class="corrected-sentence">Now you can have a better <strong>life</strong>.</td>
+                                <td>'삶'이라는 명사는 'life'예요. 'live'는 '살다'라는 동사예요.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="correction-step">
+                <h4>Step 2: Overall Flow & Word Choice</h4>
+                <p class="text-gray-600"><strong>반복 및 어색한 표현 (Repetition & Awkward Phrasing):</strong> 글의 논리 구조는 매우 뛰어나지만, 가정법 문장에서 시제를 일치시키지 못하는 오류가 반복됩니다.('If... hide, I would give...'). 이는 글의 정확성을 떨어뜨리는 주요 원인입니다.</p>
+                <p class="text-gray-600 mt-2"><strong>제안 (Suggestion):</strong> 가정법 문장 만들기를 집중적으로 연습하는 것이 좋습니다. 'If + 현재 시제 동사, 주어 + will + 동사원형' (만약 ~하면, ~할 것이다) / 'If + 과거 시제 동사, 주어 + would + 동사원형' (~한다면, ~할 텐데) 과 같은 기본 공식을 익히고 문장을 만들어보면 큰 도움이 될 거예요.</p>
+            </div>
+        </section>
+
+        <!-- Part 5: Final Corrected Model -->
+        <section class="section">
+             <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0011.667 0l3.181-3.183m-4.991-2.691V5.006h-4.992a8.25 8.25 0 01-11.667 0v4.992m16.66-4.993l-3.181 3.183a8.25 8.25 0 01-11.667 0l-3.181-3.183"></path></svg>
+                Final Corrected Model (최종 교정본)
+            </h3>
+            <p class="text-gray-600 mb-4">학생의 논리적인 글 구조를 바탕으로, 문법과 어휘를 수정한 모델 에세이입니다.</p>
+            <div class="final-essay">
+                <strong>How to Help a Friendly Monster</strong><br><br>
+                I will tell you what <strong>I would do</strong> if a friendly monster was afraid of people.<br><br>
+                First, I would find the monster. If I couldn't find it, I would search for what monsters <strong>eat</strong> and then sneak up with its favorite food. Then, the monster would come.<br><br>
+                Second, if the monster <strong>hid</strong>, I would give it some milk to <strong>prove</strong> that I am a kind person. And if it didn't talk, I would slowly <strong>approach</strong> it and speak kindly. "Hello, I'm Sooyeon. I'm a very kind person, so please believe me and don't be afraid," I would say.<br><br>
+                Last, I would give it a slide and its favorite toy. I think the monster would be nice to me then. Maybe it would even give me a box of <strong>cookies</strong>! I would be so glad that the monster <strong>knows</strong> that people can be kind.<br><br>
+                <strong>Finally, I would say to the monster:</strong> "Now you can have a better <strong>life</strong>. Thank you! Please come to my house one day. I will miss you."
+            </div>
+        </section>
+
+        <!-- Part 6: Letter to the Student -->
+        <section class="section">
+             <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path></svg>
+                Letter to the Student (학생에게 보내는 편지)
+            </h3>
+            <div class="letter">
+                <h4>이수연 (Sooyeon) 학생에게.</h4>
+                <p class="mt-4">수연 학생, 안녕하세요! 사람을 무서워하는 착한 몬스터를 도와주기 위한 학생의 계획서가 정말 감동적이었어요. 몬스터의 음식을 이용해 나타나게 하고, 우유를 주며 친절함을 증명하고, 다정하게 말을 거는 모습에서 학생의 따뜻한 마음이 그대로 느껴졌답니다.</p>
+                <p class="mt-4"><strong>(Strength/강점)</strong> 수연 학생의 가장 큰 강점은 **글을 매우 논리적이고 체계적으로 구성하는 능력**이에요. '만약 ~하면, ~할 것이다'라는 계획을 'First, Second, Last' 순서에 따라 차근차근 설명하는 모습은 G3 이상의 뛰어난 작문 실력을 보여줘요.</p>
+                <p class="mt-4"><strong>(Weakness/보완할 점)</strong> 하지만 이렇게 완벽한 계획서에 **시제가 뒤섞이는 문법 실수**가 많아서 조금 아쉬웠어요. '만약 ~라면'이라는 상상의 계획을 이야기할 때는, 어떤 때는 미래 시제('I will find')를, 어떤 때는 가정법('I would give')을 사용해서 통일성이 부족했어요. 이것이 글의 정확성을 떨어뜨리는 주된 원인이었어요.</p>
+                <p class="mt-4"><strong>(Suggested Study Tip/학습 팁)</strong> 그래서 다음에는 **'만약에(If) 문장 짝 맞추기'** 게임을 해보는 걸 추천해요.  '만약 ~한다면'이라는 조건(If절)과 '그러면 ~할 것이다'라는 결과(주절)는 항상 짝꿍이에요. "If the monster **hides** (현재), I **will** give it milk." 처럼 현재의 계획을 말하거나, "If the monster **hid** (과거), I **would** give it milk." 처럼 상상 속의 계획을 말할 때, 이 짝꿍들의 시제를 맞춰주는 연습을 해보세요. 이 규칙만 익숙해져도 학생의 글이 훨씬 더 전문가처럼 보일 거예요!</p>
+                <p class="mt-6 font-semibold text-right">- From mil Writing Coach</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
