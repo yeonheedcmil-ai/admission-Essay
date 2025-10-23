@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #5b21b6; /* Purple Theme */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #5b21b6; /* Purple Theme */
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #5b21b6; /* Purple Theme */
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-advance { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #5b21b6; /* Purple Theme */
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #5b21b6; /* Purple Theme */
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .final-essay strong {
+            color: #5b21b6;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8404;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>김세웅 (Alex) 학생</p>
+        </header>
+
+        <!-- Part 1: 학생 원본 글 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 글 (Student's Original Writing)
+            </h3>
+            <div class="original-essay">
+Have you ever thought about the best holiday that you think? I think it is Chueseok. In this writing, I will tell you about chueseok.
+First, we could make rice cakes. It is called seonpyun. They have a little seed inside and there is also honey. They are sweet.
+Next, we could get mony. We also can buy things. Chueseok is the best.
+In conclusion, Chuseok would make people happy.
+            </div>
+        </section>
+
+        <!-- Part 2: 평가 점수 (Stricter Rubric Applied) -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                평가 점수 (Re-evaluated Score)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td>서론(Hook+Opinion+Topic), 본론(First, Next), 결론의 구조를 갖추고 있습니다. 그러나 서론의 주제문이 구체적인 이유를 제시하지 못했고, 결론이 본론 내용을 요약하지 못하는 등 필수 요소가 누락되어 2점으로 평가됩니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score">2 / 4</span></td>
+                        <td>주제문이 '추석이 최고다'라는 단순한 의견 제시에 그칩니다. 본론에서 송편을 묘사('씨앗, 꿀, 달콤함')하거나 용돈을 받는다는 내용을 제시한 점은 좋으나, 각 아이디어가 충분히 설명되지 못하고 내용이 매우 짧습니다. 예시 부족과 단순한 내용 전개로 2점으로 평가됩니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>'Chueseok'(→Chuseok), 'seonpyun'(→Songpyeon), 'mony'(→money), 'would make'(→makes) 등 10개 이상의 철자, 문법(시제), 대문자 사용 오류가 발견됩니다. 오류가 많아 글의 명확성을 해치므로 1점으로 평가됩니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Overall Score (총점)</strong></td>
+                        <td colspan="2"><span class="score"><strong>5 / 12 (42%)</strong></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Part 3: 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                역량 분석 (Skill Level Analysis)
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary (어휘력)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 'holiday', 'rice cakes', 'seed', 'honey', 'sweet', 'money', 'conclusion' 등 G2 수준의 어휘를 사용하고 있습니다. 'Chuseok', 'Songpyeon' 등 한국 고유명사를 영어로 표현하려는 시도가 좋습니다.</p>
+                    <p><strong>강화 방안:</strong> 'buy things'와 같이 다소 막연한 표현 대신 'buy snacks and toys'처럼 더 구체적인 어휘를 사용하는 연습을 하면 좋습니다. 고유명사의 정확한 영어 철자를 익히는 것도 중요합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar (문법)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 'I will tell...', 'we could make...' 등 조동사를 사용하여 미래나 가능성을 표현하는 능력이 있습니다. 'They have...' 와 같이 소유를 나타내는 표현도 정확하게 사용합니다. 그러나 시제 오류('would make') 등 G2 수준의 실수가 보입니다.</p>
+                    <p><strong>강화 방안:</strong> 현재의 사실이나 일반적인 진리를 말할 때는 현재 시제를 사용해야 합니다('Chuseok makes people happy'). 과거, 현재, 미래 시제를 구분하여 사용하는 연습이 필요합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure (문장 구조)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 독자에게 질문을 던지며 글을 시작하고, 'First', 'Next', 'In conclusion'을 사용하여 글의 구조를 만들려는 시도는 G2 수준의 체계적인 글쓰기 능력입니다.</p>
+                    <p><strong>강화 방안:</strong> 각 문단의 길이가 너무 짧습니다. 하나의 아이디어를 최소 두세 문장으로 풀어서 설명하는 연습이 필요합니다. '송편은 달콤하다'고 쓴 뒤, '나는 특히 꿀이 들어간 송편을 좋아한다'와 같이 내용을 덧붙이는 훈련이 중요합니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Essay Structure (에세이 구조)</h4>
+                    <span class="level level-intermediate">Intermediate (G2)</span>
+                    <p><strong>분석:</strong> 서론-본론-결론의 형식을 시도하고 연결어를 사용하여 문단을 나누는 등, 글의 구조에 대한 기본적인 이해는 있습니다. 그러나 서론에 이유를 담은 주제문이 없고, 본론의 내용이 매우 빈약하며, 결론이 요약의 역할을 하지 못하는 등 G2 수준의 미숙함이 보입니다.</p>
+                    <p><strong>강화 방안:</strong> 서론의 마지막 문장에서 '나는 송편과 용돈 때문에 추석을 좋아한다'와 같이 본론에서 말할 내용을 미리 간략하게 소개해주는 'Thesis Statement' 작성법을 배우는 것이 가장 중요합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                상세 교정 (Detailed Corrections)
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 교정</h4>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>Original Sentence</th><th>Corrected Sentence</th><th>Explanation (설명)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">I think it is Chueseok.</td><td class="corrected-sentence">I think it is <strong>Chuseok</strong>.</td><td>'Chuseok'은 고유명사이므로 첫 글자를 대문자로 써야 해요.</td></tr>
+                            <tr><td class="original-sentence">In this writing, I will tell you about chueseok.</td><td class="corrected-sentence">In this writing, I will tell you about <strong>Chuseok</strong>.</td><td>'Chuseok' 철자를 다시 한번 확인해주세요.</td></tr>
+                            <tr><td class="original-sentence">It is called seonpyun.</td><td class="corrected-sentence">It is called <strong>Songpyeon</strong>.</td><td>추석 때 먹는 떡의 정확한 영어 표기는 'Songpyeon'이에요.</td></tr>
+                            <tr><td class="original-sentence">Next, we could get mony.</td><td class="corrected-sentence">Next, we could get <strong>money</strong>.</td><td>'돈'은 영어로 'money'라고 써요.</td></tr>
+                            <tr><td class="original-sentence">We also can buy things.</td><td class="corrected-sentence">We can also buy things <strong>with the money</strong>.</td><td>'돈으로 물건을 살 수 있다'는 의미를 더 명확하게 하기 위해 'with the money'를 추가했어요.</td></tr>
+                            <tr><td class="original-sentence">In conclusion, Chuseok would make people happy.</td><td class="corrected-sentence">In conclusion, Chuseok <strong>makes</strong> people happy.</td><td>추석이 사람들을 행복하게 만든다는 것은 일반적인 사실이므로 현재 시제 'makes'를 써야 해요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Part 5: 최종 교정 모델 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 18V7.125C4.5 6.504 5.004 6 5.625 6H9" /></svg>
+                최종 교정 모델 (Final Corrected Model)
+            </h3>
+            <div class="final-essay">
+                <strong><center>My Favorite Holiday: Chuseok</center></strong><br>
+                Have you ever thought about the best holiday? I think it is <strong>Chuseok</strong>. <strong>I believe Chuseok is the best holiday because we can make delicious Songpyeon and get spending money.</strong><br><br>
+                First, we can make traditional rice cakes called <strong>Songpyeon</strong>. They are fun to make together as a family. They often have sweet fillings like sesame seeds and honey inside. Eating freshly made, sweet <strong>Songpyeon</strong> is a highlight of <strong>Chuseok</strong>.<br><br>
+                Next, we can get <strong>money</strong> from our relatives. When we bow to our elders, they often give us some allowance. We can use this <strong>money</strong> to buy snacks or toys that we like. It feels good to have our own <strong>money</strong> to spend.<br><br>
+                In conclusion, <strong>Chuseok</strong> is the best holiday because of the tasty <strong>Songpyeon</strong> and the special pocket <strong>money</strong> we receive. These traditions make people feel happy and connected.
+            </div>
+        </section>
+
+        <!-- Part 6: 학생에게 보내는 편지 -->
+        <section class="section">
+            <div class="letter">
+                <h4>김세웅 학생에게,</h4>
+                <p>안녕하세요, 세웅(Alex) 학생!</p>
+                <p class="mt-4">가장 좋아하는 휴일이 추석인 이유에 대한 글 잘 읽었어요. 송편 속에 들어있는 씨앗과 꿀에 대해 설명하고, 용돈을 받아서 물건을 살 수 있다는 점을 이야기해 주어서 추석이 얼마나 즐거운 날인지 잘 알 수 있었어요. <strong>이렇게 자신이 알고 있는 구체적인 내용을 바탕으로 글을 쓰는 점이 세웅 학생의 가장 큰 장점이에요.</strong></p>
+                <p class="mt-4">세웅 학생의 글은 좋은 재료(아이디어)는 있지만, 아직 요리(글쓰기)를 시작하기 전에 어떤 요리를 만들지(주제문) 명확하게 정하지 않은 것 같아요. 글의 첫 부분에서 '송편과 용돈 때문에 추석을 좋아한다'고 미리 알려주지 않은 점과, 각 설명이 너무 짧다는 점이 **현재 가장 보완하면 좋을 점(primary weakness)**이에요.</p>
+                <p class="mt-4">그래서 아주 중요한 공부 팁을 두 가지 줄게요. 바로 <strong>'미리 알려주고 시작하기'</strong>와 <strong>'문장 길게 늘이기'</strong> 연습이에요.</p>
+                <p class="mt-4">다음 글을 쓸 때는, 서론의 마지막 문장에서 '나는 A와 B 때문에 추석을 좋아한다'고 미리 알려주고 시작해보세요. 그리고 본론의 각 문단을 쓸 때는, 한 문장만 쓰지 말고 최소 두세 문장으로 늘려서 설명하는 연습을 하는 거예요. 예를 들어, '우리는 송편을 만들 수 있다'고 쓴 뒤에, '송편은 만들기도 재미있고 맛도 달콤하다' 와 같이 내용을 덧붙여주는 거죠. 이렇게 미리 계획을 알려주고 각 부분을 충분히 설명해주면, 글이 훨씬 더 짜임새 있고 풍부해질 거예요. 응원할게요!</p>
+                <p class="mt-6 font-semibold text-right">- Your Writing Coach</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
