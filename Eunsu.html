@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mil English Essay Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #5b21b6; /* Purple Theme */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .report-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        .section-title svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.75rem;
+            color: #5b21b6; /* Purple Theme */
+        }
+        .original-essay {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rubric-table th, .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rubric-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .rubric-table td .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #5b21b6; /* Purple Theme */
+        }
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .skill-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .skill-card .level {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .level-beginner { background-color: #fee2e2; color: #b91c1c; }
+        .level-intermediate { background-color: #ffedd5; color: #c2410c; }
+        .level-advance { background-color: #dbeafe; color: #1e40af; }
+        .skill-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+        .skill-card p strong {
+            color: #374151;
+        }
+        .correction-step {
+            margin-bottom: 2rem;
+        }
+        .correction-step h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #5b21b6; /* Purple Theme */
+            display: inline-block;
+        }
+        .correction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .correction-table th, .correction-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        .correction-table th {
+            background-color: #f3f4f6;
+        }
+        .original-sentence {
+            color: #ef4444;
+        }
+        .corrected-sentence {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        .final-essay {
+            background-color: #f5f3ff;
+            border-left: 4px solid #5b21b6; /* Purple Theme */
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+        .final-essay strong {
+            color: #5b21b6;
+        }
+        .letter {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+        .letter h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ca8404;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <!-- 보고서 헤더 -->
+        <header class="report-header">
+            <h1>mil English Essay Evaluation</h1>
+            <p>탁은수 (Eunsu) 학생</p>
+        </header>
+
+        <!-- Part 1: 학생 원본 글 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                학생 원본 글 (Student's Original Writing)
+            </h3>
+            <div class="original-essay">
+My best holiday is chewsock.
+It is so good to habbit. we can do games and we cook up a feast. we can play. we can do so many things. If you have a cat you can play with it. You can also give the dog a treat him.
+I hope it is good. today it is going to do it at chesok but it was rain.ected.
+the end. ♡
+            </div>
+        </section>
+
+        <!-- Part 2: 평가 점수 (Stricter Rubric Applied) -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                평가 점수 (Re-evaluated Score)
+            </h3>
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Analysis (분석)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organization & Structure (구성 및 구조)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>서론, 본론, 결론의 구조가 명확하지 않습니다. 글 전체가 아이디어의 나열처럼 보이며, 문단 나누기나 연결어가 사용되지 않았습니다. 에세이의 기본 구조가 갖춰지지 않았으므로 1점으로 평가됩니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Development & Elaboration (내용 전개 및 상세화)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>주제문이 '추석이 최고다'라는 단순한 의견 제시에 그칩니다. 본론 내용은 '게임하기', '음식 만들기', '고양이/개와 놀기' 등 관련 없어 보이는 아이디어들을 구체적인 설명 없이 나열하고 있습니다. 내용 전개가 매우 미흡하고 논리적이지 않습니다.</td>
+                    </tr>
+                    <tr>
+                        <td>Language & Conventions (언어 및 규칙)</td>
+                        <td><span class="score">1 / 4</span></td>
+                        <td>'chewsock'/'chesok'(→Chuseok), 'habbit'(→have it/habit?), 'cook up a feast'(관용구 오류), 'rain.ected'(→rained?) 등 10개가 훨씬 넘는 철자, 문법, 어휘 오류가 발견됩니다. 'give the dog a treat him'과 같이 의미를 이해하기 어려운 문장이 많아 1점으로 평가됩니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Overall Score (총점)</strong></td>
+                        <td colspan="2"><span class="score"><strong>3 / 12 (25%)</strong></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Part 3: 학생 역량 분석 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                역량 분석 (Skill Level Analysis)
+            </h3>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Vocabulary (어휘력)</h4>
+                    <span class="level level-beginner">Beginner (G1)</span>
+                    <p><strong>분석:</strong> 'holiday', 'games', 'cook', 'play', 'cat', 'dog', 'treat' 등 G1 수준의 매우 기본적인 어휘를 사용하고 있습니다. 그러나 핵심 단어인 'Chuseok'의 철자를 반복적으로 틀리고 있습니다. 'feast'와 같은 어려운 단어를 시도했으나 정확한 사용법을 모릅니다.</p>
+                    <p><strong>강화 방안:</strong> 파닉스 규칙을 체계적으로 학습하여 기본적인 단어의 철자를 정확하게 쓰는 연습이 가장 시급합니다. 'Chuseok'과 같이 글의 주제가 되는 단어는 쓰기 전에 확인하는 습관이 필요합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Grammar (문법)</h4>
+                    <span class="level level-beginner">Beginner (G1)</span>
+                    <p><strong>분석:</strong> 'we can do...', 'we can play...' 와 같이 조동사 'can'을 사용한 간단한 문장 구조를 반복합니다. 'give the dog a treat him'과 같이 목적격 대명사의 위치나 쓰임에 대한 이해가 부족합니다. G1 초기 단계의 문법 능력을 보입니다.</p>
+                    <p><strong>강화 방안:</strong> 주어-동사-목적어 순서로 문장을 만드는 기본 구조 연습이 필요합니다. 'give him a treat' 와 같이 대명사의 올바른 위치와 형태를 익혀야 합니다.</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Sentence Structure (문장 구조)</h4>
+                    <span class="level level-beginner">Beginner (G1)</span>
+                    <p><strong>분석:</strong> 문장들이 짧고 단편적이며, 서로 논리적으로 연결되지 못하고 있습니다. 'If you have a cat...'과 같이 조건을 나타내는 문장을 시도했지만, 글 전체의 흐름과는 관련성이 떨어집니다.</p>
+                    <p><strong>강화 방안:</strong> 'and', 'so' 와 같은 기본적인 접속사를 사용하여 짧은 문장들을 연결하는 연습부터 시작해야 합니다. 하나의 주제에 대해 두세 문장을 이어서 써보는 훈련이 필요합니다.</p>
+                </div>
+                 <div class="skill-card">
+                    <h4>Essay Structure (에세이 구조)</h4>
+                    <span class="level level-beginner">Beginner (G1)</span>
+                    <p><strong>분석:</strong> 글의 시작과 끝이 있지만, 서론, 본론, 결론의 명확한 구분이 없습니다. 아이디어가 체계적으로 정리되지 않고 두서없이 나열되어 있으며, 주제와 관련 없는 내용(고양이, 개 이야기)이 포함되어 있습니다. 글의 구조에 대한 개념이 거의 없는 상태입니다.</p>
+                    <p><strong>강화 방안:</strong> 글을 쓰기 전에 '왜 추석이 좋은가?'에 대한 이유를 한두 가지 정하고, 그 이유에 대해서만 집중해서 쓰는 '주제 집중하기' 훈련이 가장 중요합니다. 추석과 관련 없는 이야기는 과감히 빼는 연습이 필요합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: 상세 교정 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                상세 교정 (Detailed Corrections)
+            </h3>
+            <div class="correction-step">
+                <h4>Step 1: 문장별 교정</h4>
+                <div class="correction-table-container overflow-x-auto">
+                    <table class="correction-table">
+                        <thead>
+                            <tr><th>Original Sentence</th><th>Corrected Sentence</th><th>Explanation (설명)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="original-sentence">My best holiday is chewsock.</td><td class="corrected-sentence">My best holiday is <strong>Chuseok</strong>.</td><td>한국의 명절 '추석'은 영어로 'Chuseok'이라고 쓰고, 고유명사이므로 첫 글자를 대문자로 써요.</td></tr>
+                            <tr><td class="original-sentence">It is so good to habbit.</td><td class="corrected-sentence">It is so good to <strong>celebrate</strong>. / It is a good <strong>habit</strong>.</td><td>'habbit'의 철자가 틀렸고, 문맥상 '기념하기 좋다(celebrate)'는 뜻인지, '좋은 습관(habit)'이라는 뜻인지 불분명하여 두 가지 가능성을 제시했어요.</td></tr>
+                            <tr><td class="original-sentence">we can do games and we cook up a feast.</td><td class="corrected-sentence">We can <strong>play</strong> games and cook up a feast.</td><td>'게임을 하다'는 'do games'보다 'play games'라고 표현해요.</td></tr>
+                            <tr><td class="original-sentence">If you have a cat you can play with it.</td><td class="corrected-sentence">If you have a cat, you can play with it. (Grammatically correct, but off-topic)</td><td>문법적으로는 맞지만, 추석이라는 주제와 관련이 없어요.</td></tr>
+                            <tr><td class="original-sentence">You can also give the dog a treat him.</td><td class="corrected-sentence">You can also give the dog a treat. / You can also give him a treat.</td><td>'the dog'와 'him' 둘 중 하나만 써야 해요. 'give the dog a treat' 또는 'give him a treat'라고 써야 맞아요.</td></tr>
+                             <tr><td class="original-sentence">today it is going to do it at chesok but it was rain.ected.</td><td class="corrected-sentence">Today, we were going to celebrate Chuseok, but it rained.</td><td>'chesok' 철자를 고쳤고, 문맥상 '추석을 기념하려고 했는데 비가 왔다'는 의미로 수정했어요. 'rain.ected'는 'rained'를 쓰려다 실수한 것 같아요.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Part 5: 최종 교정 모델 -->
+        <section class="section">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 18V7.125C4.5 6.504 5.004 6 5.625 6H9" /></svg>
+                최종 교정 모델 (Final Corrected Model)
+            </h3>
+            <div class="final-essay">
+                <strong><center>My Favorite Holiday: Chuseok</center></strong><br>
+                My best holiday is <strong>Chuseok</strong>. <strong>I think Chuseok is the best because we get to play fun games and eat delicious food with our family.</strong><br><br>
+                First, it is fun to <strong>play</strong> games during <strong>Chuseok</strong>. My family usually plays Yut-nori. It is always exciting to see who wins.<br><br>
+                Second, we cook up a feast, which means we prepare lots of special food. My favorite <strong>Chuseok</strong> food is Songpyeon, a type of sweet rice cake. Eating together with my family makes me happy.<br><br>
+                In conclusion, I love <strong>Chuseok</strong> because of the fun games and the delicious feast we share. It is a happy time for the whole family.
+            </div>
+        </section>
+
+        <!-- Part 6: 학생에게 보내는 편지 -->
+        <section class="section">
+            <div class="letter">
+                <h4>탁은수 학생에게,</h4>
+                <p>안녕하세요, 은수(Eunsu) 학생!</p>
+                <p class="mt-4">가장 좋아하는 휴일이 추석이라는 글 잘 읽었어요. 추석에 가족들과 함께 게임도 하고 맛있는 음식도 만들어 먹는다는 이야기를 들으니 정말 즐거운 명절이라는 것이 느껴졌어요. <strong>이렇게 자신의 생각을 솔직하고 즐겁게 표현하는 점이 은수 학생의 가장 큰 장점이에요.</strong></p>
+                <p class="mt-4">은수 학생의 글은 재료(아이디어)는 신선하지만, 아직 요리하는 방법(글쓰기 규칙)이 많이 서툴러 보여요. 특히 **단어의 철자를 정확하게 쓰고, 문장을 문법에 맞게 만드는 기초 공사**가 가장 시급해 보여요. 그리고 글의 주제와 관련 없는 이야기는 빼는 연습도 필요해요. 이것이 **현재 가장 먼저 고쳐야 할 점(primary weakness)**입니다.</p>
+                <p class="mt-4">그래서 아주 중요한 공부 팁을 두 가지 줄게요. 바로 <strong>'주제 집중하기'</strong>와 <strong>'기본 단어 따라 쓰기'</strong> 연습이에요.</p>
+                <p class="mt-4">다음 글을 쓸 때는, 글의 주제를 하나 정하고 그 주제와 관련된 이야기만 쓰도록 노력해보세요. '추석'에 대해 쓰기로 했다면, 고양이나 강아지 이야기는 잠시 빼두는 거죠. 그리고 'holiday', 'game', 'cook', 'play' 처럼 자주 쓰는 기본 단어들의 철자를 공책에 매일 다섯 번씩만 따라 써보는 연습을 해보세요. 이렇게 주제에 집중하고 기본 단어 쓰기 연습을 꾸준히 하면, 은수 학생의 글이 훨씬 더 명확하고 깔끔해질 거예요. 응원할게요!</p>
+                <p class="mt-6 font-semibold text-right">- Your Writing Coach</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
